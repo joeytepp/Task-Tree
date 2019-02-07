@@ -21,8 +21,9 @@ gem 'webpacker'
 # React on rails
 gem 'react_on_rails', '11.1.4'
 
-# GraphQL
+# GraphQL related gems
 gem 'graphql'
+gem "graphql_playground-rails"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
