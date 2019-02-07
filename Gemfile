@@ -21,6 +21,9 @@ gem 'webpacker'
 # React on rails
 gem 'react_on_rails', '11.1.4'
 
+# GraphQL
+gem 'graphql'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -67,3 +70,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'mini_racer', platforms: :ruby
+gem 'graphiql-rails', group: :development
