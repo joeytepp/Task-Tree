@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root 'landing#index'
+
   post '/graphql', to: 'graphql#execute'
-  get 'hello_world', to: 'hello_world#index'
 
   if Rails.env.development?
     mount GraphqlPlayground::Rails::Engine, at: '/playground', graphql_path: '/graphql'
