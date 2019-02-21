@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
     <title>Task Tree | Organize Tasks</title>
     <%= csrf_meta_tags %>
     <%= javascript_pack_tag 'task-tree-bundle' %>
+    <style>
+      body {
+        margin: 0px;
+      }
+    </style>
   </head>
 
   <body>

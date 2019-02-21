@@ -1,0 +1,79 @@
+
+<svg width="175px" height="169px" viewBox="0 0 175 169" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-0.4%" y="-0.5%" width="100.8%" height="101.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-3.0%" y="-1.5%" width="105.9%" height="102.9%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-5">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-6">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-7">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-1.1%" y="-1.1%" width="102.1%" height="102.2%" filterUnits="objectBoundingBox" id="filter-8">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-2.5%" y="-2.5%" width="105.1%" height="105.1%" filterUnits="objectBoundingBox" id="filter-9">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-0.3%" y="-0.3%" width="100.7%" height="100.6%" filterUnits="objectBoundingBox" id="filter-10">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-11">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-0.7%" y="-0.8%" width="101.5%" height="101.7%" filterUnits="objectBoundingBox" id="filter-12">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="50.0%" y="50.0%" width="0.0%" height="0.0%" filterUnits="objectBoundingBox" id="filter-13">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-3.6%" y="-3.6%" width="107.1%" height="107.2%" filterUnits="objectBoundingBox" id="filter-14">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-0.3%" y="-0.3%" width="100.6%" height="100.5%" filterUnits="objectBoundingBox" id="filter-15">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-3.6%" y="-4.0%" width="107.2%" height="108.0%" filterUnits="objectBoundingBox" id="filter-16">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-1.5%" y="-2.3%" width="103.0%" height="104.6%" filterUnits="objectBoundingBox" id="filter-17">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-0.5%" y="-0.9%" width="100.9%" height="101.8%" filterUnits="objectBoundingBox" id="filter-18">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Path" stroke="#FFFFFF" fill="#D8D8D8" filter="url(#filter-1)" points="1.34375 123.386719 48.3632812 167.648438 173.75 33.5703125 159.5625 19.2109375 48.3632812 136.832031 15.3242187 104.292969"></polygon>
+        <path d="M15.3242187,104.292969 L15.3242187,84.7265625" id="Path-2" stroke="#FFFFFF" filter="url(#filter-2)"></path>
+        <path d="M1.5,123.566406 L1.5,104" id="Path-2" stroke="#FFFFFF" filter="url(#filter-3)"></path>
+        <path d="M1.5,104.292969 L15.3242187,84.7265625" id="Path-3" stroke="#FFFFFF" filter="url(#filter-4)"></path>
+        <path d="M48.5,136.566406 L48.5,117" id="Path-2" stroke="#FFFFFF" filter="url(#filter-5)"></path>
+        <path d="M159.5,19.5664062 L159.5,0" id="Path-2" stroke="#FFFFFF" fill="#D8D8D8" filter="url(#filter-6)"></path>
+        <path d="M173.5,33.5664062 L173.5,14" id="Path-2" stroke="#FFFFFF" fill="#D8D8D8" filter="url(#filter-7)"></path>
+        <path d="M15.3242188,84.7265625 L48.5,117" id="Path-4" stroke="#FFFFFF" filter="url(#filter-8)"></path>
+        <path d="M159.5,0 L173.5,14" id="Path-5" stroke="#FFFFFF" fill="#D8D8D8" filter="url(#filter-9)"></path>
+        <path d="M48.5,117 L159.5,0" id="Path-6" stroke="#FFFFFF" filter="url(#filter-10)"></path>
+        <polyline id="Path-7" stroke="#FFFFFF" opacity="0.503813244" filter="url(#filter-11)" points="48.5 167.648438 48.5 155.729878 48.5 117"></polyline>
+        <polyline id="Path-8" stroke="#FFFFFF" opacity="0.5" filter="url(#filter-12)" points="49 148.082031 6.14590363 107.888508 2 104"></polyline>
+        <path d="" id="Path-10" stroke="#FFFFFF" filter="url(#filter-13)"></path>
+        <polygon id="Path-11" stroke="#FFFFFF" fill="#737373" filter="url(#filter-14)" points="159.5 19.5664062 173.5 33.5664062 173.5 14 159.5 0"></polygon>
+        <path d="M49,148.082031 L173.5,14" id="Path-9" stroke="#FFFFFF" opacity="0.5" filter="url(#filter-15)"></path>
+        <polygon id="Path-12" stroke="#FFFFFF" fill="#737373" filter="url(#filter-16)" points="1.5 123.566406 1.34375 104.292969 15.3242187 84.7265625 15.3242188 104.292969"></polygon>
+        <polygon id="Path-13" stroke="#FFFFFF" fill="#353535" filter="url(#filter-17)" points="15.3242187 84.7265625 48.5 117 48.5 136.566406 15.3242188 104.292969"></polygon>
+        <polygon id="Path-14" stroke="#FFFFFF" fill="#353535" filter="url(#filter-18)" points="48.5 117 49 136.566406 159.5 19.5664062 159.5 -3.79047922e-15"></polygon>
+    </g>
+</svg>
