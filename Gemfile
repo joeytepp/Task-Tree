@@ -21,7 +21,7 @@ gem 'webpacker'
 # gem 'mini_racer', platforms: :ruby
 
 # React on rails
-gem 'react_on_rails', '11.1.4'
+gem 'react_on_rails', '11.2.2'
 
 # GraphQL related gems
 gem 'graphql'

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "../../assets/logo.svg";
-import styles from "../index.css";
+import styles from "./Landing.scss";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -8,18 +8,9 @@ export default class Landing extends Component {
   }
 
   render() {
-    console.log(styles);
     return (
-      <div>
-        <div
-          style={{
-            width: "vw",
-            background: "#562424",
-            height: "100px",
-            paddingLeft: "50px",
-            paddingRight: "50px"
-          }}
-        >
+      <div className={styles.root}>
+        <div className={styles.root}>
           <div
             style={{
               display: "grid",
