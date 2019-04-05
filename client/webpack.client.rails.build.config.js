@@ -1,40 +1,33 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const merge = require('webpack-merge');
-const { env } = require('process');
-const config = require('./webpack.client.base.config');
-const { resolve } = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const merge = require("webpack-merge");
+const { env } = require("process");
+const config = require("./webpack.client.base.config");
+const { resolve } = require("path");
 
 // Webpacker specific
-const webpackConfigLoader = require('react-on-rails/webpackConfigLoader');
+const webpackConfigLoader = require("react-on-rails/webpackConfigLoader");
 
-const configPath = resolve('..', 'config');
+const configPath = resolve("..", "config");
 const { output, settings } = webpackConfigLoader(configPath);
 const isHMR = settings.dev_server && settings.dev_server.hmr;
 
-const devBuild = env.NODE_ENV !== 'production';
-
+const devBuild = env.NODE_ENV !== "production";
 
 if (devBuild) {
-  console.log('Webpack dev build for Rails'); // eslint-disable-line no-console
-  config.devtool = 'eval-source-map';
+  console.log("Webpack dev build for Rails"); // eslint-disable-line no-console
+  config.devtool = "eval-source-map";
 } else {
-  console.log('Webpack production build for Rails'); // eslint-disable-line no-console
+  console.log("Webpack production build for Rails"); // eslint-disable-line no-console
 }
 
 module.exports = merge(config, {
-  entry: {
-    'vendor-bundle': [
-      'jquery-ujs',
-    ],
-  },
-
   output: {
-    filename: isHMR ? '[name]-[hash].js' : '[name]-[chunkhash].js',
-    chunkFilename: '[name]-[chunkhash].chunk.js',
+    filename: isHMR ? "[name]-[hash].js" : "[name]-[chunkhash].js",
+    chunkFilename: "[name]-[chunkhash].chunk.js",
 
     publicPath: output.publicPath,
     path: output.path,
-    pathinfo: devBuild,
+    pathinfo: devBuild
   },
 
   // See webpack.client.base.config for adding modules common to both the webpack
@@ -44,83 +37,74 @@ module.exports = merge(config, {
     rules: [
       {
         test: /\.jsx?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
+        use: "babel-loader",
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+          fallback: "style-loader",
           use: [
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 minimize: true,
                 modules: true,
                 importLoaders: 1,
-                localIdentName: '[name]__[local]__[hash:base64:5]',
-              },
+                localIdentName: "[name]__[local]__[hash:base64:5]"
+              }
             },
-            'postcss-loader',
-          ],
-        }),
+            "postcss-loader"
+          ]
+        })
       },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+          fallback: "style-loader",
           use: [
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 minimize: true,
                 modules: true,
                 importLoaders: 3,
-                localIdentName: '[name]__[local]__[hash:base64:5]',
-              },
+                localIdentName: "[name]__[local]__[hash:base64:5]"
+              }
             },
             {
-              loader: 'postcss-loader',
+              loader: "postcss-loader",
               options: {
-                plugins: 'autoprefixer',
-              },
+                plugins: "autoprefixer"
+              }
             },
-            'sass-loader',
+            "sass-loader",
             {
-              loader: 'sass-resources-loader',
+              loader: "sass-resources-loader",
               options: {
-                resources: './app/assets/styles/app-variables.scss',
-              },
-            },
-          ],
-        }),
+                resources: "./app/assets/styles/app-variables.scss"
+              }
+            }
+          ]
+        })
       },
       {
-        test: require.resolve('react'),
+        test: require.resolve("react"),
         use: {
-          loader: 'imports-loader',
+          loader: "imports-loader",
           options: {
-            shim: 'es5-shim/es5-shim',
-            sham: 'es5-shim/es5-sham',
-          },
-        },
-      },
-      {
-        test: require.resolve('jquery-ujs'),
-        use: {
-          loader: 'imports-loader',
-          options: {
-            jQuery: 'jquery',
-          },
-        },
-      },
-    ],
+            shim: "es5-shim/es5-shim",
+            sham: "es5-shim/es5-sham"
+          }
+        }
+      }
+    ]
   },
 
   plugins: [
     new ExtractTextPlugin({
-      filename: '[name]-[contenthash].css',
-      allChunks: true,
-    }),
-  ],
+      filename: "[name]-[contenthash].css",
+      allChunks: true
+    })
+  ]
 });

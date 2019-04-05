@@ -6,106 +6,84 @@
 // require() is used rather than import because hot reloading with webpack
 // requires webpack to transform modules from ES6 to ES5 instead of babel
 // and webpack can not transform its own config files.
-const { resolve } = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const config = require('./webpack.client.base.config');
-const webpackConfigLoader = require('react-on-rails/webpackConfigLoader');
+const { resolve } = require("path");
+const webpack = require("webpack");
+const merge = require("webpack-merge");
+const config = require("./webpack.client.base.config");
+const webpackConfigLoader = require("react-on-rails/webpackConfigLoader");
 
-const configPath = resolve('..', 'config');
+const configPath = resolve("..", "config");
 const { output, settings } = webpackConfigLoader(configPath);
 
 // entry is prepended because 'react-hot-loader/patch' must be the very first entry
 // for hot reloading to work.
 module.exports = merge.strategy({
-  entry: 'prepend',
+  entry: "prepend"
 })(config, {
-
-  devtool: 'eval-source-map',
-
-  entry: {
-    'vendor-bundle': [
-      'jquery-ujs',
-    ],
-    'app-bundle': [
-      'react-hot-loader/patch',
-      `webpack-dev-server/client?http://${settings.dev_server.host}:${settings.dev_server.port}`,
-      'webpack/hot/only-dev-server',
-    ],
-  },
-
+  devtool: "eval-source-map",
   output: {
-    filename: '[name].js',
+    filename: "[name].js",
     path: output.path,
-    publicPath: output.publicPath,
+    publicPath: output.publicPath
   },
 
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
+        loader: "babel-loader",
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: true,
               importLoaders: 0,
-              localIdentName: '[name]__[local]__[hash:base64:5]',
-            },
+              localIdentName: "[name]__[local]__[hash:base64:5]"
+            }
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
-              plugins: 'autoprefixer',
-            },
-          },
-        ],
+              plugins: "autoprefixer"
+            }
+          }
+        ]
       },
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: true,
               importLoaders: 3,
-              localIdentName: '[name]__[local]__[hash:base64:5]',
-            },
+              localIdentName: "[name]__[local]__[hash:base64:5]"
+            }
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
-              plugins: 'autoprefixer',
-            },
+              plugins: "autoprefixer"
+            }
           },
           {
-            loader: 'sass-loader',
+            loader: "sass-loader"
           },
           {
-            loader: 'sass-resources-loader',
+            loader: "sass-resources-loader",
             options: {
-              resources: './app/assets/styles/app-variables.scss',
-            },
-          },
-        ],
-      },
-      {
-        test: require.resolve('jquery-ujs'),
-        use: {
-          loader: 'imports-loader',
-          options: {
-            jQuery: 'jquery',
-          },
-        },
-      },
-    ],
+              resources: "./app/assets/styles/app-variables.scss"
+            }
+          }
+        ]
+      }
+    ]
   },
 
   // webpack.NamedModulesPlugin() is an optional module that is great for HMR debugging
@@ -116,8 +94,8 @@ module.exports = merge.strategy({
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-  ],
+    new webpack.NoEmitOnErrorsPlugin()
+  ]
 });
 
-console.log('Webpack HOT dev build for Rails'); // eslint-disable-line no-console
+console.log("Webpack HOT dev build for Rails"); // eslint-disable-line no-console
