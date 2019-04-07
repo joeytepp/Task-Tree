@@ -1,0 +1,25 @@
+.root {
+  margin: 5px 5px 5px 5px;
+  text-align: center;
+}
+
+.caret {
+  height: 2px;
+  width: 0%;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  transition: 0.5s;
+}
+
+.root:hover .caret {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  transition: 0.5s;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}

@@ -1,73 +1,53 @@
-import React, { Component } from "react";
-import logo from "../../assets/logo.svg";
+import React from "react";
+
 import styles from "./Landing.scss";
+import logo from "../../assets/img/logo.svg";
+import arrow from "../../assets/img/whiteArrow.svg";
+import centrePiece from "../../assets/img/centrePiece.svg";
 
-export default class Landing extends Component {
-  constructor(props) {
-    super(props);
-  }
+import MenuLink from "../MenuLink/MenuLink";
+import ContentWrapper from "../ContentWrapper/ContentWrapper";
 
-  render() {
-    return (
-      <div className={styles.root}>
-        <div className={styles.root}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "min-content 1fr 1fr",
-              paddingTop: "20px",
-              paddingBottom: "20px"
-            }}
-          >
-            <div style={{ paddingRight: "20px" }}>
-              <img src={logo} style={{ height: "60px" }} />
-            </div>
-
-            <div align="left" style={{ marginTop: "-5px" }}>
-              <h1
-                style={{
-                  textAlign: "left",
-                  fontFamily: "Helvetica",
-                  color: "white"
-                }}
-              >
-                TaskTree
-              </h1>
-            </div>
-            <div align="right">
-              <button
-                style={{
-                  height: "60px",
-                  background: "rgba(0,0,0,0)",
-                  color: "white",
-                  borderRadius: "5px",
-                  fontSize: "20px",
-                  width: "100px"
-                }}
-              >
-                Log In
-              </button>
-            </div>
-          </div>
+export default props => {
+  return (
+    <div className={styles.root}>
+      {/* Header */}
+      <div className={styles.header}>
+        <div className={styles.headerLeft} align="left">
+          <img src={logo} className={styles.logoImg} />
+          <a href="./" className={styles.logoText}>
+            Task Tree
+          </a>
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            fontFamily: "helvetica"
-          }}
-        >
-          <div
-            style={{
-              background: "#A94C4C",
-              padding: "50px"
-            }}
+        <div className={styles.headerRight} align="right">
+          <div />
+          <MenuLink name="About" link="#about" />
+          <MenuLink name="Contact" link="mailto:info@tasktree.ca" />
+          <a className={[styles.login, styles.button].join(" ")} href="/login">
+            Log In
+          </a>
+          <a
+            className={[styles.signup, styles.button].join(" ")}
+            href="/signup"
           >
-            Column A
-          </div>
-          <div style={{ padding: "50px" }}>Column B</div>
+            Sign Up
+          </a>
         </div>
       </div>
-    );
-  }
-}
+      <ContentWrapper maxWidth="700px">
+        {/* TagLine */}
+        <div className={styles.tagline}>
+          <h1 className={styles.taglineTop}>Productivity</h1>
+          <h1 className={styles.taglineBottom}>Reinvented</h1>
+          <div className={styles.learnMore}>
+            <a href="#about" className={styles.learnMore}>
+              Learn More <img src={arrow} className={styles.arrowImg} />
+            </a>
+          </div>
+        </div>
+        {/* Centrepiece */}
+        <div className={styles.centrePiece} />
+      </ContentWrapper>
+    </div>
+  );
+};

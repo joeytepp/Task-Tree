@@ -82,7 +82,10 @@ module.exports = merge(config, {
             {
               loader: "sass-resources-loader",
               options: {
-                resources: "./app/assets/styles/app-variables.scss"
+                resources: [
+                  "./app/assets/styles/app-variables.scss",
+                  "./app/assets/styles/index.scss"
+                ]
               }
             }
           ]
