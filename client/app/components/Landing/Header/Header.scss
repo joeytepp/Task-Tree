@@ -1,0 +1,66 @@
+.header {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.logoText {
+  font-family: Cabin-SemiBold;
+  font-size: 32px;
+  color: #ffffff;
+  text-align: left;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.headerLeft {
+  display: grid;
+  grid-template-columns: min-content auto;
+}
+
+.headerRight {
+  display: grid;
+  grid-template-columns: 1fr min-content min-content min-content min-content;
+  grid-column-gap: 10px;
+  height: 20px;
+}
+
+.button {
+  white-space: nowrap;
+  text-decoration: none;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  transition: 0.5s;
+}
+
+.login {
+  border-color: white;
+  color: white;
+}
+
+.login:hover {
+  border-color: #d8d8d8;
+  background: #d8d8d8;
+  color: $task-tree-red;
+}
+
+.signup {
+  background: white;
+  border-color: white;
+  color: $task-tree-red;
+}
+
+.signup:hover {
+  background: black;
+  border-color: black;
+  color: white;
+}
+
+.logoImg {
+  padding-right: 10px;
+  padding-top: 2px;
+  height: 32px;
+}
