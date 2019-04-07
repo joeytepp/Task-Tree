@@ -1,0 +1,69 @@
+.root {
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+
+.heading {
+  font-family: Cabin-SemiBold;
+  font-size: 30px;
+  color: #000000;
+  letter-spacing: 1px;
+  text-align: left;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
+p.summary {
+  font-family: Cabin-Regular;
+  font-size: 18px;
+  color: #000000;
+  letter-spacing: 0;
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sellingPoints {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  max-width: 1000px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.sellinPoint {
+  text-align: left;
+}
+
+.sellingPoint img {
+  width: 80%;
+  text-align: left;
+}
+
+.title {
+  font-family: Cabin-SemiBold;
+  font-size: 15px;
+  color: #000000;
+  letter-spacing: 0;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.subtitle {
+  font-family: Cabin-Regular;
+  font-size: 15px;
+  color: #424242;
+  letter-spacing: 0;
+  text-align: left;
+  margin-top: -10px;
+  width: 80%;
+}
+
+a.githubLink {
+  color: black;
+}

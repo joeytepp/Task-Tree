@@ -1,0 +1,81 @@
+
+<svg width="617px" height="415px" viewBox="0 0 617 415" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="0" width="584" height="82.1924883" rx="8"></rect>
+        <filter x="-1.5%" y="-10.9%" width="103.1%" height="121.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="204.807512" width="584" height="82.1924883" rx="8"></rect>
+        <filter x="-1.5%" y="-10.9%" width="103.1%" height="121.9%" filterUnits="objectBoundingBox" id="filter-4">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-5" x="0" y="102.403756" width="584" height="82.1924883" rx="8"></rect>
+        <filter x="-1.5%" y="-10.9%" width="103.1%" height="121.9%" filterUnits="objectBoundingBox" id="filter-6">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="project-rectangle">
+            <rect id="Rectangle" fill="#FFFFFF" fill-rule="evenodd" x="0" y="0" width="617" height="415" rx="8"></rect>
+            <g id="projects" transform="translate(17.000000, 64.000000)">
+                <g id="Rectangle">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <rect stroke="#979797" stroke-width="1" stroke-linejoin="square" fill="#B22222" fill-rule="evenodd" x="0.5" y="0.5" width="583" height="81.1924883" rx="8"></rect>
+                </g>
+                <g id="Rectangle">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                    <rect stroke="#979797" stroke-width="1" stroke-linejoin="square" fill="#3A6CA6" fill-rule="evenodd" x="0.5" y="205.307512" width="583" height="81.1924883" rx="8"></rect>
+                </g>
+                <ellipse id="Oval" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" cx="42.4849885" cy="41.0962441" rx="14.1616628" ry="14.1478873"></ellipse>
+                <ellipse id="Oval" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" cx="92.3879908" cy="41.0962441" rx="14.1616628" ry="14.1478873"></ellipse>
+                <ellipse id="Oval" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" cx="142.290993" cy="41.0962441" rx="14.1616628" ry="14.1478873"></ellipse>
+                <ellipse id="Oval" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" cx="192.193995" cy="41.0962441" rx="14.1616628" ry="14.1478873"></ellipse>
+                <ellipse id="Oval" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" cx="242.096998" cy="41.0962441" rx="14.1616628" ry="14.1478873"></ellipse>
+                <ellipse id="Oval" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" cx="292" cy="41.0962441" rx="14.1616628" ry="14.1478873"></ellipse>
+                <ellipse id="Oval" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" cx="341.903002" cy="41.0962441" rx="14.1616628" ry="14.1478873"></ellipse>
+                <ellipse id="Oval" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" cx="391.806005" cy="41.0962441" rx="14.1616628" ry="14.1478873"></ellipse>
+                <ellipse id="Oval" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" cx="441.709007" cy="41.0962441" rx="14.1616628" ry="14.1478873"></ellipse>
+                <ellipse id="Oval" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" cx="491.612009" cy="41.0962441" rx="14.1616628" ry="14.1478873"></ellipse>
+                <ellipse id="Oval" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" cx="541.515012" cy="41.0962441" rx="14.1616628" ry="14.1478873"></ellipse>
+                <g id="Rectangle">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                    <rect stroke="#979797" stroke-width="1" stroke-linejoin="square" fill="#349548" fill-rule="evenodd" x="0.5" y="102.903756" width="583" height="81.1924883" rx="8"></rect>
+                </g>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="28.8233256" y="129.852113" width="27.3233256" height="27.2957746" rx="5"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="78.7263279" y="129.852113" width="27.3233256" height="27.2957746" rx="5"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="128.62933" y="129.852113" width="27.3233256" height="27.2957746" rx="5"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="178.532333" y="129.852113" width="27.3233256" height="27.2957746" rx="5"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="228.435335" y="129.852113" width="27.3233256" height="27.2957746" rx="5"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="278.338337" y="129.852113" width="27.3233256" height="27.2957746" rx="5"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="328.241339" y="129.852113" width="27.3233256" height="27.2957746" rx="5"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="378.144342" y="129.852113" width="27.3233256" height="27.2957746" rx="5"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="428.047344" y="129.852113" width="27.3233256" height="27.2957746" rx="5"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="477.950346" y="129.852113" width="27.3233256" height="27.2957746" rx="5"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="527.853349" y="129.852113" width="27.3233256" height="27.2957746" rx="5"></rect>
+                <path d="M43.3792414,233.542635 L55.9221656,258.604081 C56.1693472,259.097964 55.9693568,259.698715 55.4754745,259.945896 C55.3365284,260.015437 55.1832893,260.051643 55.0279126,260.051643 L29.9420643,260.051643 C29.3897795,260.051643 28.9420643,259.603928 28.9420643,259.051643 C28.9420643,258.896267 28.9782706,258.743027 29.0478113,258.604081 L41.5907355,233.542635 C41.8379171,233.048752 42.438668,232.848762 42.9325503,233.095944 C43.1258018,233.192663 43.2825216,233.349383 43.3792414,233.542635 Z" id="Triangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <path d="M93.2822437,233.542635 L105.825168,258.604081 C106.07235,259.097964 105.872359,259.698715 105.378477,259.945896 C105.239531,260.015437 105.086292,260.051643 104.930915,260.051643 L79.8450666,260.051643 C79.2927818,260.051643 78.8450666,259.603928 78.8450666,259.051643 C78.8450666,258.896267 78.8812729,258.743027 78.9508136,258.604081 L91.4937378,233.542635 C91.7409194,233.048752 92.3416703,232.848762 92.8355526,233.095944 C93.0288041,233.192663 93.1855239,233.349383 93.2822437,233.542635 Z" id="Triangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <path d="M143.185246,233.542635 L155.72817,258.604081 C155.975352,259.097964 155.775361,259.698715 155.281479,259.945896 C155.142533,260.015437 154.989294,260.051643 154.833917,260.051643 L129.748069,260.051643 C129.195784,260.051643 128.748069,259.603928 128.748069,259.051643 C128.748069,258.896267 128.784275,258.743027 128.853816,258.604081 L141.39674,233.542635 C141.643922,233.048752 142.244673,232.848762 142.738555,233.095944 C142.931806,233.192663 143.088526,233.349383 143.185246,233.542635 Z" id="Triangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <path d="M193.088248,233.542635 L205.631173,258.604081 C205.878354,259.097964 205.678364,259.698715 205.184481,259.945896 C205.045535,260.015437 204.892296,260.051643 204.73692,260.051643 L179.651071,260.051643 C179.098786,260.051643 178.651071,259.603928 178.651071,259.051643 C178.651071,258.896267 178.687278,258.743027 178.756818,258.604081 L191.299742,233.542635 C191.546924,233.048752 192.147675,232.848762 192.641557,233.095944 C192.834809,233.192663 192.991529,233.349383 193.088248,233.542635 Z" id="Triangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <path d="M242.991251,233.542635 L255.534175,258.604081 C255.781356,259.097964 255.581366,259.698715 255.087484,259.945896 C254.948538,260.015437 254.795299,260.051643 254.639922,260.051643 L229.554074,260.051643 C229.001789,260.051643 228.554074,259.603928 228.554074,259.051643 C228.554074,258.896267 228.59028,258.743027 228.659821,258.604081 L241.202745,233.542635 C241.449926,233.048752 242.050677,232.848762 242.54456,233.095944 C242.737811,233.192663 242.894531,233.349383 242.991251,233.542635 Z" id="Triangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <path d="M292.894253,233.542635 L305.437177,258.604081 C305.684359,259.097964 305.484368,259.698715 304.990486,259.945896 C304.85154,260.015437 304.698301,260.051643 304.542924,260.051643 L279.457076,260.051643 C278.904791,260.051643 278.457076,259.603928 278.457076,259.051643 C278.457076,258.896267 278.493282,258.743027 278.562823,258.604081 L291.105747,233.542635 C291.352929,233.048752 291.95368,232.848762 292.447562,233.095944 C292.640813,233.192663 292.797533,233.349383 292.894253,233.542635 Z" id="Triangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <path d="M342.797255,233.542635 L355.340179,258.604081 C355.587361,259.097964 355.387371,259.698715 354.893488,259.945896 C354.754542,260.015437 354.601303,260.051643 354.445926,260.051643 L329.360078,260.051643 C328.807793,260.051643 328.360078,259.603928 328.360078,259.051643 C328.360078,258.896267 328.396284,258.743027 328.465825,258.604081 L341.008749,233.542635 C341.255931,233.048752 341.856682,232.848762 342.350564,233.095944 C342.543816,233.192663 342.700535,233.349383 342.797255,233.542635 Z" id="Triangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <path d="M392.700258,233.542635 L405.243182,258.604081 C405.490363,259.097964 405.290373,259.698715 404.796491,259.945896 C404.657545,260.015437 404.504305,260.051643 404.348929,260.051643 L379.26308,260.051643 C378.710796,260.051643 378.26308,259.603928 378.26308,259.051643 C378.26308,258.896267 378.299287,258.743027 378.368827,258.604081 L390.911752,233.542635 C391.158933,233.048752 391.759684,232.848762 392.253566,233.095944 C392.446818,233.192663 392.603538,233.349383 392.700258,233.542635 Z" id="Triangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <path d="M442.60326,233.542635 L455.146184,258.604081 C455.393366,259.097964 455.193375,259.698715 454.699493,259.945896 C454.560547,260.015437 454.407308,260.051643 454.251931,260.051643 L429.166083,260.051643 C428.613798,260.051643 428.166083,259.603928 428.166083,259.051643 C428.166083,258.896267 428.202289,258.743027 428.27183,258.604081 L440.814754,233.542635 C441.061936,233.048752 441.662686,232.848762 442.156569,233.095944 C442.34982,233.192663 442.50654,233.349383 442.60326,233.542635 Z" id="Triangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <path d="M492.506262,233.542635 L505.049186,258.604081 C505.296368,259.097964 505.096378,259.698715 504.602495,259.945896 C504.463549,260.015437 504.31031,260.051643 504.154933,260.051643 L479.069085,260.051643 C478.5168,260.051643 478.069085,259.603928 478.069085,259.051643 C478.069085,258.896267 478.105291,258.743027 478.174832,258.604081 L490.717756,233.542635 C490.964938,233.048752 491.565689,232.848762 492.059571,233.095944 C492.252823,233.192663 492.409542,233.349383 492.506262,233.542635 Z" id="Triangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <path d="M542.409265,233.542635 L554.952189,258.604081 C555.19937,259.097964 554.99938,259.698715 554.505498,259.945896 C554.366552,260.015437 554.213312,260.051643 554.057936,260.051643 L528.972087,260.051643 C528.419803,260.051643 527.972087,259.603928 527.972087,259.051643 C527.972087,258.896267 528.008294,258.743027 528.077834,258.604081 L540.620759,233.542635 C540.86794,233.048752 541.468691,232.848762 541.962573,233.095944 C542.155825,233.192663 542.312545,233.349383 542.409265,233.542635 Z" id="Triangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,43 @@
+
+<svg width="418px" height="285px" viewBox="0 0 418 285" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="1.13686838e-13" width="406" height="273" rx="8"></rect>
+        <filter x="-2.2%" y="-3.3%" width="104.4%" height="106.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-236.000000, -1409.000000)">
+            <g id="task-list" transform="translate(242.000000, 1415.000000)">
+                <g id="Rectangle">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <rect id="Rectangle" stroke="#D6D6D6" stroke-width="1" fill="#B22222" fill-rule="evenodd" x="26.1628849" y="9.70963855" width="371.440843" height="37.8120482" rx="8"></rect>
+                <rect id="Rectangle" stroke="#D6D6D6" stroke-width="1" fill="#B22222" fill-rule="evenodd" opacity="0.7" x="43.9294976" y="52.4686747" width="353.67423" height="37.8120482" rx="8"></rect>
+                <rect id="Rectangle" stroke="#979797" stroke-width="1" fill="#6D6D6D" fill-rule="evenodd" x="8.39627229" y="9.70963855" width="9.52836305" height="251.607229" rx="4.76418152"></rect>
+                <rect id="Rectangle" stroke="#979797" stroke-width="1" fill="#6D6D6D" fill-rule="evenodd" x="26.1628849" y="52.4686747" width="9.52836305" height="208.848193" rx="4.76418152"></rect>
+                <rect id="Rectangle" stroke="#D6D6D6" stroke-width="1" fill="#B22222" fill-rule="evenodd" opacity="0.7" x="43.9294976" y="95.2277108" width="353.67423" height="37.8120482" rx="8"></rect>
+                <rect id="Rectangle" stroke="#979797" stroke-width="1" fill="#6D6D6D" fill-rule="evenodd" x="43.9294976" y="137.986747" width="9.52836305" height="123.33012" rx="4.76418152"></rect>
+                <rect id="Rectangle" stroke="#D6D6D6" stroke-width="1" fill-opacity="0.49" fill="#B22222" fill-rule="evenodd" x="61.6961102" y="137.986747" width="335.907618" height="37.8120482" rx="8"></rect>
+                <rect id="Rectangle" stroke="#D6D6D6" stroke-width="1" fill-opacity="0.49" fill="#B22222" fill-rule="evenodd" x="61.6961102" y="180.745783" width="335.907618" height="37.8120482" rx="8"></rect>
+                <rect id="Rectangle" stroke="#D6D6D6" stroke-width="1" fill-opacity="0.49" fill="#B22222" fill-rule="evenodd" x="61.6961102" y="223.504819" width="335.907618" height="37.8120482" rx="8"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="31.4270665" y="16.9457831" width="216.805511" height="8.86746988" rx="4.43373494"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" x="31.4270665" y="30.760241" width="151.661264" height="8.86746988" rx="4.43373494"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" opacity="0.7" x="49.1936791" y="59.7048193" width="216.805511" height="8.86746988" rx="4.43373494"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" opacity="0.7" x="49.1936791" y="73.5192771" width="151.661264" height="8.86746988" rx="4.43373494"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" opacity="0.7" x="49.1936791" y="102.463855" width="216.805511" height="8.86746988" rx="4.43373494"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" opacity="0.7" x="49.1936791" y="116.278313" width="151.661264" height="8.86746988" rx="4.43373494"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" opacity="0.49" x="68.2763371" y="145.222892" width="216.805511" height="8.86746988" rx="4.43373494"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" opacity="0.49" x="68.2763371" y="159.037349" width="151.661264" height="8.86746988" rx="4.43373494"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" opacity="0.49" x="68.2763371" y="188.639759" width="216.805511" height="8.86746988" rx="4.43373494"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" opacity="0.49" x="68.2763371" y="202.454217" width="151.661264" height="8.86746988" rx="4.43373494"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" opacity="0.49" x="68.2763371" y="231.398795" width="216.805511" height="8.86746988" rx="4.43373494"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" opacity="0.49" x="68.2763371" y="245.213253" width="151.661264" height="8.86746988" rx="4.43373494"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
