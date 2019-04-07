@@ -1,5 +1,132 @@
 
 <svg width="911px" height="706px" viewBox="0 0 911 706" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <style>
+        .block-1 {
+            animation: float-1;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        .block-2 {
+            animation: float-2;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        .block-3 {
+            animation: float-3;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        .block-4 {
+            animation: float-4;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        .block-5 {
+            animation: float-5;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes float-1 {
+            0% {
+                transform: translateY(0px);
+            }
+            10% {
+                transform: translateY(10px);
+            }
+
+            90% {
+               transform: translateY(10px); 
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes float-2 {
+            0% {
+                transform: translateY(0px);
+            }
+
+            10% {
+                transform: translateY(0px);
+            }
+            20% {
+                transform: translateY(10px);
+            }
+
+            80% {
+                transform: translateY(10px);
+            }
+
+            90% {
+                transform: translateY(0px);
+            }
+        }
+
+         @keyframes float-3 {
+            0% {
+                transform: translateY(0px);
+            }
+            20% {
+                transform: translateY(0px);
+            }
+
+            30% {
+                transform: translateY(10px);
+            }
+
+            70% {
+                transform: translateY(10px);
+            }
+
+            80% {
+                transform: translateY(0px);
+            }
+        }
+
+         @keyframes float-4 {
+            0% {
+                transform: translateY(0px);
+            }
+            30% {
+                transform: translateY(0px);
+            }
+
+            40% {
+                transform: translateY(10px);
+            }
+
+            60% {
+                transform: translateY(10px);
+            }
+
+            70% {
+                transform: translateY(0px);
+            }
+        }
+
+         @keyframes float-5 {
+            0% {
+                transform: translateY(0px);
+            }
+            40% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+
+            60% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
     <g id="Centre-Piece" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Desktop" transform="translate(-545.000000, -291.000000)">
             <g id="CentrePiece" transform="translate(546.000000, 292.000000)">
@@ -17,67 +144,67 @@
                 <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="291 702.682486 291 551.74819 419 472.538019 419 623"></polygon>
                 <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="291 551.74819 163 471 163 623.7 291 703.555933"></polygon>
                 <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="291.5 551 419.435049 471.74819 291 391 163 470"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="693 157 693 107.81319 735 82 735 131.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="693 108.041538 652 82 652 131.246217 693 157"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="693.591428 108 735 82.2431616 693.429594 56 652 81.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="780 211 780 161.81319 822 136 822 185.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="780 162.041538 739 136 739 185.246217 780 211"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="618 202 618 152.81319 660 127 660 176.032891"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="780.591428 162 822 136.243162 780.429594 110 739 135.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="867 157 867 107.81319 909 82 909 131.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="867 108.041538 826 82 826 131.246217 867 157"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="128.5 449 256.435049 369.74819 128 289 -2.84217094e-14 368"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="867.591428 108 909 82.2431616 867.429594 56 826 81.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="780 101 780 51.8131898 822 26 822 75.0328911"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="780 52.0415382 739 26 739 75.2462173 780 101"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="780.591428 52 822 26.2431616 780.429594 0 739 25.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="530 258 530 208.81319 572 183 572 232.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="530 209.041538 489 183 489 232.246217 530 258"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="530.591428 209 572 183.243162 530.429594 157 489 182.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="617 312 617 262.81319 659 237 659 286.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="617 263.041538 576 237 576 286.246217 617 312"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="617.591428 263 659 237.243162 617.429594 211 576 236.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="704 258 704 208.81319 746 183 746 232.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="704 209.041538 663 183 663 232.246217 704 258"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="704.591428 209 746 183.243162 704.429594 157 663 182.675"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="617 153.041538 576 127 576 176.246217 617 202"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="617.591428 153 659 127.243162 617.429594 101 576 126.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="455 303 455 253.81319 497 228 497 277.032891"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="367 359 367 309.81319 409 284 409 333.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="367 310.041538 326 284 326 333.246217 367 359"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="367.591428 310 409 284.243162 367.429594 258 326 283.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="454 413 454 363.81319 496 338 496 387.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="454 364.041538 413 338 413 387.246217 454 413"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="454.591428 364 496 338.243162 454.429594 312 413 337.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="541 359 541 309.81319 583 284 583 333.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="541 310.041538 500 284 500 333.246217 541 359"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="541.591428 310 583 284.243162 541.429594 258 500 283.675"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="454 254.041538 413 228 413 277.246217 454 303"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="454.591428 254 496 228.243162 454.429594 202 413 227.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="291 412 291 362.81319 333 337 333 386.032891"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="291 520 291 470.81319 333 445 333 494.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="291 471.041538 250 445 250 494.246217 291 520"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="291.591428 471 333 445.243162 291.429594 419 250 444.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="216 364 216 314.81319 258 289 258 338.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="216 315.041538 175 289 175 338.246217 216 364"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="216.591428 315 258 289.243162 216.429594 263 175 288.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="378 468 378 418.81319 420 393 420 442.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="378 419.041538 337 393 337 442.246217 378 468"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="378.591428 419 420 393.243162 378.429594 367 337 392.675"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="290 363.041538 249 337 249 386.246217 290 412"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="290.591428 363 332 337.243162 290.429594 311 249 336.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="129 305 129 255.81319 171 230 171 279.032891"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="41 362 41 312.81319 83 287 83 336.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="41 313.041538 0 287 0 336.246217 41 362"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="41.5914284 313 83 287.243162 41.4295941 261 0 286.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="128 419 128 369.81319 170 344 170 393.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="128 370.041538 87 344 87 393.246217 128 419"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="128.591428 370 170 344.243162 128.429594 318 87 343.675"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="128 256.041538 87 230 87 279.246217 128 305"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="128.591428 256 170 230.243162 128.429594 204 87 229.675"></polygon>
-                <polygon id="Path-16" stroke="#000000" fill="#000000" fill-rule="evenodd" points="203 464 203 414.81319 245 389 245 438.032891"></polygon>
-                <polygon id="Path-19" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="203 415.041538 162 389 162 438.246217 203 464"></polygon>
-                <polygon id="Path-20" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="203.591428 415 245 389.243162 203.429594 363 162 388.675"></polygon>
+                <polygon id="Path-16" class="block-5" stroke="#000000" fill="#000000" fill-rule="evenodd" points="693 157 693 107.81319 735 82 735 131.032891"></polygon>
+                <polygon id="Path-19" class="block-5" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="693 108.041538 652 82 652 131.246217 693 157"></polygon>
+                <polygon id="Path-20" class="block-5" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="693.591428 108 735 82.2431616 693.429594 56 652 81.675"></polygon>
+                <polygon id="Path-16" class="block-5" stroke="#000000" fill="#000000" fill-rule="evenodd" points="780 211 780 161.81319 822 136 822 185.032891"></polygon>
+                <polygon id="Path-19" class="block-5" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="780 162.041538 739 136 739 185.246217 780 211"></polygon>
+                <polygon id="Path-16" class="block-4" stroke="#000000" fill="#000000" fill-rule="evenodd" points="618 202 618 152.81319 660 127 660 176.032891"></polygon>
+                <polygon id="Path-20" class="block-5" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="780.591428 162 822 136.243162 780.429594 110 739 135.675"></polygon>
+                <polygon id="Path-16" class="block-5" stroke="#000000" fill="#000000" fill-rule="evenodd" points="867 157 867 107.81319 909 82 909 131.032891"></polygon>
+                <polygon id="Path-19" class="block-5" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="867 108.041538 826 82 826 131.246217 867 157"></polygon>
+                <polygon id="Path-20" class="block-6" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="128.5 449 256.435049 369.74819 128 289 -2.84217094e-14 368"></polygon>
+                <polygon id="Path-20" class="block-5" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="867.591428 108 909 82.2431616 867.429594 56 826 81.675"></polygon>
+                <polygon id="Path-16" class="block-5" stroke="#000000" fill="#000000" fill-rule="evenodd" points="780 101 780 51.8131898 822 26 822 75.0328911"></polygon>
+                <polygon id="Path-19" class="block-5" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="780 52.0415382 739 26 739 75.2462173 780 101"></polygon>
+                <polygon id="Path-20" class="block-5" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="780.591428 52 822 26.2431616 780.429594 0 739 25.675"></polygon>
+                <polygon id="Path-16" class="block-4" stroke="#000000" fill="#000000" fill-rule="evenodd" points="530 258 530 208.81319 572 183 572 232.032891"></polygon>
+                <polygon id="Path-19" class="block-4" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="530 209.041538 489 183 489 232.246217 530 258"></polygon>
+                <polygon id="Path-20" class="block-4" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="530.591428 209 572 183.243162 530.429594 157 489 182.675"></polygon>
+                <polygon id="Path-16" class="block-4" stroke="#000000" fill="#000000" fill-rule="evenodd" points="617 312 617 262.81319 659 237 659 286.032891"></polygon>
+                <polygon id="Path-19" class="block-4" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="617 263.041538 576 237 576 286.246217 617 312"></polygon>
+                <polygon id="Path-20" class="block-4" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="617.591428 263 659 237.243162 617.429594 211 576 236.675"></polygon>
+                <polygon id="Path-16" class="block-4" stroke="#000000" fill="#000000" fill-rule="evenodd" points="704 258 704 208.81319 746 183 746 232.032891"></polygon>
+                <polygon id="Path-19" class="block-4" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="704 209.041538 663 183 663 232.246217 704 258"></polygon>
+                <polygon id="Path-20" class="block-4" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="704.591428 209 746 183.243162 704.429594 157 663 182.675"></polygon>
+                <polygon id="Path-19" class="block-4" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="617 153.041538 576 127 576 176.246217 617 202"></polygon>
+                <polygon id="Path-20" class="block-4" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="617.591428 153 659 127.243162 617.429594 101 576 126.675"></polygon>
+                <polygon id="Path-16" class="block-3" stroke="#000000" fill="#000000" fill-rule="evenodd" points="455 303 455 253.81319 497 228 497 277.032891"></polygon>
+                <polygon id="Path-16" class="block-3" stroke="#000000" fill="#000000" fill-rule="evenodd" points="367 359 367 309.81319 409 284 409 333.032891"></polygon>
+                <polygon id="Path-19" class="block-3" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="367 310.041538 326 284 326 333.246217 367 359"></polygon>
+                <polygon id="Path-20" class="block-3" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="367.591428 310 409 284.243162 367.429594 258 326 283.675"></polygon>
+                <polygon id="Path-16" class="block-3" stroke="#000000" fill="#000000" fill-rule="evenodd" points="454 413 454 363.81319 496 338 496 387.032891"></polygon>
+                <polygon id="Path-19" class="block-3" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="454 364.041538 413 338 413 387.246217 454 413"></polygon>
+                <polygon id="Path-20" class="block-3" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="454.591428 364 496 338.243162 454.429594 312 413 337.675"></polygon>
+                <polygon id="Path-16" class="block-3" stroke="#000000" fill="#000000" fill-rule="evenodd" points="541 359 541 309.81319 583 284 583 333.032891"></polygon>
+                <polygon id="Path-19" class="block-3" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="541 310.041538 500 284 500 333.246217 541 359"></polygon>
+                <polygon id="Path-20" class="block-3" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="541.591428 310 583 284.243162 541.429594 258 500 283.675"></polygon>
+                <polygon id="Path-19" class="block-3" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="454 254.041538 413 228 413 277.246217 454 303"></polygon>
+                <polygon id="Path-20" class="block-3" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="454.591428 254 496 228.243162 454.429594 202 413 227.675"></polygon>
+                <polygon id="Path-16" class="block-2" stroke="#000000" fill="#000000" fill-rule="evenodd" points="291 412 291 362.81319 333 337 333 386.032891"></polygon>
+                <polygon id="Path-16" class="block-2" stroke="#000000" fill="#000000" fill-rule="evenodd" points="291 520 291 470.81319 333 445 333 494.032891"></polygon>
+                <polygon id="Path-19" class="block-2" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="291 471.041538 250 445 250 494.246217 291 520"></polygon>
+                <polygon id="Path-20" class="block-2" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="291.591428 471 333 445.243162 291.429594 419 250 444.675"></polygon>
+                <polygon id="Path-16" class="block-1" stroke="#000000" fill="#000000" fill-rule="evenodd" points="216 364 216 314.81319 258 289 258 338.032891"></polygon>
+                <polygon id="Path-19" class="block-1" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="216 315.041538 175 289 175 338.246217 216 364"></polygon>
+                <polygon id="Path-20" class="block-1" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="216.591428 315 258 289.243162 216.429594 263 175 288.675"></polygon>
+                <polygon id="Path-16" class="block-2" stroke="#000000" fill="#000000" fill-rule="evenodd" points="378 468 378 418.81319 420 393 420 442.032891"></polygon>
+                <polygon id="Path-19" class="block-2" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="378 419.041538 337 393 337 442.246217 378 468"></polygon>
+                <polygon id="Path-20" class="block-2" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="378.591428 419 420 393.243162 378.429594 367 337 392.675"></polygon>
+                <polygon id="Path-19" class="block-2" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="290 363.041538 249 337 249 386.246217 290 412"></polygon>
+                <polygon id="Path-20" class="block-2" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="290.591428 363 332 337.243162 290.429594 311 249 336.675"></polygon>
+                <polygon id="Path-16" class="block-1" stroke="#000000" fill="#000000" fill-rule="evenodd" points="129 305 129 255.81319 171 230 171 279.032891"></polygon>
+                <polygon id="Path-16" class="block-1" stroke="#000000" fill="#000000" fill-rule="evenodd" points="41 362 41 312.81319 83 287 83 336.032891"></polygon>
+                <polygon id="Path-19" class="block-1" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="41 313.041538 0 287 0 336.246217 41 362"></polygon>
+                <polygon id="Path-20" class="block-1" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="41.5914284 313 83 287.243162 41.4295941 261 0 286.675"></polygon>
+                <polygon id="Path-16" class="block-1" stroke="#000000" fill="#000000" fill-rule="evenodd" points="128 419 128 369.81319 170 344 170 393.032891"></polygon>
+                <polygon id="Path-19" class="block-1" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="128 370.041538 87 344 87 393.246217 128 419"></polygon>
+                <polygon id="Path-20" class="block-1" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="128.591428 370 170 344.243162 128.429594 318 87 343.675"></polygon>
+                <polygon id="Path-19" class="block-1" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="128 256.041538 87 230 87 279.246217 128 305"></polygon>
+                <polygon id="Path-20" class="block-1" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="128.591428 256 170 230.243162 128.429594 204 87 229.675"></polygon>
+                <polygon id="Path-16" class="block-2" stroke="#000000" fill="#000000" fill-rule="evenodd" points="203 464 203 414.81319 245 389 245 438.032891"></polygon>
+                <polygon id="Path-19" class="block-2" stroke="#D8D8D8" fill="#D8D8D8" fill-rule="evenodd" points="203 415.041538 162 389 162 438.246217 203 464"></polygon>
+                <polygon id="Path-20" class="block-2" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="evenodd" points="203.591428 415 245 389.243162 203.429594 363 162 388.675"></polygon>
                 <path d="" id="Path-15" stroke="#979797"></path>
             </g>
         </g>

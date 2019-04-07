@@ -77,6 +77,8 @@
   margin-right: auto;
   text-align: left;
   width: 60%;
+  position: relative;
+  z-index: 0;
 }
 
 .taglineTop {
@@ -132,5 +134,7 @@ div.centrePiece {
   background-position: center;
   background-size: 100% auto;
   height: 500px;
-  width: 500px;
+  width: 550px;
+  position: relative;
+  pointer-events: none;
 }
