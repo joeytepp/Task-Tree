@@ -20,10 +20,11 @@ p.getStarted {
 a.getStarted {
   background: white;
   color: $task-tree-red;
-  padding: 2px 30px 2px 30px;
+  padding: 5px 50px 5px 50px;
   text-decoration: none;
   border-radius: 5px;
   font-size: 20px;
+  font-family: Cabin-Bold;
 }
 
 a.getStarted:hover {
@@ -39,26 +40,61 @@ a.getStarted:focus {
   color: white;
 }
 
-.bottomLinks {
-  display: grid;
-  grid-template-columns: min-content min-content min-content min-content;
-  grid-column-gap: 50px;
+.container {
+  width: min-content;
   margin-left: auto;
   margin-right: auto;
-  padding: 40px;
-  width: min-content;
+  display: grid;
+  grid-template-columns: min-content min-content min-content;
+  grid-column-gap: 120px;
+  padding-top: 20px;
+}
+img.logo {
+  height: 32px;
+  padding: 5px;
 }
 
-.bottomLinks a {
+h1.logo {
+  margin: 0px;
+  padding: 0px;
+  padding-left: 2px;
+  font-family: Cabin-SemiBold;
+  font-size: 32px;
+  color: #ffffff;
+  text-align: left;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  white-space: pre;
+}
+
+div.logo {
+  display: grid;
+  grid-template-columns: min-content min-content;
+}
+
+p.title {
+  color: darkgrey;
+}
+
+.bottomLinks {
+  text-align: left;
+  width: min-content;
+  display: grid;
+  grid-template-columns: min-content;
+}
+
+.link {
   text-decoration: none;
   color: white;
+  padding-bottom: 10px;
+  white-space: pre;
 }
 
-.bottomLinks a:hover {
+.link:hover {
   color: #d6d6d6;
 }
 
 .copyright {
+  padding-top: 20px;
   padding-bottom: 50px;
   color: #d6d6d6;
 }
