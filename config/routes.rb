@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   root 'landing#index'
 
+  get '/login', to: 'login#index'
+
   post '/graphql', to: 'graphql#execute'
 
   if Rails.env.development?
