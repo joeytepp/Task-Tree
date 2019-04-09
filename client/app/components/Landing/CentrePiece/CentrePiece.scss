@@ -14,7 +14,7 @@
   color: #ffffff;
   letter-spacing: 2px;
   text-align: left;
-  margin: 100px 0px 0px 0px;
+  margin: 75px 0px 0px 0px;
   padding: 0px;
 }
 
@@ -31,7 +31,7 @@
 
 .arrowImg {
   height: 10px;
-  padding-left: 10px;
+  padding-left: 5px;
   transition: 0.5s;
 }
 
@@ -43,7 +43,7 @@ a.learnMore {
 }
 
 a.learnMore:hover .arrowImg {
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 div.learnMore {
