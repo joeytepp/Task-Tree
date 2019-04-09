@@ -8,9 +8,9 @@ import MenuLink from "../MenuLink/MenuLink";
 export default () => (
   <div className={styles.header}>
     <div className={styles.headerLeft} align="left">
-      <img src={logo} className={styles.logoImg} />
       <a href="./" className={styles.logoText}>
-        Task Tree
+        <img src={logo} className={styles.logoImg} />
+        <p className={styles.logoText}>Task Tree</p>
       </a>
     </div>
     <div className={styles.headerRight} align="right">

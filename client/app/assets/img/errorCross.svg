@@ -1,0 +1,7 @@
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#B22222" cx="100" cy="100" r="100"></circle>
+        <rect id="Rectangle" stroke="#FFFFFF" fill="#FFFFFF" transform="translate(99.639610, 99.639610) rotate(45.000000) translate(-99.639610, -99.639610) " x="25.1396103" y="85.1396103" width="149" height="29" rx="3"></rect>
+        <rect id="Rectangle" stroke="#FFFFFF" fill="#FFFFFF" transform="translate(99.639610, 99.639610) rotate(135.000000) translate(-99.639610, -99.639610) " x="25.1396103" y="85.1396103" width="149" height="29" rx="3"></rect>
+    </g>
+</svg>
