@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: John
+  last_name: Smith
+  email: johnsmith@gmail.com
+  password_digest: $2a$10$IkNVsaG0nrBW8t6GM4Ggj.DsRXPHFZn.GfK3Jdt5X6wUIdgaq49HO
+  terms_of_service: true
+
+two:
+  first_name: Jane
+  last_name: Doe
+  email: janedoe@gmail.com
+  password_digest: $2a$10$IkNVsaG0nrBW8t6GM4Ggj.DsRXPHFZn.GfK3Jdt5X6wUIdgaq49HO
+  terms_of_service: true

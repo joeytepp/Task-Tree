@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'auth#sign_up'
 
+  post '/signup', to: 'auth#account_create'
+
   post '/session', to: 'auth#session_create'
 
   post '/graphql', to: 'graphql#execute'

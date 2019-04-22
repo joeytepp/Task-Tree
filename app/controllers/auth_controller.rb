@@ -26,4 +26,8 @@ class AuthController < ApplicationController
     session[:user_id] = 1
     redirect_to '/'
   end
+
+  def account_create
+    
+  end
 end
