@@ -1,0 +1,40 @@
+.formField {
+  margin-top: 15px;
+}
+
+.formLabel {
+  font-family: Cabin-Bold;
+  font-size: 15px;
+  color: #424242;
+  letter-spacing: 0;
+  text-align: left;
+  padding-bottom: 2px;
+}
+
+.formInput {
+  width: 100%;
+  font-size: 15px;
+  padding: 7px;
+  color: #424242;
+  border-radius: 8px;
+  margin-top: 2px;
+  border: solid 1px #979797;
+}
+
+.errorCross {
+  height: 15px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.errorMessage {
+  padding-top: 5px;
+}
+
+.errorMessage > span {
+  vertical-align: middle;
+}
+
+::-webkit-input-placeholder :-ms-input-placeholder ::placeholder {
+  color: #9c9c9c;
+}

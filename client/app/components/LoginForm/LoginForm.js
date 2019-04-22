@@ -1,69 +1,71 @@
 import React from "react";
-import { Form, Field } from "react-final-form";
+import { Form } from "react-final-form";
 
-import { EMAIL_REGEX } from "../../constants";
+import FormField from "../FormField/FormField";
+import {
+  EMAIL_REGEX,
+  NO_EMAIL_PROVIDED,
+  NO_PASSWORD_PROVIDED,
+  INVALID_EMAIL_PROVIDED,
+  INVALID_PASSWORD_PROVIDED
+} from "../../constants";
+
 import styles from "./LoginForm.scss";
-import errorCross from "../../assets/img/errorCross.svg";
+
+let initialRender = true;
 
 const noop = () => {};
 
 const validateForm = ({ email, password }) => {
   const errors = {};
 
+  if (!email) {
+    errors.email = NO_EMAIL_PROVIDED;
+  }
+
   if (email && !EMAIL_REGEX.test(email)) {
-    errors.email = "Please provide a valid email address.";
+    errors.email = INVALID_EMAIL_PROVIDED;
+  }
+
+  if (!password) {
+    errors.password = NO_PASSWORD_PROVIDED;
   }
 
   if (password && password.length < 8) {
-    errors.password = "Password must be at least 8 characters in length.";
+    errors.password = INVALID_PASSWORD_PROVIDED;
   }
 
   return errors;
 };
 
-export default () => (
+const getInitialErrors = props => {
+  initialRender = false;
+
+  return props;
+};
+
+export default props => (
   <Form
     onSubmit={noop}
     validate={validateForm}
-    render={({ form, submitting, pristine, values }) => {
+    render={({ submitting }) => {
+      const { emailError, passwordError } =
+        initialRender && getInitialErrors(props);
+
       return (
         <form className={styles.logInForm} action="/session" method="post">
-          <Field name="email">
-            {({ input, meta }) => (
-              <div>
-                <label className={styles.formLabel}>Email</label>
-                <input
-                  {...input}
-                  type="email"
-                  placeholder="Email"
-                  className={styles.formInput}
-                />
-                {meta.error && meta.touched && (
-                  <span>
-                    <img src={errorCross} width="20px" />
-                    {meta.error}
-                  </span>
-                )}
-              </div>
-            )}
-          </Field>
-          <Field name="password">
-            {({ input, meta }) => (
-              <div>
-                <label className={styles.formLabel}>Password</label>
-                <input
-                  {...input}
-                  type="password"
-                  placeholder="Password"
-                  className={styles.formInput}
-                />
-              </div>
-            )}
-          </Field>
+          <FormField
+            name="email"
+            type="email"
+            placeholder="Email"
+            error={emailError}
+          />
+          <FormField name="password" type="password" placeholder="Password" />
           <button
             type="submit"
             className={styles.formButton}
             disabled={submitting}
+            error={passwordError}
           >
             Log In
           </button>
