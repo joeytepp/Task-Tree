@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TaskTree</title>
+    <title>Task Tree | <%= @page_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Cabin'%>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag('app-bundle',
+                          media: 'all',
+                          'data-turbolinks-track': true) %>
+
+    <!--  NOTE: Must use defer and not async to keep async scripts loading in correct order  -->
+    <%= javascript_pack_tag('vendor-bundle', 'data-turbolinks-track': true, defer: true) %>
+    <%= javascript_pack_tag('app-bundle', 'data-turbolinks-track': true, defer: true) %>
   </head>
 
   <body>

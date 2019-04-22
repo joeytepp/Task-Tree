@@ -1,8 +1,15 @@
+# frozen_string_literal: true
+
 class LandingController < ApplicationController
-  layout "landing"
+  layout 'application'
 
   def index
-    @landing_props = { authenticated: false }
-    @component_name = session[:user_id] ? "Home" : "Landing"
+    if session[:user_id]
+      @page_title = 'Home'
+      @component_name = 'Home'
+    else
+      @page_title = 'Organize Tasks'
+      @component_name = 'Landing'
+    end
   end
 end
