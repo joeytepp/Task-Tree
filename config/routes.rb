@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get '/login', to: 'auth#login'
 
+  get '/signup', to: 'auth#sign_up'
+
   post '/session', to: 'auth#session_create'
 
   post '/graphql', to: 'graphql#execute'

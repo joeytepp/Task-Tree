@@ -13,6 +13,15 @@ class AuthController < ApplicationController
     end
   end
 
+  def sign_up
+    if false
+      redirect_to '/'
+    else
+      @page_title = 'Sign Up'
+      render action: 'sign_up'
+    end
+  end
+
   def session_create
     session[:user_id] = 1
     redirect_to '/'

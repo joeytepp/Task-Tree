@@ -1,0 +1,51 @@
+.root {
+  background: white;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  text-align: center;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+}
+
+.profileIcon {
+  border-radius: 50%;
+  background: #d8d8d8;
+  transition: background 0.5s;
+  width: 80px;
+}
+
+.profileIcon:hover {
+  background: #737373;
+  transition: 0.5s;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 7px;
+  transition: color 0.5s;
+  background: #a4a3a3;
+  border: solid 1px black;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.submitButton:not(:disabled):hover {
+  background: #6d6d6d;
+}
+
+.submitButton:focus {
+  background: black;
+}
+
+.submitButton:disabled {
+  opacity: 70%;
+}
