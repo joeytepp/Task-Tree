@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get '/login', to: 'login#index'
 
+  post '/session', to: 'auth#session_create'
+
   post '/graphql', to: 'graphql#execute'
 
   if Rails.env.development?
