@@ -2,6 +2,7 @@ import React from "react";
 import { Form } from "react-final-form";
 
 import FormField from "../FormField/FormField";
+import Error from "../Error/Error";
 import {
   EMAIL_REGEX,
   NO_EMAIL_PROVIDED,
@@ -41,7 +42,7 @@ const validateForm = ({ email, password }) => {
 const getInitialErrors = props => {
   initialRender = false;
 
-  return props;
+  return props.errors;
 };
 
 export default props => (
@@ -49,23 +50,27 @@ export default props => (
     onSubmit={noop}
     validate={validateForm}
     render={({ submitting }) => {
-      const { emailError, passwordError } =
-        initialRender && getInitialErrors(props);
-
+      const initialErrors = initialRender && getInitialErrors(props);
+      console.log(props);
       return (
         <form className={styles.logInForm} action="/session" method="post">
+          {initialErrors.top && <Error error={initialErrors.top} />}
           <FormField
             name="email"
             type="email"
             placeholder="Email"
-            error={emailError}
+            error={initialErrors.email}
           />
-          <FormField name="password" type="password" placeholder="Password" />
+          <FormField
+            name="password"
+            type="password"
+            placeholder="Password"
+            error={initialErrors.password}
+          />
           <button
             type="submit"
             className={styles.formButton}
             disabled={submitting}
-            error={passwordError}
           >
             Log In
           </button>

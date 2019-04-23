@@ -12,6 +12,6 @@ export default props => (
       <h1 className={styles.heading}>Sign Up For Task Tree</h1>
       <h3 className={styles.subHeading}>It's free!</h3>
     </div>
-    <SignUpForm />
+    <SignUpForm {...props} />
   </div>
 );

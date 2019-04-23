@@ -18,3 +18,7 @@ img {
 input {
   box-sizing: border-box;
 }
+
+::-webkit-input-placeholder :-ms-input-placeholder ::placeholder {
+  color: #9c9c9c;
+}

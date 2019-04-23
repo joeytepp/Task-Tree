@@ -25,21 +25,3 @@
   width: auto;
   margin-right: 5px;
 }
-
-.errorCross {
-  height: 15px;
-  margin-right: 5px;
-  vertical-align: middle;
-}
-
-.errorMessage {
-  padding-top: 5px;
-}
-
-.errorMessage > span {
-  vertical-align: middle;
-}
-
-::-webkit-input-placeholder :-ms-input-placeholder ::placeholder {
-  color: #9c9c9c;
-}
