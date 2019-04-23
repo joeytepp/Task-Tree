@@ -20,6 +20,11 @@ class AuthController < ApplicationController
     end
   end
 
+  def logout
+    reset_session
+    redirect_to '/login'
+  end
+
   def sign_up
     if session[:user]
       redirect_to '/'

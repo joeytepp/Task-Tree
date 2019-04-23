@@ -1,0 +1,48 @@
+.root {
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 100vw;
+  background: $task-tree-red;
+  height: min-content;
+}
+
+.headerLeft {
+  display: grid;
+  grid-template-columns: min-content auto;
+  padding: 5px 50px 5px 50px;
+}
+
+.logoText {
+  font-family: Cabin-SemiBold;
+  font-size: 32px;
+  color: #ffffff;
+  text-align: left;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+  white-space: pre;
+  vertical-align: middle;
+}
+
+.logo {
+  height: 32px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+a.logoText {
+  display: grid;
+  grid-template-columns: min-content min-content;
+}
+
+.logOutButton {
+  background: black;
+  color: white;
+  vertical-align: middle;
+  border-radius: 8px;
+  font-size: 18px;
+  padding: 6px;
+  margin-right: 50px;
+  margin-top: 5px;
+}

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   post '/session', to: 'auth#session_create'
 
+  post '/logout', to: 'auth#logout'
+
   post '/graphql', to: 'graphql#execute'
 
   if Rails.env.development?
