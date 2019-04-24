@@ -11,8 +11,6 @@ import {
   INVALID_PASSWORD_PROVIDED
 } from "../../constants";
 
-import styles from "./LoginForm.scss";
-
 let initialRender = true;
 
 const noop = () => {};
@@ -51,9 +49,22 @@ export default props => (
     validate={validateForm}
     render={({ submitting }) => {
       const initialErrors = initialRender && getInitialErrors(props);
-      console.log(props);
+
       return (
-        <form className={styles.logInForm} action="/session" method="post">
+        <form
+          css={{
+            background: "white",
+            padding: "5px 50px 40px 50px",
+            width: "30%",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: "20px",
+            borderRadius: "8px",
+            border: "solid 1px #979797"
+          }}
+          action="/session"
+          method="post"
+        >
           {initialErrors.top && <Error error={initialErrors.top} />}
           <FormField
             name="email"
@@ -69,8 +80,25 @@ export default props => (
           />
           <button
             type="submit"
-            className={styles.formButton}
             disabled={submitting}
+            css={{
+              width: "100%",
+              fontSize: "15px",
+              padding: "7px",
+              marginTop: "20px",
+              borderRadius: "8px",
+              border: "solid 1px black",
+              color: "white",
+              background: "#a4a3a3",
+              "&:hover": {
+                transition: "0.5s",
+                background: "#6d6d6d"
+              },
+              "&:focus": {
+                transition: "0.5s",
+                background: "black"
+              }
+            }}
           >
             Log In
           </button>

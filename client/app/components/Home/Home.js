@@ -1,11 +1,15 @@
 import React from "react";
 
 import Header from "./Header/Header";
-
-import styles from "./Home.scss";
+import ProjectSideBar from "./ProjectSideBar/ProjectSideBar";
 
 export default () => (
-  <div className={styles.root}>
+  <div
+    css={{
+      background: "black"
+    }}
+  >
     <Header />
+    <ProjectSideBar />
   </div>
 );

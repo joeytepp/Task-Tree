@@ -16,7 +16,6 @@ import {
   NO_TERMS_OF_SERVICE_PROVIDED
 } from "../../constants";
 
-import styles from "./SignUpForm.scss";
 import profileIcon from "../../assets/img/profileIcon.svg";
 import Error from "../Error/Error.js";
 
@@ -86,11 +85,40 @@ export default props => (
       const initialErrors = initialRender && getInitialErrors(props);
       console.log(initialErrors);
       return (
-        <div className={styles.root}>
+        <div
+          css={{
+            background: "white",
+            width: "60%",
+            marginLeft: "auto",
+            marginRight: "auto",
+            borderRadius: "8px",
+            textAlign: "center",
+            padding: "15px",
+            marginTop: "10px"
+          }}
+        >
           <form action="/signup" method="post">
-            <img src={profileIcon} className={styles.profileIcon} />
+            <img
+              src={profileIcon}
+              css={{
+                borderRadius: "50%",
+                background: "#d8d8d8",
+                transition: "background 0.5s",
+                width: "80px",
+                "&:hover": {
+                  background: "#737373",
+                  transition: "0.5s"
+                }
+              }}
+            />
             {initialErrors.top && <Error error={initialErrors.top} />}
-            <div className={styles.formGrid}>
+            <div
+              css={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gridColumnGap: "10px"
+              }}
+            >
               <FormField
                 name="firstName"
                 placeholder="First Name"
@@ -125,9 +153,27 @@ export default props => (
               error={initialErrors.termsOfService}
             />
             <button
-              className={styles.submitButton}
               type="submit"
               disabled={submitting || pristine || hasValidationErrors}
+              css={{
+                width: "100%",
+                padding: "7px",
+                transition: "color 0.5s",
+                background: "#a4a3a3",
+                border: "solid 1px black",
+                borderRadius: "8px",
+                marginTop: "20px",
+                fontSize: "15px",
+                "&:not(:disabled):hover": {
+                  background: "#6d6d6d"
+                },
+                "&:focus": {
+                  background: "black"
+                },
+                "&disabled": {
+                  opacity: "70%"
+                }
+              }}
             >
               Submit
             </button>

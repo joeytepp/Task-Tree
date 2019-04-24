@@ -2,15 +2,51 @@ import React from "react";
 
 import SignUpForm from "../SignUpForm/SignUpForm";
 
-import styles from "./SignUp.scss";
 import logo from "../../assets/img/circleLogo.svg";
 
 export default props => (
-  <div className={styles.root}>
-    <div className={styles.rootHead}>
-      <img src={logo} className={styles.logo} />
-      <h1 className={styles.heading}>Sign Up For Task Tree</h1>
-      <h3 className={styles.subHeading}>It's free!</h3>
+  <div
+    css={{
+      background: "#b22222",
+      minHeight: "100vh"
+    }}
+  >
+    <div
+      css={{
+        textAlign: "center"
+      }}
+    >
+      <img
+        src={logo}
+        css={{
+          width: "80px",
+          padding: "10px"
+        }}
+      />
+      <h1
+        css={{
+          fontFamily: "Cabin-Bold",
+          fontSize: "50px",
+          color: "white",
+          letterSpacing: 0,
+          margin: "0px",
+          padding: "0px"
+        }}
+      >
+        Sign Up For Task Tree
+      </h1>
+      <h3
+        css={{
+          fontFamily: "Cabin-Bold",
+          fontSize: "25px",
+          color: "#ffffff",
+          letterSpacing: 0,
+          margin: "0px",
+          padding: "0px"
+        }}
+      >
+        It's free!
+      </h3>
     </div>
     <SignUpForm {...props} />
   </div>
