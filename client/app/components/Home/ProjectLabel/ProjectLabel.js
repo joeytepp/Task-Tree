@@ -23,7 +23,8 @@ export default props => (
       padding: "10px",
       borderRadius: "5px",
       "&:hover": {
-        border: `solid 1px ${props.color}`
+        border: `solid 1px ${props.color}`,
+        transition: "0.5s"
       }
     }}
   >
