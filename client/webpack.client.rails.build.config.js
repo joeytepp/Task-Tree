@@ -77,16 +77,6 @@ module.exports = merge(config, {
               options: {
                 plugins: "autoprefixer"
               }
-            },
-            "sass-loader",
-            {
-              loader: "sass-resources-loader",
-              options: {
-                resources: [
-                  "./app/assets/styles/app-variables.scss",
-                  "./app/assets/styles/index.scss"
-                ]
-              }
             }
           ]
         })

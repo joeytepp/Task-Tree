@@ -47,9 +47,7 @@ export default () => (
           lineHeight: "70px",
           color: "#d8d8d8",
           letterSpacing: "2px",
-          textAlign: "left",
-          margin: "0px",
-          padding: "0px"
+          textAlign: "left"
         }}
       >
         Reinvented

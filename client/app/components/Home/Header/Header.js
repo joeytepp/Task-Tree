@@ -9,7 +9,8 @@ export default () => (
       gridTemplateColumns: "auto auto",
       width: "100vw",
       background: "#b22222",
-      height: "min-content"
+      height: "min-content",
+      boxShadow: "0px 1px 1px black"
     }}
   >
     <div
@@ -39,8 +40,6 @@ export default () => (
             textAlign: "left",
             textShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
             textDecoration: "none",
-            margin: "0px",
-            padding: "0px",
             whiteSpace: "pre",
             verticalAlign: "middle"
           }}

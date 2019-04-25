@@ -71,18 +71,6 @@ module.exports = {
               importLoaders: 2,
               localIdentName: "[name]__[local]__[hash:base64:5]"
             }
-          },
-          {
-            loader: "sass-loader"
-          },
-          {
-            loader: "sass-resources-loader",
-            options: {
-              resources: [
-                "./app/assets/styles/app-variables.scss",
-                "./app/assets/styles/index.scss"
-              ]
-            }
           }
         ]
       }

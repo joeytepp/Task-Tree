@@ -28,9 +28,7 @@ export default props => (
           fontFamily: "Cabin-Bold",
           fontSize: "50px",
           color: "white",
-          letterSpacing: 0,
-          margin: "0px",
-          padding: "0px"
+          letterSpacing: 0
         }}
       >
         Sign Up For Task Tree
@@ -40,9 +38,7 @@ export default props => (
           fontFamily: "Cabin-Bold",
           fontSize: "25px",
           color: "#ffffff",
-          letterSpacing: 0,
-          margin: "0px",
-          padding: "0px"
+          letterSpacing: 0
         }}
       >
         It's free!

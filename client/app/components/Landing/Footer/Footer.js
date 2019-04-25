@@ -81,8 +81,6 @@ export default () => (
           <img css={{ height: "32px", padding: "5px" }} src={logo} />
           <h1
             css={{
-              margin: "0px",
-              padding: "0px",
               paddingLeft: "2px",
               fontFamily: "Cabin-SemiBold",
               fontSize: "32px",
@@ -117,7 +115,11 @@ export default () => (
         </BottomLinks>
       </div>
       <div
-        css={{ paddingTop: "20px", paddingBottom: "50px", color: "#d6d6d6" }}
+        css={{
+          paddingTop: "20px",
+          paddingBottom: "50px",
+          color: "#d6d6d6"
+        }}
       >
         Copyright © Task Tree 2019
       </div>

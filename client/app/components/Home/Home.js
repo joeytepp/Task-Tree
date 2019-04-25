@@ -6,7 +6,8 @@ import ProjectSideBar from "./ProjectSideBar/ProjectSideBar";
 export default () => (
   <div
     css={{
-      background: "black"
+      background: "#B22222B4",
+      height: "100vh"
     }}
   >
     <Header />

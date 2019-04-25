@@ -44,8 +44,6 @@ export default () => (
           color: "black",
           letterSpacing: "1px",
           textAlign: "left",
-          margin: "0px",
-          padding: "0px",
           textAlign: "center"
         }}
       >
