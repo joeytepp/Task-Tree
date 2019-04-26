@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Types
-  class ProjectColors < Types::BaseEnum
+module Enums
+  class ProjectColors < BaseEnum
     value 'RED'
     value 'GREEN'
     value 'BLUE'
