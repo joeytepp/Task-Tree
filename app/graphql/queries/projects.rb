@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Queries
-  class Projects < Queries::BaseQuery
+  class Projects < BaseQuery
     include GraphqlHelper
     description 'Returns all project resources for a user.'
 
@@ -9,7 +9,7 @@ module Queries
 
     def resolve
       must_be_authenticated!
-      context[:user].projects
+      User.find_by(id: context[:user]['id']).projects
     end
   end
 end

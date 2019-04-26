@@ -7,10 +7,10 @@ class GraphqlController < ApplicationController
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
-    current_user = User.find_by(id: session[:user]['id'])
     context = {
-      user: current_user
+      user: session[:user]
     }
+
     result = TaskTreeSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
   rescue StandardError => e

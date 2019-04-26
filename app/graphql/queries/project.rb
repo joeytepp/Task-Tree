@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Queries
-  class Project < Queries::BaseQuery
+  class Project < BaseQuery
     include GraphqlHelper
 
     description 'Returns all project resources for a user.'
@@ -11,7 +11,7 @@ module Queries
 
     def resolve(id:)
       must_be_authenticated!
-      context[:user].projects.find_by!(id: id)
+      User.find_by(id: context[:user]['id']).projects.find_by!(id: id)
     rescue ActiveRecord::RecordNotFound
       raise Errors::NotFoundError, "Could not find the project with identifier #{id}"
     end
