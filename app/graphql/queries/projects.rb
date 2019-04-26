@@ -9,7 +9,7 @@ module Queries
 
     def resolve
       must_be_authenticated!
-      Project.all
+      context[:user].projects
     end
   end
 end
