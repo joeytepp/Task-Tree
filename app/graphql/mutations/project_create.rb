@@ -4,10 +4,9 @@ module Mutations
   class ProjectCreate < BaseMutation
     include GraphqlHelper
 
+    type Payloads::ProjectCreatePayloadType
     description 'Creates a new project resource'
     argument :input, Inputs::ProjectCreateInputType, required: true, description: 'The project to be created.'
-
-    type Payloads::ProjectCreatePayloadType
 
     def resolve(input:)
       must_be_authenticated!
