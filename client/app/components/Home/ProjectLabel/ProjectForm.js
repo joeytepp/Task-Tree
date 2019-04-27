@@ -25,11 +25,12 @@ export default props => (
       <form
         onSubmit={handleSubmit}
         css={{ padding: "0px", margin: "0px", width: "100%" }}
+        autoComplete="off"
       >
         <div
           css={{
             display: "grid",
-            gridTemplateColumns: "min-content min-content auto",
+            gridTemplateColumns: "min-content 100fr min-content",
             whiteSpace: "pre",
             verticalAlign: "middle",
             border: `solid 1px #000000`,
@@ -52,19 +53,18 @@ export default props => (
                   outline: "none",
                   boxShadow: "none",
                   background: "none",
-                  width: "200px",
                   fontSize: "15px"
                 }}
                 {...input}
+                onKeyDown={({ key }) => {
+                  if (key === "Escape") props.cancel();
+                }}
               />
             )}
           </Field>
-          <img
-            align="right"
-            src={cancel}
-            css={{ height: "15px" }}
-            onClick={props.cancel}
-          />
+          <div css={{ marginRight: "5px", marginLeft: "5px" }}>
+            <img src={cancel} css={{ height: "15px" }} onClick={props.cancel} />
+          </div>
         </div>
       </form>
     )}

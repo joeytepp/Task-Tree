@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 
-import { COLOR_MAP } from "../../../constants";
 import Circle from "./Circle";
+import DeleteModal from "../../DeleteModal/DeleteModal";
+import { COLOR_MAP } from "../../../constants";
+import { DELETE_PROJECT } from "../../../graphql/mutations";
 
 import pencil from "../../../assets/img/pencil.svg";
 import cross from "../../../assets/img/errorCross.svg";
 
 export default props => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div
       css={{
@@ -19,6 +23,7 @@ export default props => {
         border: `solid 1px #00000000`,
         padding: "10px",
         borderRadius: "5px",
+        cursor: "default",
         "&:hover": {
           border: `solid 1px ${props.color}`,
           transition: "0.5s",
@@ -40,41 +45,47 @@ export default props => {
       >
         {props.name}
       </span>
+      {/* Edit and Delete buttons */}
       {props.id && (
-        <div align="right">
+        <div
+          css={{
+            display: "grid",
+            gridTemplateColumns: "min-content min-content"
+          }}
+        >
           <div
+            onClick={props.edit}
             css={{
-              display: "grid",
-              gridTemplateColumns: "min-content min-content"
+              marginLeft: "5px",
+              marginRight: "5px",
+              borderRadius: "5px",
+              "&:hover": {
+                background: "#D8D8D8"
+              }
             }}
           >
-            <div
-              css={{
-                marginLeft: "5px",
-                marginRight: "5px",
-                borderRadius: "5px",
-                "&:hover": {
-                  background: "#D8D8D8"
-                }
-              }}
-            >
-              <img src={pencil} css={{ height: "15px", display: "none" }} />
-            </div>
-            <div
-              css={{
-                marginLeft: "5px",
-                marginRight: "5px"
-              }}
-            >
-              <img
-                src={cross}
-                onClick={props.edit}
-                css={{ height: "0px", display: "none" }}
-              />
-            </div>
+            <img src={pencil} css={{ height: "15px", display: "none" }} />
+          </div>
+          <div
+            onClick={() => setShowModal(true)}
+            css={{
+              marginLeft: "5px",
+              marginRight: "5px"
+            }}
+          >
+            <img src={cross} css={{ height: "0px", display: "none" }} />
           </div>
         </div>
       )}
+      {/* Modal for deleting projects */}
+      <DeleteModal
+        showModal={showModal}
+        name={props.name}
+        onRequestClose={() => setShowModal(false)}
+        updateAfterDelete={props.delete}
+        mutation={DELETE_PROJECT}
+        variables={{ id: props.id }}
+      />
     </div>
   );
 };

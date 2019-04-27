@@ -7,14 +7,27 @@ import ProjectDescription from "./ProjectDescription";
 import { CREATE_NEW_PROJECT, UPDATE_PROJECT } from "../../../graphql/mutations";
 import setEditable from "./setEditable";
 
+function createMutationVariables(props, input) {
+  if (!props.saved) {
+    return {
+      input: {
+        ...input,
+        id: props.id
+      }
+    };
+  }
+
+  return {
+    input,
+    id: props.id
+  };
+}
+
 export default props => {
   const { setProjects } = useContext(ProjectsContext);
   const onFormSubmitted = mutate => input => {
     mutate({
-      variables: {
-        id: props.id,
-        input
-      }
+      variables: createMutationVariables(props, input)
     });
 
     setProjects(oldProjects => {
@@ -44,7 +57,12 @@ export default props => {
   ) : (
     <ProjectDescription
       {...props}
-      edit={setEditable(setProjects, props, false)}
+      edit={setEditable(setProjects, props, true)}
+      delete={() =>
+        setProjects(projects =>
+          [...projects].filter(({ id }) => id !== props.id)
+        )
+      }
     />
   );
 };

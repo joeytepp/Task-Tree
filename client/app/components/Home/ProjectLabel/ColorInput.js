@@ -9,6 +9,7 @@ export default props => {
     color: props.color,
     showModal: false
   });
+
   return (
     <>
       <input
@@ -21,6 +22,12 @@ export default props => {
       <Circle
         size="16px"
         color={COLOR_MAP[state.color]}
+        css={{
+          border: "solid 1px #00000000",
+          "&:hover": {
+            borderColor: "white"
+          }
+        }}
         onClick={() =>
           setState(state => ({
             ...state,

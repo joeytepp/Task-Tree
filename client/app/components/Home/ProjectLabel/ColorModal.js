@@ -19,6 +19,9 @@ export default props => (
     style={{
       overlay: {
         backgroundColor: "rgba(0,0,0, 0.5)"
+      },
+      content: {
+        outline: "none"
       }
     }}
     ariaHideApp={false}
@@ -34,7 +37,8 @@ export default props => (
         border: "solid 1px black",
         display: "grid",
         gridTemplateColumns: "min-content min-content min-content min-content",
-        padding: "20px"
+        padding: "20px",
+        borderRadius: "5px"
       }}
     >
       {Object.keys(COLOR_MAP).map((colorKey, i) => (
