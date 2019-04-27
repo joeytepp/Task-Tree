@@ -4,6 +4,8 @@ import { Form, Field } from "react-final-form";
 import ColorInput from "./ColorInput";
 import { COLOR_MAP } from "../../../constants";
 
+import cancel from "../../../assets/img/greyCross.svg";
+
 const colorMutators = {};
 
 Object.keys(COLOR_MAP).forEach(key => {
@@ -25,10 +27,9 @@ export default props => (
         css={{ padding: "0px", margin: "0px", width: "100%" }}
       >
         <div
-          id="modal-root"
           css={{
             display: "grid",
-            gridTemplateColumns: "min-content min-content",
+            gridTemplateColumns: "min-content min-content auto",
             whiteSpace: "pre",
             verticalAlign: "middle",
             border: `solid 1px #000000`,
@@ -45,17 +46,25 @@ export default props => (
             {({ input }) => (
               <input
                 autoFocus
+                type="text"
                 css={{
                   border: "none",
                   outline: "none",
                   boxShadow: "none",
                   background: "none",
+                  width: "200px",
                   fontSize: "15px"
                 }}
                 {...input}
               />
             )}
           </Field>
+          <img
+            align="right"
+            src={cancel}
+            css={{ height: "15px" }}
+            onClick={props.cancel}
+          />
         </div>
       </form>
     )}

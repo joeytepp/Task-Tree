@@ -1,20 +1,18 @@
 import React, { useContext } from "react";
 
 import { COLOR_MAP } from "../../../constants";
-import setEditable from "./setEditable";
-import { ProjectsContext } from "../../../context/ProjectsContext";
 import Circle from "./Circle";
 
 import pencil from "../../../assets/img/pencil.svg";
+import cross from "../../../assets/img/errorCross.svg";
 
 export default props => {
-  const { setProjects } = useContext(ProjectsContext);
-
   return (
     <div
       css={{
         display: "grid",
-        gridTemplateColumns: "min-content min-content auto",
+        gridTemplateColumns: "min-content 100fr min-content min-content",
+        gridRowWidth: "200px",
         textOverflow: "ellipsis",
         overflow: "hidden",
         verticalAlign: "middle",
@@ -25,7 +23,8 @@ export default props => {
           border: `solid 1px ${props.color}`,
           transition: "0.5s",
           "& img": {
-            opacity: "1"
+            display: "block",
+            height: "15px"
           }
         }
       }}
@@ -34,7 +33,6 @@ export default props => {
       <span
         css={{
           display: "block",
-          width: "200px",
           whiteSpace: "nowrap",
           overflow: "hidden",
           textOverflow: "ellipsis"
@@ -42,22 +40,41 @@ export default props => {
       >
         {props.name}
       </span>
-      <div align="right">
-        <span
-          css={{
-            borderRadius: "5px",
-            "&:hover": {
-              background: "#D8D8D8"
-            }
-          }}
-          onClick={setEditable(setProjects, props, true)}
-        >
-          <img
-            src={pencil}
-            css={{ height: "15px", opacity: "0", marginRight: "5px" }}
-          />
-        </span>
-      </div>
+      {props.id && (
+        <div align="right">
+          <div
+            css={{
+              display: "grid",
+              gridTemplateColumns: "min-content min-content"
+            }}
+          >
+            <div
+              css={{
+                marginLeft: "5px",
+                marginRight: "5px",
+                borderRadius: "5px",
+                "&:hover": {
+                  background: "#D8D8D8"
+                }
+              }}
+            >
+              <img src={pencil} css={{ height: "15px", display: "none" }} />
+            </div>
+            <div
+              css={{
+                marginLeft: "5px",
+                marginRight: "5px"
+              }}
+            >
+              <img
+                src={cross}
+                onClick={props.edit}
+                css={{ height: "0px", display: "none" }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
