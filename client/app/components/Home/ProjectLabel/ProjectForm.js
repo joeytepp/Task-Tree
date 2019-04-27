@@ -1,7 +1,6 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 
-import Circle from "./Circle";
 import ColorInput from "./ColorInput";
 import { COLOR_MAP } from "../../../constants";
 

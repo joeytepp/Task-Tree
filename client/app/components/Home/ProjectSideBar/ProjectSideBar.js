@@ -19,7 +19,8 @@ export default () => {
         setProjects(
           data.projects.map(project => ({
             ...project,
-            editable: false
+            editable: false,
+            saved: true
           }))
         );
       }}
@@ -38,6 +39,7 @@ export default () => {
               bottom: "0",
               transition: "0.5s",
               opacity: "0.8",
+              overflowY: "scroll",
               "&:hover": {
                 opacity: "1.0"
               }

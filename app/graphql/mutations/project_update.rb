@@ -2,6 +2,8 @@
 
 module Mutations
   class ProjectUpdate < BaseMutation
+    include GraphqlHelper
+
     description 'Updates a project by identifier.'
 
     type Payloads::ProjectUpdatePayloadType

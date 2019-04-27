@@ -37,8 +37,9 @@ export default props => (
         padding: "20px"
       }}
     >
-      {Object.keys(COLOR_MAP).map(key => (
+      {Object.keys(COLOR_MAP).map((colorKey, i) => (
         <Circle
+          key={i}
           size="20px"
           css={{
             margin: "10px",
@@ -48,10 +49,10 @@ export default props => (
               boxShadow: "0px 0px 5px black"
             }
           }}
-          color={COLOR_MAP[key]}
+          color={COLOR_MAP[colorKey]}
           onClick={() => {
-            props.setState({ color: key, showModal: false });
-            props.mutators[key]();
+            props.setState({ color: colorKey, showModal: false });
+            props.mutators[colorKey]();
           }}
         />
       ))}
