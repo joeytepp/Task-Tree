@@ -11,7 +11,7 @@ const Caret = styled.div`
 `;
 
 const caretHoverKey = `&:hover ${Caret}`;
-console.log(caretHoverKey);
+
 export default ({ name, link }) => (
   <div
     css={{

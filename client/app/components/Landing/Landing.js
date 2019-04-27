@@ -5,6 +5,10 @@ import CentrePiece from "./CentrePiece/CentrePiece";
 import About from "./About/About";
 import Footer from "./Footer/Footer";
 
+import styles from "../../assets/styles/index.css";
+
+console.log(styles);
+
 export default () => {
   return (
     <>

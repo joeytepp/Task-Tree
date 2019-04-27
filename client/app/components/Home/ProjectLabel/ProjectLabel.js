@@ -1,34 +1,47 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import { Mutation } from "react-apollo";
 
-const Circle = styled.div`
-  border-radius: 50%;
-  margin: 2px;
-  margin-right: 5px;
-  vertical-align: middle;
-  ${props => `
-    width: ${props.size};
-    height: ${props.size};
-    background: ${props.color};
-  `};
-`;
-export default props => (
-  <div
-    css={{
-      display: "grid",
-      gridTemplateColumns: "min-content min-content",
-      whiteSpace: "pre",
-      verticalAlign: "middle",
-      border: `solid 1px #00000000`,
-      padding: "10px",
-      borderRadius: "5px",
-      "&:hover": {
-        border: `solid 1px ${props.color}`,
-        transition: "0.5s"
+import ProjectForm from "./ProjectForm";
+import ProjectDescription from "./ProjectDescription";
+import { CREATE_NEW_PROJECT, UPDATE_PROJECT } from "../../../graphql/mutations";
+
+const onFormSubmitted = (projectId, mutate) => input => {
+  if (projectId) {
+    return mutate({
+      variables: {
+        id: projectId,
+        input
       }
-    }}
-  >
-    <Circle size="16px" color={props.color} />
-    {props.name}
-  </div>
-);
+    });
+  }
+
+  return mutate({ variables: { input } });
+};
+
+export default props => {
+  const [state, setState] = useState(props);
+
+  useEffect(() => {
+    setState(props);
+  }, [props]);
+
+  return state.editable ? (
+    <Mutation
+      mutation={state.id ? UPDATE_PROJECT : CREATE_NEW_PROJECT}
+      onCompleted={props.refetch}
+      // onCompleted={data =>
+      //   setState(state => ({
+      //     ...state,
+      //     ...data.projectCreate.project,
+      //     editable: false
+      //   }))
+      // }
+    >
+      {(mutate, { data }) => (
+        <ProjectForm {...state} onSubmit={onFormSubmitted(state.id, mutate)} />
+      )}
+    </Mutation>
+  ) : (
+    <ProjectDescription {...state} />
+  );
+};

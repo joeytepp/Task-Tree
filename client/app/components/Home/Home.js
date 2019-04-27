@@ -3,6 +3,7 @@ import React from "react";
 import Header from "./Header/Header";
 import ProjectSideBar from "./ProjectSideBar/ProjectSideBar";
 import ApolloProvider from "../ApolloProvider/ApolloProvider";
+import { ProjectsContextProvider } from "../../context/ProjectsContext";
 
 export default () => (
   <ApolloProvider>
@@ -13,7 +14,9 @@ export default () => (
       }}
     >
       <Header />
-      <ProjectSideBar />
+      <ProjectsContextProvider>
+        <ProjectSideBar />
+      </ProjectsContextProvider>
     </div>
   </ApolloProvider>
 );

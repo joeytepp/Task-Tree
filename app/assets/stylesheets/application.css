@@ -17,3 +17,34 @@
 body {
   margin: 0px;
 }
+
+* {
+  font-family: "Cabin", sans-serif;
+  scroll-behavior: smooth;
+}
+
+a {
+  font-family: "Cabin", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0px;
+  padding: 0px;
+}
+img {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+input {
+  box-sizing: border-box;
+}
+
+::-webkit-input-placeholder :-ms-input-placeholder ::placeholder {
+  color: #9c9c9c;
+}
