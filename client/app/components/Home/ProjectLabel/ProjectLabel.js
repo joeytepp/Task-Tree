@@ -1,47 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Mutation } from "react-apollo";
 
 import ProjectForm from "./ProjectForm";
+import { ProjectsContext } from "../../../context/ProjectsContext";
 import ProjectDescription from "./ProjectDescription";
 import { CREATE_NEW_PROJECT, UPDATE_PROJECT } from "../../../graphql/mutations";
 
-const onFormSubmitted = (projectId, mutate) => input => {
-  if (projectId) {
-    return mutate({
+export default props => {
+  const { setProjects } = useContext(ProjectsContext);
+  const onFormSubmitted = mutate => input => {
+    mutate({
       variables: {
-        id: projectId,
+        id: props.id,
         input
       }
     });
-  }
 
-  return mutate({ variables: { input } });
-};
+    setProjects(oldProjects => {
+      const newProjects = [...oldProjects];
+      const projectIndex = newProjects.findIndex(({ id }) => id === props.id);
+      newProjects[projectIndex] = {
+        ...props,
+        ...input,
+        saved: true,
+        editable: false
+      };
 
-export default props => {
-  const [state, setState] = useState(props);
+      return newProjects;
+    });
+  };
 
-  useEffect(() => {
-    setState(props);
-  }, [props]);
-
-  return state.editable ? (
-    <Mutation
-      mutation={state.id ? UPDATE_PROJECT : CREATE_NEW_PROJECT}
-      onCompleted={props.refetch}
-      // onCompleted={data =>
-      //   setState(state => ({
-      //     ...state,
-      //     ...data.projectCreate.project,
-      //     editable: false
-      //   }))
-      // }
-    >
-      {(mutate, { data }) => (
-        <ProjectForm {...state} onSubmit={onFormSubmitted(state.id, mutate)} />
-      )}
+  return props.editable ? (
+    <Mutation mutation={props.saved ? UPDATE_PROJECT : CREATE_NEW_PROJECT}>
+      {mutate => <ProjectForm {...props} onSubmit={onFormSubmitted(mutate)} />}
     </Mutation>
   ) : (
-    <ProjectDescription {...state} />
+    <ProjectDescription {...props} />
   );
 };

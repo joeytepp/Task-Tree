@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Query } from "react-apollo";
+import uuid from "uuid";
 
 import ProjectLabel from "../ProjectLabel/ProjectLabel";
 import { ProjectsContext } from "../../../context/ProjectsContext";
@@ -23,7 +24,7 @@ export default () => {
         );
       }}
     >
-      {({ loading, refetch }) => {
+      {({ loading }) => {
         return (
           <div
             css={{
@@ -59,9 +60,11 @@ export default () => {
                   setProjects(oldProjects => {
                     const newProjects = [...oldProjects];
                     newProjects.unshift({
+                      id: uuid.v4(),
                       name: "",
                       color: "RED",
                       position: 0,
+                      saved: false,
                       editable: true
                     });
 
@@ -75,7 +78,7 @@ export default () => {
               {loading
                 ? "Loading..."
                 : projects.map((project, i) => (
-                    <ProjectLabel {...project} refetch={refetch} key={i} />
+                    <ProjectLabel {...project} key={i} />
                   ))}
             </div>
           </div>

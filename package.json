@@ -25,5 +25,7 @@
   "author": "joeytepp",
   "license": "MIT",
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "uuid": "^3.3.2"
+  }
 }
