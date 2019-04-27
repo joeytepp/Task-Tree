@@ -10,7 +10,7 @@ module Mutations
 
     def resolve(input:)
       must_be_authenticated!
-      user = User.find_by(id: context[:user]['id'])
+      user = User.find_by(id: context[:user_id])
       project = ::Project.new(input.to_h.merge(users: [user]))
       project.save!
       { project: project }

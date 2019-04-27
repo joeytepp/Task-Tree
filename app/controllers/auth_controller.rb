@@ -8,7 +8,7 @@ class AuthController < ApplicationController
   layout 'application'
 
   def login
-    if session[:user]
+    if session[:user_id]
       redirect_to '/'
     else
       @page_title = 'Log In'
@@ -26,7 +26,7 @@ class AuthController < ApplicationController
   end
 
   def sign_up
-    if session[:user]
+    if session[:user_id]
       redirect_to '/'
     else
       @page_title = 'Sign Up'
@@ -47,7 +47,7 @@ class AuthController < ApplicationController
       auth_success = user.authenticate(password)
 
       if auth_success
-        session[:user] = user
+        session[:user_id] = user.id
         redirect_to '/'
       else
         handle_invalid_credentials
@@ -63,7 +63,7 @@ class AuthController < ApplicationController
     if new_user.valid?
       begin
         new_user.save!
-        session[:user] = new_user
+        session[:user_id] = new_user.id
         return redirect_to '/'
       rescue ActiveRecord::RecordNotUnique
         handle_email_not_unique

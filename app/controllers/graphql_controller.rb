@@ -8,7 +8,7 @@ class GraphqlController < ApplicationController
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      user: session[:user]
+      user_id: session[:user_id]
     }
 
     result = TaskTreeSchema.execute(query, variables: variables, context: context, operation_name: operation_name)

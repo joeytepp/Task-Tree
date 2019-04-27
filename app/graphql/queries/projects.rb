@@ -9,7 +9,7 @@ module Queries
 
     def resolve
       must_be_authenticated!
-      User.find_by(id: context[:user]['id']).projects
+      User.find_by(id: context[:user_id]).projects
     end
   end
 end

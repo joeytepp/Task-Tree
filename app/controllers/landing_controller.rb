@@ -4,7 +4,7 @@ class LandingController < ApplicationController
   layout 'application'
 
   def index
-    if session[:user]
+    if session[:user_id]
       @page_title = 'Home'
       @component_name = 'Home'
     else
