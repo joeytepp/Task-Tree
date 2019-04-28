@@ -2,7 +2,7 @@
 
 class Project < ApplicationRecord
   acts_as_paranoid
-  has_many :tasks
+  has_many :tasks, dependent: :delete_all
 
   enum color: %i[RED GREEN BLUE BLACK PURPLE GREY ORANGE BROWN]
 
