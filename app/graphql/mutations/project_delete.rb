@@ -4,9 +4,9 @@ module Mutations
   class ProjectDelete < BaseMutation
     include GraphqlHelper
 
-    description 'Deletes a project by identifier.'
+    description "Deletes a project by identifier."
     type Payloads::ProjectDeletePayloadType
-    argument :id, String, required: true, description: 'The identifier of the project to be deleted.'
+    argument :id, String, required: true, description: "The identifier of the project to be deleted."
 
     def resolve(id:)
       must_be_authenticated!

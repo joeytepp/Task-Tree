@@ -5,36 +5,36 @@ class AuthController < ApplicationController
 
   skip_before_action :verify_authenticity_token
 
-  layout 'application'
+  layout "application"
 
   def login
     if session[:user_id]
-      redirect_to '/'
+      redirect_to "/"
     else
-      @page_title = 'Log In'
+      @page_title = "Log In"
       @login_props = {
         errors: flash[:errors] || {}
       }
 
-      render action: 'login'
+      render action: "login"
     end
   end
 
   def logout
     reset_session
-    redirect_to '/login'
+    redirect_to "/login"
   end
 
   def sign_up
     if session[:user_id]
-      redirect_to '/'
+      redirect_to "/"
     else
-      @page_title = 'Sign Up'
+      @page_title = "Sign Up"
       @sign_up_props = {
         errors: flash[:errors] || {}
       }
 
-      render action: 'sign_up'
+      render action: "sign_up"
     end
   end
 
@@ -48,7 +48,7 @@ class AuthController < ApplicationController
 
       if auth_success
         session[:user_id] = user.id
-        redirect_to '/'
+        redirect_to "/"
       else
         handle_invalid_credentials
       end
@@ -64,7 +64,7 @@ class AuthController < ApplicationController
       begin
         new_user.save!
         session[:user_id] = new_user.id
-        return redirect_to '/'
+        return redirect_to "/"
       rescue ActiveRecord::RecordNotUnique
         handle_email_not_unique
       else

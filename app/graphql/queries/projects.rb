@@ -3,7 +3,7 @@
 module Queries
   class Projects < BaseQuery
     include GraphqlHelper
-    description 'Returns all project resources for a user.'
+    description "Returns all project resources for a user."
 
     type [Types::ProjectType], null: false
 

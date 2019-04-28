@@ -2,6 +2,6 @@
 
 module Payloads
   class ProjectUpdatePayloadType < BasePayload
-    field :project, type: Types::ProjectType, null: true, description: 'The project that was updated.'
+    field :project, type: Types::ProjectType, null: true, description: "The project that was updated."
   end
 end

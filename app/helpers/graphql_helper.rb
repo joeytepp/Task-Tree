@@ -6,6 +6,6 @@ module GraphqlHelper
   end
 
   def must_be_owner!(user)
-    raise Errors::ForbiddenError, 'Must be the owner of this resource to perform this operation' unless context[:user_id] == user
+    raise Errors::ForbiddenError, "Must be the owner of this resource to perform this operation" unless context[:user_id] == user
   end
 end

@@ -4,7 +4,7 @@ module Errors
   class UnauthenticatedError < BaseExecutionError
     def initialize
       @code = :UNAUTHENTICATED
-      super 'You must be authenticated to perform this action!'
+      super "You must be authenticated to perform this action!"
     end
   end
 end

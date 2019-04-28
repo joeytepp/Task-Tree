@@ -18,21 +18,21 @@ module AuthHelper
 
     flash[:errors] = formatted_errors
 
-    redirect_to '/signup'
+    redirect_to "/signup"
   end
 
   def handle_email_not_unique
-    flash[:errors] = { top: 'An account already exists for this email. Please log in.' }
-    redirect_to '/login'
+    flash[:errors] = { top: "An account already exists for this email. Please log in." }
+    redirect_to "/login"
   end
 
   def handle_sign_up_exception
-    flash[:errors] = { top: 'An unexpected error occured. Please try again.' }
-    redirect_to '/signup'
+    flash[:errors] = { top: "An unexpected error occured. Please try again." }
+    redirect_to "/signup"
   end
 
   def handle_invalid_credentials
-    flash[:errors] = { top: 'Invalid email or password.' }
-    redirect_to '/login'
+    flash[:errors] = { top: "Invalid email or password." }
+    redirect_to "/login"
   end
 end

@@ -4,8 +4,8 @@ module Queries
   class Project < BaseQuery
     include GraphqlHelper
 
-    description 'Returns all project resources for a user.'
-    argument :id, String, required: true, description: 'The identifier of the project'
+    description "Returns all project resources for a user."
+    argument :id, String, required: true, description: "The identifier of the project"
 
     type Types::ProjectType, null: false
 

@@ -4,11 +4,11 @@ module Mutations
   class ProjectUpdate < BaseMutation
     include GraphqlHelper
 
-    description 'Updates a project by identifier.'
+    description "Updates a project by identifier."
 
     type Payloads::ProjectUpdatePayloadType
-    argument :id, String, required: true, description: 'The identifier of the project.'
-    argument :input, Inputs::ProjectUpdateInputType, required: true, description: 'The project to be updated.'
+    argument :id, String, required: true, description: "The identifier of the project."
+    argument :input, Inputs::ProjectUpdateInputType, required: true, description: "The project to be updated."
 
     def resolve(id:, input:)
       must_be_authenticated!
