@@ -8,6 +8,7 @@ import { ProjectsContext } from "../../../context/ProjectsContext";
 import { GET_ALL_PROJECTS } from "../../../graphql/queries";
 
 import blackPlusButton from "../../../assets/img/blackPlusButton.svg";
+import SideBarLoading from "./SideBarLoading";
 
 export default () => {
   const { projects, setProjects, currentProject } = useContext(ProjectsContext);
@@ -72,25 +73,25 @@ export default () => {
               />
             </h2>
             <div css={{ marginTop: "30px" }}>
-              <ProjectLabel
-                color="RED"
-                name="All Tasks"
-                selected={!currentProject}
-              />
               {loading ? (
-                <div
-                  css={{ width: "200px", height: "20px", background: "red" }}
-                />
+                <SideBarLoading />
               ) : (
-                projects.map((project, i) => (
+                <>
                   <ProjectLabel
-                    {...project}
-                    key={i}
-                    selected={
-                      currentProject && currentProject.id === project.id
-                    }
+                    color="RED"
+                    name="All Tasks"
+                    selected={!currentProject || !currentProject.id}
                   />
-                ))
+                  {projects.map((project, i) => (
+                    <ProjectLabel
+                      {...project}
+                      key={i}
+                      selected={
+                        currentProject && currentProject.id === project.id
+                      }
+                    />
+                  ))}
+                </>
               )}
             </div>
           </div>

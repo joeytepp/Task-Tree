@@ -23,6 +23,7 @@ export default props => {
         textOverflow: "ellipsis",
         overflow: "hidden",
         verticalAlign: "middle",
+        fontWeight: props.selected ? "600" : "500",
         border: `solid 1px #00000000`,
         userDrag: "none",
         userSelect: "none",
