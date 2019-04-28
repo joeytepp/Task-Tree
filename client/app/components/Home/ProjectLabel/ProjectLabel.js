@@ -58,7 +58,7 @@ export default props => {
   };
 
   const removeProject = e => {
-    e.stopPropagation();
+    e && e.stopPropagation();
     setProjects(projects => [...projects].filter(({ id }) => id !== props.id));
   };
 

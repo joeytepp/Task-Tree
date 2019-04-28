@@ -37,23 +37,19 @@ export default () => {
               position: "absolute",
               top: "50px",
               bottom: "0",
-              transition: "0.5s",
-              opacity: "0.8",
-              overflowY: "scroll",
-              "&:hover": {
-                opacity: "1.0"
-              }
+              overflowY: "scroll"
             }}
           >
             <h2>
               Projects
               <img
                 src={blackPlusButton}
+                height="20px"
                 css={{
                   height: "20px",
                   verticalAlign: "middle",
                   marginLeft: "10px",
-                  transition: "0.5s",
+                  transition: "transform 0.5s",
                   "&:hover": {
                     transform: "rotate(90deg)"
                   }

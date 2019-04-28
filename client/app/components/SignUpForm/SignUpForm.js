@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Field } from "react-final-form";
+import { Form } from "react-final-form";
 
 import FormField from "../FormField/FormField.js";
 import {
