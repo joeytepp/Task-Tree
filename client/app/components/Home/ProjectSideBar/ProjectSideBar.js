@@ -10,7 +10,7 @@ import { GET_ALL_PROJECTS } from "../../../graphql/queries";
 import blackPlusButton from "../../../assets/img/blackPlusButton.svg";
 
 export default () => {
-  const { projects, setProjects } = useContext(ProjectsContext);
+  const { projects, setProjects, currentProject } = useContext(ProjectsContext);
 
   return (
     <Query
@@ -76,12 +76,24 @@ export default () => {
               />
             </h2>
             <div css={{ marginTop: "30px" }}>
-              <ProjectLabel color="BLACK" name="All Tasks" />
-              {loading
-                ? "Loading..."
-                : projects.map((project, i) => (
-                    <ProjectLabel {...project} key={i} />
-                  ))}
+              <ProjectLabel
+                color="BLACK"
+                name="All Tasks"
+                selected={!currentProject}
+              />
+              {loading ? (
+                <div
+                  css={{ width: "200px", height: "20px", background: "red" }}
+                />
+              ) : (
+                projects.map((project, i) => (
+                  <ProjectLabel
+                    {...project}
+                    key={i}
+                    selected={currentProject === project.id}
+                  />
+                ))
+              )}
             </div>
           </div>
         );

@@ -4,6 +4,7 @@ import Header from "./Header/Header";
 import ProjectSideBar from "./ProjectSideBar/ProjectSideBar";
 import ApolloProvider from "../ApolloProvider/ApolloProvider";
 import { ProjectsContextProvider } from "../../context/ProjectsContext";
+import TaskContainer from "./TaskContainer/TaskContainer";
 
 export default () => (
   <ApolloProvider>
@@ -16,6 +17,7 @@ export default () => (
       <Header />
       <ProjectsContextProvider>
         <ProjectSideBar />
+        <TaskContainer />
       </ProjectsContextProvider>
     </div>
   </ApolloProvider>

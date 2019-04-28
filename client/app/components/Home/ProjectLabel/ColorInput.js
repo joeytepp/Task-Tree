@@ -12,13 +12,7 @@ export default props => {
 
   return (
     <>
-      <input
-        {...props.input}
-        name="color"
-        value={state.color}
-        type="hidden"
-        onChange={e => console.log(e)}
-      />
+      <input {...props.input} name="color" value={state.color} type="hidden" />
       <Circle
         size="16px"
         color={COLOR_MAP[state.color]}

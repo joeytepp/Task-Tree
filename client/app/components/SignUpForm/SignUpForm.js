@@ -83,7 +83,7 @@ export default props => (
     validate={validateForm}
     render={({ submitting, pristine, hasValidationErrors }) => {
       const initialErrors = initialRender && getInitialErrors(props);
-      console.log(initialErrors);
+
       return (
         <div
           css={{

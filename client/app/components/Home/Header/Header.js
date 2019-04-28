@@ -20,12 +20,14 @@ export default () => (
         padding: "5px 50px 5px 50px"
       }}
     >
-      <a
-        href="./"
+      <div
         css={{
           display: "grid",
           gridTemplateColumns: "min-content min-content",
-          textDecoration: "none"
+          textDecoration: "none",
+          cursor: "pointer",
+          userDrag: "none",
+          userSelect: "none"
         }}
       >
         <img
@@ -46,7 +48,7 @@ export default () => (
         >
           Task Tree
         </h1>
-      </a>
+      </div>
     </div>
     <div align="right">
       <form action="/logout" method="post">

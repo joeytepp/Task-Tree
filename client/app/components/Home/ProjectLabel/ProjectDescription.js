@@ -11,8 +11,11 @@ import cross from "../../../assets/img/errorCross.svg";
 export default props => {
   const [showModal, setShowModal] = useState(false);
 
+  const projectColor = COLOR_MAP[props.color];
+
   return (
     <div
+      onClick={props.setCurrentProject}
       css={{
         display: "grid",
         gridTemplateColumns: "min-content 100fr min-content min-content",
@@ -23,9 +26,11 @@ export default props => {
         border: `solid 1px #00000000`,
         padding: "10px",
         borderRadius: "5px",
+        color: props.selected ? "white" : "black",
+        background: props.selected ? projectColor : "white",
         cursor: "default",
         "&:hover": {
-          border: `solid 1px ${props.color}`,
+          border: `solid 1px ${props.selected ? "white" : projectColor}`,
           transition: "0.5s",
           "& img": {
             display: "block",
@@ -34,7 +39,7 @@ export default props => {
         }
       }}
     >
-      <Circle size="16px" color={COLOR_MAP[props.color]} />
+      <Circle size="16px" color={props.selected ? "white" : projectColor} />
       <span
         css={{
           display: "block",
@@ -67,7 +72,10 @@ export default props => {
             <img src={pencil} css={{ height: "15px", display: "none" }} />
           </div>
           <div
-            onClick={() => setShowModal(true)}
+            onClick={e => {
+              e.stopPropagation();
+              setShowModal(true);
+            }}
             css={{
               marginLeft: "5px",
               marginRight: "5px"

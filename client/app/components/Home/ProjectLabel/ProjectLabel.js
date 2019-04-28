@@ -5,7 +5,6 @@ import ProjectForm from "./ProjectForm";
 import { ProjectsContext } from "../../../context/ProjectsContext";
 import ProjectDescription from "./ProjectDescription";
 import { CREATE_NEW_PROJECT, UPDATE_PROJECT } from "../../../graphql/mutations";
-import setEditable from "./setEditable";
 
 function createMutationVariables(props, input) {
   if (!props.saved) {
@@ -24,7 +23,8 @@ function createMutationVariables(props, input) {
 }
 
 export default props => {
-  const { setProjects } = useContext(ProjectsContext);
+  const { setProjects, setCurrentProject } = useContext(ProjectsContext);
+
   const onFormSubmitted = mutate => input => {
     mutate({
       variables: createMutationVariables(props, input)
@@ -33,6 +33,7 @@ export default props => {
     setProjects(oldProjects => {
       const newProjects = [...oldProjects];
       const projectIndex = newProjects.findIndex(({ id }) => id === props.id);
+
       newProjects[projectIndex] = {
         ...props,
         ...input,
@@ -44,25 +45,39 @@ export default props => {
     });
   };
 
+  const setEditable = value => e => {
+    e.stopPropagation();
+    setProjects(oldProjects => {
+      const newProjects = [...oldProjects];
+      const projectIndex = newProjects.findIndex(({ id }) => id === props.id);
+
+      newProjects[projectIndex].editable = value;
+
+      return newProjects;
+    });
+  };
+
+  const removeProject = e => {
+    e.stopPropagation();
+    setProjects(projects => [...projects].filter(({ id }) => id !== props.id));
+  };
+
   return props.editable ? (
     <Mutation mutation={props.saved ? UPDATE_PROJECT : CREATE_NEW_PROJECT}>
       {mutate => (
         <ProjectForm
           {...props}
           onSubmit={onFormSubmitted(mutate)}
-          cancel={setEditable(setProjects, props, false)}
+          cancel={props.saved ? setEditable(false) : removeProject}
         />
       )}
     </Mutation>
   ) : (
     <ProjectDescription
       {...props}
-      edit={setEditable(setProjects, props, true)}
-      delete={() =>
-        setProjects(projects =>
-          [...projects].filter(({ id }) => id !== props.id)
-        )
-      }
+      edit={setEditable(true)}
+      delete={removeProject}
+      setCurrentProject={() => setCurrentProject(props.id)}
     />
   );
 };
