@@ -1,4 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
+
+import { ColorContext } from "./ColorContext";
 
 export const ProjectsContext = createContext([]);
 

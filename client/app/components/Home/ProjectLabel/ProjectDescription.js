@@ -24,6 +24,8 @@ export default props => {
         overflow: "hidden",
         verticalAlign: "middle",
         border: `solid 1px #00000000`,
+        userDrag: "none",
+        userSelect: "none",
         padding: "10px",
         borderRadius: "5px",
         color: props.selected ? "white" : "black",
@@ -31,7 +33,6 @@ export default props => {
         cursor: "default",
         "&:hover": {
           border: `solid 1px ${props.selected ? "white" : projectColor}`,
-          transition: "0.5s",
           "& img": {
             display: "block",
             height: "15px"

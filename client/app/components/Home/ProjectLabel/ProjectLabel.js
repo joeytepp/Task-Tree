@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { Mutation } from "react-apollo";
 
 import ProjectForm from "./ProjectForm";
-import { ProjectsContext } from "../../../context/ProjectsContext";
 import ProjectDescription from "./ProjectDescription";
+import { ProjectsContext } from "../../../context/ProjectsContext";
+import { ColorContext } from "../../../context/ColorContext";
 import { CREATE_NEW_PROJECT, UPDATE_PROJECT } from "../../../graphql/mutations";
 
 function createMutationVariables(props, input) {
@@ -24,6 +25,7 @@ function createMutationVariables(props, input) {
 
 export default props => {
   const { setProjects, setCurrentProject } = useContext(ProjectsContext);
+  const { setColor } = useContext(ColorContext);
 
   const onFormSubmitted = mutate => input => {
     mutate({
@@ -46,7 +48,7 @@ export default props => {
   };
 
   const setEditable = value => e => {
-    e.stopPropagation();
+    e && e.stopPropagation();
     setProjects(oldProjects => {
       const newProjects = [...oldProjects];
       const projectIndex = newProjects.findIndex(({ id }) => id === props.id);
@@ -77,7 +79,10 @@ export default props => {
       {...props}
       edit={setEditable(true)}
       delete={removeProject}
-      setCurrentProject={() => setCurrentProject(props.id)}
+      setCurrentProject={() => {
+        setCurrentProject(props);
+        setColor(props.color);
+      }}
     />
   );
 };

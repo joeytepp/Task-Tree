@@ -6,7 +6,7 @@ export default () => {
 
   return (
     <div css={{ marginLeft: "350px", marginTop: "20px" }}>
-      <h1>{currentProject}</h1>
+      <h1>{(currentProject && currentProject.name) || "All Tasks"}</h1>
     </div>
   );
 };

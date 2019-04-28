@@ -73,7 +73,7 @@ export default () => {
             </h2>
             <div css={{ marginTop: "30px" }}>
               <ProjectLabel
-                color="BLACK"
+                color="RED"
                 name="All Tasks"
                 selected={!currentProject}
               />
@@ -86,7 +86,9 @@ export default () => {
                   <ProjectLabel
                     {...project}
                     key={i}
-                    selected={currentProject === project.id}
+                    selected={
+                      currentProject && currentProject.id === project.id
+                    }
                   />
                 ))
               )}
