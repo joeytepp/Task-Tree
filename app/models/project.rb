@@ -2,6 +2,7 @@
 
 class Project < ApplicationRecord
   acts_as_paranoid
+  has_many :tasks
 
   enum color: %i[RED GREEN BLUE BLACK PURPLE GREY ORANGE BROWN]
 

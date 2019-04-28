@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  completed: false
+  parent_id: 
+  root_id: 
+
+two:
+  name: MyText
+  completed: false
+  parent_id: 
+  root_id: 
