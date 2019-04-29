@@ -2,6 +2,8 @@
 
 module Queries
   class Tasks < BaseQuery
+    include GraphqlHelper
+
     description "All tasks belonging to a user"
 
     type [Types::TaskType], null: false
@@ -11,7 +13,7 @@ module Queries
     def resolve
       must_be_authenticated!
       user = User.find_by(id: context[:user_id])
-      ::Tasks.where(project: [user.projects])
+      ::Task.where(project: [user.projects])
     end
   end
 end
