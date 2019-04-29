@@ -14,7 +14,7 @@ module Queries
       must_be_authenticated!
 
       user = User.find_by(id: context[:user_id])
-      return Task.where(project: [user.projects], parent_id: nil)
+      return ::Task.where(project: [user.projects], parent_id: nil)
 
       user.projects.find_by!(id: args[:project_id]).tasks.where(parent_id: nil)
     rescue ActiveRecord::RecordNotFound

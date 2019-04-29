@@ -7,6 +7,8 @@ module Types
 
     field :project, resolver: Queries::Project
     field :projects, resolver: Queries::Projects
+    field :task, resolver: Queries::Task
+    field :tasks, resolver: Queries::Tasks
     field :root_tasks, resolver: Queries::RootTasks
   end
 end

@@ -12,7 +12,6 @@ module Types
     field :created_at, type: String, null: false, description: "The time at which the task was created."
     field :updated_at, type: String, null: false, description: "The time at which the task was last updated."
 
-
     def project
       object.project
     end
