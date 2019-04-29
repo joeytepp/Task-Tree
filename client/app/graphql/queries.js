@@ -10,3 +10,23 @@ export const GET_ALL_PROJECTS = gql`
     }
   }
 `;
+
+export const GET_ALL_ROOT_TASKS = gql`
+  query getAllRootTasks {
+    rootTasks {
+      id
+      name
+      completed
+    }
+  }
+`;
+
+export const GET_ROOT_TASKS_BY_PROJECT = gql`
+  query getRootTasksByProject($projectId: String!) {
+    rootTasks(projectId: $projectId) {
+      id
+      name
+      completed
+    }
+  }
+`;
