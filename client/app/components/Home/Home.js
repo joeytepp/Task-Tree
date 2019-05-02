@@ -8,7 +8,7 @@ import { ColorContextProvider } from "../../context/ColorContext";
 import TaskContainer from "./TaskContainer/TaskContainer";
 import Backdrop from "./Backdrop/Backdrop";
 
-export default () => (
+const Home = () => (
   <ApolloProvider>
     <ColorContextProvider>
       <Backdrop>
@@ -21,3 +21,5 @@ export default () => (
     </ColorContextProvider>
   </ApolloProvider>
 );
+
+export default Home;

@@ -1,1 +1,4 @@
+<% styles = react_component_hash("#{@component_name}Styles")%>
+<%= styles["componentCss"]%>
+
 <%= react_component(@component_name, props: @landing_props, prerender: true) %>
