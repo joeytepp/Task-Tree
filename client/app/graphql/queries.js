@@ -17,6 +17,10 @@ export const GET_ALL_ROOT_TASKS = gql`
       id
       name
       completed
+      project {
+        name
+        color
+      }
     }
   }
 `;
@@ -27,6 +31,18 @@ export const GET_ROOT_TASKS_BY_PROJECT = gql`
       id
       name
       completed
+    }
+  }
+`;
+
+export const GET_TASK_WITH_CHILDREN = gql`
+  query GetTaskWithChildren($id: String!) {
+    task(id: $id) {
+      children {
+        id
+        name
+        completed
+      }
     }
   }
 `;

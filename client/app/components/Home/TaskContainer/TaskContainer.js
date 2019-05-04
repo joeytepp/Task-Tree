@@ -6,6 +6,7 @@ import {
   GET_ROOT_TASKS_BY_PROJECT
 } from "../../../graphql/queries";
 import { ProjectsContext } from "../../../context/ProjectsContext";
+import Task from "../Task/Task";
 
 export default () => {
   const { currentProject } = useContext(ProjectsContext);
@@ -27,12 +28,9 @@ export default () => {
         <div>
           <div css={{ marginLeft: "350px", marginTop: "20px" }}>
             <h1>{(currentProject && currentProject.name) || "All Tasks"}</h1>
+            {data.rootTasks &&
+              data.rootTasks.map(task => <Task root {...task} />)}
           </div>
-          {data.rootTasks &&
-            data.rootTasks.map(i => {
-              console.log(i);
-              return <div css={{ marginLeft: "500px" }}>{i.id}</div>;
-            })}
         </div>
       )}
     </Query>
