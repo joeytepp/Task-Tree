@@ -12,8 +12,7 @@ module Queries
 
     def resolve
       must_be_authenticated!
-      user = User.find_by(id: context[:user_id])
-      ::Task.where(project: [user.projects])
+      ::Task.joins(project: :users).where(users: { id: context[:user_id] })
     end
   end
 end

@@ -11,7 +11,7 @@ module Queries
 
     def resolve(id:)
       must_be_authenticated!
-      User.find_by(id: context[:user_id]).projects.find_by!(id: id)
+      ::Project.joins(:users).where(users: { id: context[:user_id] }).find_by!(id: id)
     rescue ActiveRecord::RecordNotFound
       raise Errors::NotFoundError, "Could not find the project with identifier #{id}."
     end

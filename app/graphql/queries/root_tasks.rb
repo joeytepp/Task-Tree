@@ -13,12 +13,9 @@ module Queries
     def resolve(args = {})
       must_be_authenticated!
 
-      user = User.find_by(id: context[:user_id])
-      return ::Task.where(project: [user.projects], parent_id: nil) unless args[:project_id]
+      return ::Task.joins(project: :users).where(parent_id: nil, users: { id: context[:user_id] }) unless args[:project_id]
 
-      user.projects.find_by!(id: args[:project_id]).tasks.where(parent_id: nil)
-    rescue ActiveRecord::RecordNotFound
-      raise Errors::NotFoundError, "Could not find the project with identifier #{args[:project_id]}"
+      ::Task.joins(project: :users).where(project_id: args[:project_id], parent_id: nil, users: { id: context[:user_id] })
     end
   end
 end

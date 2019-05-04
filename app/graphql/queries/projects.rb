@@ -9,7 +9,7 @@ module Queries
 
     def resolve
       must_be_authenticated!
-      User.find_by(id: context[:user_id]).projects.order(created_at: :desc)
+      ::Project.joins(:users).where(users: { id: context[:user_id] }).order(created_at: :desc)
     end
   end
 end
