@@ -31,3 +31,14 @@ export const DELETE_PROJECT = gql`
     }
   }
 `;
+
+export const CREATE_TASK = gql`
+  mutation CreateRootTask($input: TaskCreateInput!) {
+    taskCreate(input: $input) {
+      task {
+        id
+        name
+      }
+    }
+  }
+`;

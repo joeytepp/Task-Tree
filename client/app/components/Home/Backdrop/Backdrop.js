@@ -10,7 +10,8 @@ export default ({ children }) => {
     <div
       css={{
         background: `${COLOR_MAP[color]}b4`,
-        height: "100vh"
+        height: "100vh",
+        overflowY: "scroll"
       }}
     >
       {children}
