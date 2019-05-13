@@ -1,1 +1,9 @@
-run: echo "Run Procfile.static or Procfile.hot"
+# Procfile for development with hot reloading of JavaScript and CSS
+
+rails: rails s -b 0.0.0.0
+
+# Run the hot reload server for client development
+hot-assets: yarn run hot-assets
+
+# Keep the JS fresh for server rendering. Remove if not server rendering
+rails-server-assets: yarn run build:dev:server

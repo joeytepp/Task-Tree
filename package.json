@@ -14,7 +14,8 @@
     "build:server": "(cd client && yarn run build:server)",
     "build:dev:client": "(cd client && yarn run build:dev:client)",
     "build:dev:server": "(cd client && yarn run build:dev:server)",
-    "hot-assets": "(cd client && yarn run hot-assets)"
+    "hot-assets": "(cd client && yarn run hot-assets)",
+    "install": "(cd client && yarn install)"
   },
   "keywords": [
     "react",
