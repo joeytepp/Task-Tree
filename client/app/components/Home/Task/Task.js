@@ -7,6 +7,7 @@ import { ProjectsContext } from "../../../context/ProjectsContext";
 import { ApolloContext } from "react-apollo";
 import { GET_TASK_WITH_CHILDREN } from "../../../graphql/queries";
 import { CREATE_TASK } from "../../../graphql/mutations";
+import CheckMark from "../CheckMark/CheckMark";
 
 const Caret = styled.div`
   border-radius: 5px;
@@ -137,7 +138,7 @@ const Task = props => {
                 height: "40px"
               }}
             >
-              <div
+              {/* <div
                 css={{
                   width: "14px",
                   height: "14px",
@@ -147,7 +148,8 @@ const Task = props => {
                   border: "solid 1px #979797",
                   opacity: state.edit ? "0" : "1"
                 }}
-              />
+              /> */}
+              <CheckMark color={COLOR_MAP[project.color]} size={"14px"} />
               {state.edit ? (
                 <form
                   onSubmit={e => {
