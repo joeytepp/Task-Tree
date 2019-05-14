@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
-import styled, { css } from "styled-components";
 import uuid from "uuid";
+import styled, { css } from "styled-components";
+import { ApolloContext } from "react-apollo";
 
 import { COLOR_MAP } from "../../../constants";
 import { ProjectsContext } from "../../../context/ProjectsContext";
-import { ApolloContext } from "react-apollo";
 import { GET_TASK_WITH_CHILDREN } from "../../../graphql/queries";
 import { CREATE_TASK } from "../../../graphql/mutations";
 import CheckMark from "../CheckMark/CheckMark";
@@ -43,9 +43,11 @@ const Task = props => {
 
   const [state, setState] = useState({
     showChildren: false,
+    completed: false,
     children: [],
     name: props.name,
-    edit: props.edit
+    edit: props.edit,
+    display: true
   });
 
   useEffect(() => {
@@ -75,10 +77,13 @@ const Task = props => {
         {...child}
         project={project}
         parentId={props.id}
+        completed={state.completed || props.completed}
         rootId={props.rootId || props.id}
       />
     ));
   }
+
+  if (state.display === false) return "";
 
   return (
     <div css={rootCss(props)}>
@@ -138,18 +143,32 @@ const Task = props => {
                 height: "40px"
               }}
             >
-              {/* <div
-                css={{
-                  width: "14px",
-                  height: "14px",
-                  margin: "3px",
-                  marginRight: "5px",
-                  borderRadius: "50%",
-                  border: "solid 1px #979797",
-                  opacity: state.edit ? "0" : "1"
-                }}
-              /> */}
-              <CheckMark color={COLOR_MAP[project.color]} size={"14px"} />
+              {state.completed || props.completed ? (
+                <CheckMark color={COLOR_MAP[project.color]} size={"14px"} />
+              ) : (
+                <div
+                  onClick={e => {
+                    e.stopPropagation();
+                    setState(state => ({
+                      ...state,
+                      display: false,
+                      completed: true
+                    }));
+                  }}
+                  css={{
+                    width: "14px",
+                    height: "14px",
+                    margin: "3px",
+                    marginRight: "5px",
+                    borderRadius: "50%",
+                    border: "solid 1px #979797",
+                    opacity: state.edit ? "0" : "1",
+                    "&:hover": {
+                      background: "#D6D6D6"
+                    }
+                  }}
+                />
+              )}
               {state.edit ? (
                 <form
                   onSubmit={e => {
@@ -163,7 +182,11 @@ const Task = props => {
                       mutation: CREATE_TASK
                     });
 
-                    return setState(state => ({ ...state, name, edit: false }));
+                    return setState(state => ({
+                      ...state,
+                      name,
+                      edit: false
+                    }));
                   }}
                 >
                   <input
