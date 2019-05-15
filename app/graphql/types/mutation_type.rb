@@ -11,5 +11,6 @@ module Types
     field :task_create, resolver: Mutations::TaskCreate
     field :task_update, resolver: Mutations::TaskUpdate
     field :task_delete, resolver: Mutations::TaskDelete
+    field :task_complete, resolver: Mutations::TaskComplete
   end
 end

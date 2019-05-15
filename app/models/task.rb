@@ -12,4 +12,8 @@ class Task < ApplicationRecord
 
   # Relationship to root tasks
   has_one :root, class_name: :Task, foreign_key: :root_id
+
+  def root?
+    root_id.nil? && parent_id.nil?
+  end
 end
