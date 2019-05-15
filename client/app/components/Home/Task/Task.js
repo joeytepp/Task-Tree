@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import uuid from "uuid";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { ApolloContext } from "react-apollo";
 
 import { COLOR_MAP } from "../../../constants";
@@ -10,12 +10,25 @@ import { GET_TASK_WITH_CHILDREN } from "../../../graphql/queries";
 import { CREATE_TASK } from "../../../graphql/mutations";
 import CheckMark from "../CheckMark/CheckMark";
 
+const caretAnimation = keyframes`
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+`;
+
 const Caret = styled.div`
   border-radius: 5px;
   width: 10px;
   margin-right: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 100%;
   background: #6d6d6d;
   transition: background-color 0.3s;
+  animation: ${caretAnimation} 0.2s linear;
 `;
 
 const rootCss = props => css`
