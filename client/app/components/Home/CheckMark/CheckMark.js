@@ -2,18 +2,12 @@ import React from "react";
 
 export default props => (
   <svg
-    css={{ verticalAlign: "middle", padding: "5px" }}
+    css={{ verticalAlign: "middle" }}
     width={props.size}
     height={props.size}
     viewBox="0 0 200 200"
   >
-    <g
-      id="Page-3"
-      stroke="none"
-      stroke-width="1"
-      fill="none"
-      fill-rule="evenodd"
-    >
+    <g id="Page-3" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <circle id="Oval" fill={props.color} cx="100" cy="100" r="100" />
       <rect
         id="Rectangle"

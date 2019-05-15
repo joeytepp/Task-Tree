@@ -48,3 +48,70 @@ input {
 ::-webkit-input-placeholder :-ms-input-placeholder ::placeholder {
   color: #9c9c9c;
 }
+
+.task-exit {
+  transition: opacity 0.25s, all 0.25s;
+  margin: 0px !important;
+  padding: 0px !important;
+  font-size: 0px !important;
+  border: none !important;
+  border-radius: 0px !important;
+  opacity: 0;
+  line-height: 0px !important;
+}
+
+.task-exit svg {
+  height: 0px !important;
+}
+
+.task-exit * {
+  transition: opacity 0.25s, all 0.25s;
+  margin: 0px !important;
+  padding: 0px !important;
+  font-size: 0px !important;
+  border: none !important;
+  border-radius: 0px !important;
+  opacity: 0;
+  line-height: 0px !important;
+}
+
+/* .task-exit svg {
+  transition: opacity 0.25s, all 0.25s linear 0.25s; 
+  height: 0px;
+} */
+
+.task-exit-active {
+  transition: opacity 0.25s, all 0.25s;
+  opacity: 0;
+  margin: 0px !important;
+  padding: 0px !important;
+  font-size: 0px !important;
+  border: none !important;
+  border-radius: 0px !important;
+  opacity: 0;
+  line-height: 0px !important;
+}
+
+.task-exit-active * {
+  transition: opacity 0.25s, all 0.25s;
+  margin: 0px !important;
+  padding: 0px !important;
+  font-size: 0px !important;
+  border: none !important;
+  border-radius: 0px !important;
+  opacity: 0;
+  line-height: 0px !important;
+}
+
+/* @keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    line-height: 0px !important;
+  }
+} */

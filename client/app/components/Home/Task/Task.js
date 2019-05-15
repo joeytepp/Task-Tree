@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import uuid from "uuid";
 import styled, { css } from "styled-components";
 import { ApolloContext } from "react-apollo";
@@ -46,18 +47,17 @@ const Task = props => {
     completed: false,
     children: [],
     name: props.name,
-    edit: props.edit,
-    display: true
+    edit: props.edit
   });
 
   useEffect(() => {
-    setState({ edit: props.edit, name: props.name });
+    setState(state => ({ ...state, edit: props.edit, name: props.name }));
   }, [props.edit, props.name]);
 
   const project = props.project || currentProject;
 
-  function createTaskInput(name) {
-    const input = { name };
+  function createTaskInput(name, id) {
+    const input = { name, id };
 
     if (!props.root) {
       input.parentId = props.parentId;
@@ -72,18 +72,29 @@ const Task = props => {
   function childTasks() {
     if (!state.showChildren) return "";
 
-    return state.children.map(child => (
-      <Task
-        {...child}
-        project={project}
-        parentId={props.id}
-        completed={state.completed || props.completed}
-        rootId={props.rootId || props.id}
-      />
-    ));
+    return (
+      <TransitionGroup className="tasks">
+        {state.children.map(child => (
+          <CSSTransition classNames="task" timeout={500} key={child.id}>
+            <Task
+              destroy={() =>
+                setState(state => ({
+                  ...state,
+                  children: state.children.filter(c => c.id !== child.id)
+                }))
+              }
+              key={child.id}
+              {...child}
+              project={project}
+              parentId={props.id}
+              completed={state.completed || props.completed}
+              rootId={props.rootId || props.id}
+            />
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
+    );
   }
-
-  if (state.display === false) return "";
 
   return (
     <div css={rootCss(props)}>
@@ -139,8 +150,7 @@ const Task = props => {
               css={{
                 display: "grid",
                 gridTemplateColumns: "min-content 1fr",
-                paddingTop: "5px",
-                height: "40px"
+                paddingTop: "5px"
               }}
             >
               {state.completed || props.completed ? (
@@ -151,9 +161,10 @@ const Task = props => {
                     e.stopPropagation();
                     setState(state => ({
                       ...state,
-                      display: false,
                       completed: true
                     }));
+
+                    props.destroy();
                   }}
                   css={{
                     width: "14px",
@@ -177,7 +188,7 @@ const Task = props => {
 
                     client.mutate({
                       variables: {
-                        input: createTaskInput(name)
+                        input: createTaskInput(name, props.id)
                       },
                       mutation: CREATE_TASK
                     });
@@ -211,20 +222,21 @@ const Task = props => {
         {state.showChildren && (
           <button
             css={{ background: "black", color: "white", borderRadius: "5px" }}
-            onClick={() =>
+            onClick={() => {
               setState(state => {
-                const children = [...state.children];
-
-                children.push({
-                  id: uuid.v4(),
-                  edit: true,
-                  name: "",
-                  projectId: project.id
-                });
+                const children = [
+                  {
+                    id: uuid.v4(),
+                    edit: true,
+                    name: "",
+                    projectId: project.id
+                  },
+                  ...state.children
+                ];
 
                 return { ...state, children };
-              })
-            }
+              });
+            }}
           >
             + New Task
           </button>
