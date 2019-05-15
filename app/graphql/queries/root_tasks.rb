@@ -13,9 +13,9 @@ module Queries
     def resolve(args = {})
       must_be_authenticated!
 
-      return ::Task.joins(project: :users).where(parent_id: nil, users: { id: context[:user_id] }) unless args[:project_id]
+      return ::Task.joins(project: :users).where(parent_id: nil, users: { id: context[:user_id] }).order(created_at: :desc) unless args[:project_id]
 
-      ::Task.joins(project: :users).where(project_id: args[:project_id], parent_id: nil, users: { id: context[:user_id] })
+      ::Task.joins(project: :users).where(project_id: args[:project_id], parent_id: nil, users: { id: context[:user_id] }).order(created_at: :desc)
     end
   end
 end

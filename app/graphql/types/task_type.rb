@@ -17,7 +17,7 @@ module Types
     end
 
     def children
-      object.children
+      object.children.order(created_at: :desc)
     end
 
     def parent
