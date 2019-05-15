@@ -42,3 +42,14 @@ export const CREATE_TASK = gql`
     }
   }
 `;
+
+export const COMPLETE_TASK = gql`
+  mutation CompleteTask($id: String!) {
+    taskComplete(id: $id) {
+      task {
+        id
+      }
+      numTasksCompleted
+    }
+  }
+`;

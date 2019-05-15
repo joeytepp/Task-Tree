@@ -7,7 +7,7 @@ import { ApolloContext } from "react-apollo";
 import { COLOR_MAP } from "../../../constants";
 import { ProjectsContext } from "../../../context/ProjectsContext";
 import { GET_TASK_WITH_CHILDREN } from "../../../graphql/queries";
-import { CREATE_TASK } from "../../../graphql/mutations";
+import { CREATE_TASK, COMPLETE_TASK } from "../../../graphql/mutations";
 import CheckMark from "../CheckMark/CheckMark";
 
 const caretAnimation = keyframes`
@@ -64,8 +64,12 @@ const Task = props => {
   });
 
   useEffect(() => {
-    setState(state => ({ ...state, edit: props.edit, name: props.name }));
-  }, [props.edit, props.name]);
+    setState(state => ({
+      ...state,
+      edit: props.edit,
+      name: props.name
+    }));
+  }, [props.edit, props.name, props.completed]);
 
   const project = props.project || currentProject;
 
@@ -176,6 +180,11 @@ const Task = props => {
                       ...state,
                       completed: true
                     }));
+
+                    client.mutate({
+                      mutation: COMPLETE_TASK,
+                      variables: { id: props.id }
+                    });
 
                     props.destroy();
                   }}
