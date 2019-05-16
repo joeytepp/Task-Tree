@@ -6,7 +6,7 @@ module Queries
 
     description "Returns all root tasks for a project"
 
-    type [Types::TaskType], null: false
+    type [Objects::TaskType], null: false
 
     argument :project_id, String, required: false, description: "The identifier of the project."
 

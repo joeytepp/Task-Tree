@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Types
+module Objects
   class TaskType < BaseObject
     field :id, type: String, null: false, description: "The identifier of the task."
     field :name, type: String, null: false, description: "The name of the task."

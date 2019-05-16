@@ -6,7 +6,7 @@ module Queries
 
     description "All tasks belonging to a user"
 
-    type [Types::TaskType], null: false
+    type [Objects::TaskType], null: false
 
     # TODO: Add arguments to narrow down querying
 
