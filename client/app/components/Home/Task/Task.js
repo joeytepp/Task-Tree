@@ -9,6 +9,7 @@ import { ProjectsContext } from "../../../context/ProjectsContext";
 import { GET_TASK_WITH_CHILDREN } from "../../../graphql/queries";
 import { CREATE_TASK, COMPLETE_TASK } from "../../../graphql/mutations";
 import CheckMark from "../CheckMark/CheckMark";
+import exitButton from "../../../assets/img/exitCross.svg";
 
 const caretAnimation = keyframes`
   0% {
@@ -150,95 +151,128 @@ const Task = props => {
             borderRadius: "5px"
           }}
         >
-          <div>
-            <span
-              css={{
-                fontSize: "15px",
-                background: COLOR_MAP[project.color],
-                color: "white",
-                borderRadius: "5px",
-                padding: "2px 5px",
-                lineHeight: "20px"
-              }}
-            >
-              {project.name}
-            </span>
+          <div
+            css={{
+              display: "grid",
+              gridTemplateColumns: "1fr min-content",
+              whiteSpace: "nowrap"
+            }}
+          >
+            <div>
+              <span
+                css={{
+                  fontSize: "15px",
+                  background: COLOR_MAP[project.color],
+                  color: "white",
+                  borderRadius: "5px",
+                  padding: "2px 5px",
+                  lineHeight: "20px"
+                }}
+              >
+                {project.name}
+              </span>
+            </div>
             <div
               css={{
-                display: "grid",
-                gridTemplateColumns: "min-content 1fr",
-                paddingTop: "5px"
+                marginRight: "5px",
+                display: `${state.edit ? "none" : "block"}`
               }}
             >
-              {state.completed || props.completed ? (
-                <CheckMark color={COLOR_MAP[project.color]} size={"14px"} />
-              ) : (
-                <div
-                  onClick={e => {
-                    e.stopPropagation();
-                    setState(state => ({
-                      ...state,
-                      completed: true
-                    }));
+              <button
+                onClick={() => {
+                  props.destroy();
+                  client.mutate({ mutation: DELETE_TASK, variables: props.id });
+                }}
+                css={{
+                  width: "20px",
+                  height: "20px",
+                  background: "none",
+                  height: "20px",
+                  textAlign: "center",
+                  border: "none",
+                  backgroundImage: `url(${exitButton})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "100% auto"
+                }}
+              />
+            </div>
+          </div>
+          <div
+            css={{
+              display: "grid",
+              gridTemplateColumns: "min-content 1fr",
+              paddingTop: "5px"
+            }}
+          >
+            {state.completed || props.completed ? (
+              <CheckMark color={COLOR_MAP[project.color]} size={"14px"} />
+            ) : (
+              <div
+                onClick={e => {
+                  e.stopPropagation();
+                  setState(state => ({
+                    ...state,
+                    completed: true
+                  }));
 
-                    client.mutate({
-                      mutation: COMPLETE_TASK,
-                      variables: { id: props.id }
-                    });
+                  client.mutate({
+                    mutation: COMPLETE_TASK,
+                    variables: { id: props.id }
+                  });
 
-                    props.destroy();
-                  }}
+                  props.destroy();
+                }}
+                css={{
+                  width: "14px",
+                  height: "14px",
+                  margin: "3px",
+                  marginRight: "5px",
+                  borderRadius: "50%",
+                  border: "solid 1px #979797",
+                  opacity: state.edit ? "0" : "1",
+                  "&:hover": {
+                    background: "#D6D6D6"
+                  }
+                }}
+              />
+            )}
+            {state.edit ? (
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  const name = e.currentTarget[0].value;
+
+                  client.mutate({
+                    variables: {
+                      input: createTaskInput(name, props.id)
+                    },
+                    mutation: CREATE_TASK
+                  });
+
+                  return setState(state => ({
+                    ...state,
+                    name,
+                    edit: false
+                  }));
+                }}
+              >
+                <input
+                  autoFocus={true}
+                  type="text"
+                  placeholder="New Task"
                   css={{
-                    width: "14px",
-                    height: "14px",
-                    margin: "3px",
-                    marginRight: "5px",
-                    borderRadius: "50%",
-                    border: "solid 1px #979797",
-                    opacity: state.edit ? "0" : "1",
-                    "&:hover": {
-                      background: "#D6D6D6"
-                    }
+                    fontSize: "20px",
+                    borderRadius: "5px",
+                    padding: "0px 5px",
+                    width: "100%",
+                    border: "none"
                   }}
                 />
-              )}
-              {state.edit ? (
-                <form
-                  onSubmit={e => {
-                    e.preventDefault();
-                    const name = e.currentTarget[0].value;
-
-                    client.mutate({
-                      variables: {
-                        input: createTaskInput(name, props.id)
-                      },
-                      mutation: CREATE_TASK
-                    });
-
-                    return setState(state => ({
-                      ...state,
-                      name,
-                      edit: false
-                    }));
-                  }}
-                >
-                  <input
-                    autoFocus={true}
-                    type="text"
-                    placeholder="New Task"
-                    css={{
-                      fontSize: "20px",
-                      borderRadius: "5px",
-                      padding: "0px 5px",
-                      width: "100%",
-                      border: "none"
-                    }}
-                  />
-                </form>
-              ) : (
-                <span css={{ fontSize: "20px" }}>{state.name}</span>
-              )}
-            </div>
+              </form>
+            ) : (
+              <span css={{ fontSize: "20px" }}>{state.name}</span>
+            )}
           </div>
         </div>
         {state.showChildren && (

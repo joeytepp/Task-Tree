@@ -53,3 +53,12 @@ export const COMPLETE_TASK = gql`
     }
   }
 `;
+
+export const DELETE_TASK = gql`
+  mutation DeleteTask($id: String!) {
+    taskDelete(id: $id) {
+      deletedTaskId
+      numTasksDeleted
+    }
+  }
+`;
