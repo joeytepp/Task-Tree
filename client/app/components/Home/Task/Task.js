@@ -8,7 +8,6 @@ import { COLOR_MAP } from "../../../constants";
 import { ProjectsContext } from "../../../context/ProjectsContext";
 import { GET_TASK_WITH_CHILDREN } from "../../../graphql/queries";
 import { CREATE_TASK, COMPLETE_TASK } from "../../../graphql/mutations";
-import CheckMark from "../CheckMark/CheckMark";
 import exitButton from "../../../assets/img/exitCross.svg";
 
 const caretAnimation = keyframes`
@@ -59,6 +58,7 @@ const Task = props => {
   const [state, setState] = useState({
     showChildren: false,
     completed: false,
+    deleted: false,
     children: [],
     name: props.name,
     edit: props.edit
@@ -165,8 +165,8 @@ const Task = props => {
                   background: COLOR_MAP[project.color],
                   color: "white",
                   borderRadius: "5px",
-                  padding: "2px 5px",
-                  lineHeight: "20px"
+                  padding: "2px 5px"
+                  // lineHeight: "20px"
                 }}
               >
                 {project.name}
@@ -178,24 +178,31 @@ const Task = props => {
                 display: `${state.edit ? "none" : "block"}`
               }}
             >
-              <button
-                onClick={() => {
-                  props.destroy();
-                  client.mutate({ mutation: DELETE_TASK, variables: props.id });
-                }}
-                css={{
-                  width: "20px",
-                  height: "20px",
-                  background: "none",
-                  height: "20px",
-                  textAlign: "center",
-                  border: "none",
-                  backgroundImage: `url(${exitButton})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  backgroundSize: "100% auto"
-                }}
-              />
+              {!state.completed && !state.deleted && (
+                <button
+                  onClick={e => {
+                    e.stopPropagation();
+                    setState(state => ({ ...state, deleted: true }));
+                    props.destroy();
+                    client.mutate({
+                      mutation: DELETE_TASK,
+                      variables: props.id
+                    });
+                  }}
+                  css={{
+                    width: "20px",
+                    height: "20px",
+                    background: "none",
+                    height: "20px",
+                    textAlign: "center",
+                    border: "none",
+                    backgroundImage: `url(${exitButton})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    backgroundSize: "100% auto"
+                  }}
+                />
+              )}
             </div>
           </div>
           <div
@@ -205,12 +212,13 @@ const Task = props => {
               paddingTop: "5px"
             }}
           >
-            {state.completed || props.completed ? (
-              <CheckMark color={COLOR_MAP[project.color]} size={"14px"} />
-            ) : (
+            {!state.completed && !state.deleted && (
               <div
                 onClick={e => {
                   e.stopPropagation();
+
+                  if (state.edit) return;
+
                   setState(state => ({
                     ...state,
                     completed: true
@@ -237,6 +245,7 @@ const Task = props => {
                 }}
               />
             )}
+
             {state.edit ? (
               <form
                 onSubmit={e => {

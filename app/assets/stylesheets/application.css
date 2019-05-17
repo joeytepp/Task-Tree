@@ -63,22 +63,4 @@ input {
   font-size: 0px !important;
   border: none !important;
   border-radius: 0px !important;
-  animation: disappear 0.25s 0.25s;
-}
-
-.task-exit-active svg {
-  height: 0px;
-  transition: height 0.25s 0.25s;
-}
-
-@keyframes disappear {
-  0% {
-    opacity: 0px;
-    line-height: auto !important;
-  }
-
-  100% {
-    opacity: 0px;
-    line-height: 0px !important;
-  }
 }

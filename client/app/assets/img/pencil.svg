@@ -1,6 +1,6 @@
-<svg width="271px" height="271px" viewBox="0 0 271 271" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="Page-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#000000" transform="translate(138.547429, 132.796588) rotate(135.000000) translate(-138.547429, -132.796588) " x="-25.9525714" y="105.796588" width="329" height="54" rx="8"></rect>
-        <path d="M16.8197417,245.679266 L39.7927183,276.895315 L-14.2072817,276.895315 L8.76569489,245.679266 C10.4024607,243.455202 13.5322813,242.979103 15.7563449,244.615869 C16.1623952,244.914696 16.5209151,245.273215 16.8197417,245.679266 Z" id="Triangle" fill="#000000" transform="translate(12.792718, 258.551299) rotate(225.000000) translate(-12.792718, -258.551299) "></path>
+        <rect id="Rectangle" fill="#000000" transform="translate(167.410949, 132.410949) rotate(135.000000) translate(-167.410949, -132.410949) " x="2.9109486" y="105.410949" width="329" height="54" rx="8"></rect>
+        <path d="M24.6801679,256.423323 L47.0151597,314.328857 L-6.98484035,314.328857 L15.3501514,256.423323 C16.3439106,253.84691 19.2381071,252.563916 21.81452,253.557675 C23.1313864,254.065609 24.1722337,255.106457 24.6801679,256.423323 Z" id="Triangle" fill="#000000" transform="translate(20.015160, 279.328857) rotate(225.000000) translate(-20.015160, -279.328857) "></path>
     </g>
 </svg>
