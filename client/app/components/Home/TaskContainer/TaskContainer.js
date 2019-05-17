@@ -8,6 +8,7 @@ import {
   GET_ROOT_TASKS_BY_PROJECT
 } from "../../../graphql/queries";
 import { ProjectsContext } from "../../../context/ProjectsContext";
+import ProjectsModal from "../ProjectsModal/ProjectsModal";
 import Task from "../Task/Task";
 
 import blackPlus from "../../../assets/img/blackPlusButton.svg";
@@ -17,6 +18,7 @@ export default () => {
   const { client } = useContext(ApolloContext);
 
   const [tasks, setTasks] = useState([]);
+  const [chooseProject, setChooseProject] = useState(false);
 
   useEffect(() => {
     client
@@ -24,15 +26,15 @@ export default () => {
       .then(res => setTasks(res.data.rootTasks));
   }, [currentProject]);
 
-  function createNewTask() {
-    if (!currentProject || !currentProject.id)
-      return alert("Please select a project");
+  function createNewTask(project = currentProject) {
+    if (!project || !project.id) return setChooseProject(true);
 
     const newTasks = [
       {
         id: uuid.v4(),
         name: "",
-        projectId: currentProject.id,
+        projectId: project.id,
+        project,
         edit: true
       },
       ...tasks
@@ -79,6 +81,11 @@ export default () => {
           ))}
         </TransitionGroup>
       </div>
+      <ProjectsModal
+        showModal={chooseProject}
+        onRequestClose={() => setChooseProject(false)}
+        createNewTask={createNewTask}
+      />
     </div>
   );
 };
