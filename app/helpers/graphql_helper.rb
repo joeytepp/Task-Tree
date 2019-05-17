@@ -14,6 +14,7 @@ module GraphqlHelper
   def get_task_ids_to_update(root_task, find_opts = {})
     task_list = []
 
+    # Find the root task if the task is not root, otherwise get all the task's children
     if root_task.root?
       task_list = [root_task, *Task.where(root_id: root_task.id, **find_opts)]
     else
@@ -24,28 +25,25 @@ module GraphqlHelper
     accum_task_ids_from_hash(task_hash, root_task.id)
   end
 
+  # The following method creates a hash that represents the task tree
+  # from the given root in the input
+  # For example the tree
+  # Task 1
+  # |
+  # |------ Task 2
+  # |
+  # |------ Task 3
+  #           |
+  #           |------ Task 4
 
-=begin
-      The following method creates a hash that represents the task tree
-      from the given root in the input
-      For example the tree
-      Task 1
-      |
-      |------ Task 2
-      |
-      |------ Task 3
-                |
-                |------ Task 4
+  # becomes
 
-      becomes
+  # {
+  #   1: [2, 3],
+  #   3: [4]
+  # }
 
-      {
-        1: [2, 3],
-        3: [4]
-      }
-
-      Note that only tasks with children are keys in the hash
-=end
+  # Note that only tasks with children are keys in the hash
   def create_task_hash(task_list)
     task_hash = {}
 
@@ -59,13 +57,11 @@ module GraphqlHelper
     task_hash
   end
 
-=begin
-      The following method turns the hash representation of the task tree into
-      a 1-dimensional array of ids of tasks that should be updated. This is done by looping
-      through the hash and adding all children until a node with no leaves is found. The task_hash
-      is the hash representation of the tree, and the task_id is the id of the root node where the
-      accumulation begins
-=end
+  # The following method turns the hash representation of the task tree into
+  # a 1-dimensional array of ids of tasks that should be updated. This is done by looping
+  # through the hash and adding all children until a node with no leaves is found. The task_hash
+  # is the hash representation of the tree, and the task_id is the id of the root node where the
+  # accumulation begins
   def accum_task_ids_from_hash(task_hash, task_id)
     ids_to_update = [task_id]
 

@@ -62,3 +62,13 @@ export const DELETE_TASK = gql`
     }
   }
 `;
+
+export const UDPATE_TASK = gql`
+  mutation UpdateTask($id: String!, $input: TaskUpdateInput!) {
+    taskUpdate(id: $id, input: $input) {
+      task {
+        id
+      }
+    }
+  }
+`;

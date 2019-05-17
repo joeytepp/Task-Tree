@@ -1,14 +1,21 @@
 import React, { useContext, useState, useEffect } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import uuid from "uuid";
 import styled, { css, keyframes } from "styled-components";
 import { ApolloContext } from "react-apollo";
+import uuid from "uuid";
 
 import { COLOR_MAP } from "../../../constants";
 import { ProjectsContext } from "../../../context/ProjectsContext";
 import { GET_TASK_WITH_CHILDREN } from "../../../graphql/queries";
-import { CREATE_TASK, COMPLETE_TASK } from "../../../graphql/mutations";
+import {
+  COMPLETE_TASK,
+  CREATE_TASK,
+  UDPATE_TASK
+} from "../../../graphql/mutations";
+import EditButton from "./EditButton";
+
 import exitButton from "../../../assets/img/exitCross.svg";
+import pencil from "../../../assets/img/pencil.svg";
 
 const caretAnimation = keyframes`
   0% {
@@ -49,6 +56,11 @@ const rootCss = props => css`
   &:hover > ${Caret} {
     background: black;
   }
+
+  &:hover #edit-buttons {
+    opacity: 1;
+    transition: 0.2s;
+  }
 `;
 
 const Task = props => {
@@ -74,7 +86,16 @@ const Task = props => {
 
   const project = props.project || currentProject;
 
-  function createTaskInput(name, id) {
+  function createMutationVariables(name, id, saved) {
+    // Updating a saved task
+    if (saved) {
+      return {
+        id,
+        input: { name }
+      };
+    }
+
+    // Creating a new task
     const input = { name, id };
 
     if (!props.root) {
@@ -84,7 +105,7 @@ const Task = props => {
       input.projectId = project.id;
     }
 
-    return input;
+    return { input };
   }
 
   function childTasks() {
@@ -166,43 +187,45 @@ const Task = props => {
                   color: "white",
                   borderRadius: "5px",
                   padding: "2px 5px"
-                  // lineHeight: "20px"
                 }}
               >
                 {project.name}
               </span>
             </div>
             <div
+              id="edit-buttons"
               css={{
                 marginRight: "5px",
-                display: `${state.edit ? "none" : "block"}`
+                display: `${
+                  state.edit || state.completed || state.deleted
+                    ? "none"
+                    : "grid"
+                }`,
+                opacity: "0",
+                transition: "0.2s",
+                gridTemplateColumns: "min-content min-content min-content",
+                gridColumnGap: "5px"
               }}
             >
-              {!state.completed && !state.deleted && (
-                <button
-                  onClick={e => {
-                    e.stopPropagation();
-                    setState(state => ({ ...state, deleted: true }));
-                    props.destroy();
-                    client.mutate({
-                      mutation: DELETE_TASK,
-                      variables: props.id
-                    });
-                  }}
-                  css={{
-                    width: "20px",
-                    height: "20px",
-                    background: "none",
-                    height: "20px",
-                    textAlign: "center",
-                    border: "none",
-                    backgroundImage: `url(${exitButton})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    backgroundSize: "100% auto"
-                  }}
-                />
-              )}
+              <EditButton
+                backgroundImage={pencil}
+                onClick={e => {
+                  e.stopPropagation();
+                  setState(state => ({ ...state, edit: true, saved: true }));
+                }}
+              />
+              <EditButton
+                backgroundImage={exitButton}
+                onClick={e => {
+                  e.stopPropagation();
+                  setState(state => ({ ...state, deleted: true }));
+                  props.destroy();
+                  client.mutate({
+                    mutation: DELETE_TASK,
+                    variables: props.id
+                  });
+                }}
+              />
             </div>
           </div>
           <div
@@ -253,10 +276,12 @@ const Task = props => {
                   const name = e.currentTarget[0].value;
 
                   client.mutate({
-                    variables: {
-                      input: createTaskInput(name, props.id)
-                    },
-                    mutation: CREATE_TASK
+                    variables: createMutationVariables(
+                      name,
+                      props.id,
+                      state.saved
+                    ),
+                    mutation: state.saved ? UDPATE_TASK : CREATE_TASK
                   });
 
                   return setState(state => ({
