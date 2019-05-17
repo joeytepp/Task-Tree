@@ -1,7 +1,8 @@
 import React from "react";
-import ReactModal from "react-modal";
 import styled from "styled-components";
 import { Mutation } from "react-apollo";
+
+import Modal from "../Modal/Modal";
 
 const Button = styled.button`
   padding: 5px;
@@ -24,30 +25,7 @@ const Button = styled.button`
 export default props => (
   <Mutation mutation={props.mutation}>
     {mutate => (
-      <ReactModal
-        isOpen={props.showModal}
-        css={{
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          right: "auto",
-          bottom: "auto",
-          marginRight: "-50%",
-          transform: "translate(-50%, -50%)"
-        }}
-        style={{
-          overlay: {
-            backgroundColor: "rgba(0,0,0, 0.5)"
-          },
-          content: {
-            outline: "none"
-          }
-        }}
-        ariaHideApp={false}
-        shouldCloseOnEsc
-        shouldCloseOnOverlayClick
-        onRequestClose={props.onRequestClose}
-      >
+      <Modal {...props}>
         <div
           css={{
             background: "white",
@@ -88,7 +66,7 @@ export default props => (
             </Button>
           </div>
         </div>
-      </ReactModal>
+      </Modal>
     )}
   </Mutation>
 );

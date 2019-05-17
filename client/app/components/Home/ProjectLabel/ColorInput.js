@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import Circle from "./Circle";
-import { COLOR_MAP } from "../../../constants";
 import ColorModal from "./ColorModal";
+import { COLOR_MAP } from "../../../constants";
 
 export default props => {
   const [state, setState] = useState({
@@ -29,7 +29,16 @@ export default props => {
           }))
         }
       />
-      <ColorModal {...state} setState={setState} mutators={props.mutators} />
+      <ColorModal
+        {...state}
+        onRequestClose={() =>
+          setState(state => ({ ...state, showModal: false }))
+        }
+        onColorChange={colorKey => () => {
+          setState({ color: colorKey, showModal: false });
+          props.mutators[colorKey]();
+        }}
+      />
     </>
   );
 };
