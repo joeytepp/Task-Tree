@@ -42,3 +42,33 @@ export const CREATE_TASK = gql`
     }
   }
 `;
+
+export const COMPLETE_TASK = gql`
+  mutation CompleteTask($id: String!) {
+    taskComplete(id: $id) {
+      task {
+        id
+      }
+      numTasksCompleted
+    }
+  }
+`;
+
+export const DELETE_TASK = gql`
+  mutation DeleteTask($id: String!) {
+    taskDelete(id: $id) {
+      deletedTaskId
+      numTasksDeleted
+    }
+  }
+`;
+
+export const UDPATE_TASK = gql`
+  mutation UpdateTask($id: String!, $input: TaskUpdateInput!) {
+    taskUpdate(id: $id, input: $input) {
+      task {
+        id
+      }
+    }
+  }
+`;

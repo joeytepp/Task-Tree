@@ -6,7 +6,7 @@ module Queries
 
     description "Returns a task by identifier."
 
-    type Types::TaskType, null: false
+    type Objects::TaskType, null: false
 
     argument :id, String, required: true, description: "The identifier of the project."
 

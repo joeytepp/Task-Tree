@@ -1,12 +1,14 @@
-import uuid from "uuid";
 import React, { useContext, useState, useEffect } from "react";
-import { Query, ApolloContext } from "react-apollo";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { ApolloContext } from "react-apollo";
+import uuid from "uuid";
 
 import {
   GET_ALL_ROOT_TASKS,
   GET_ROOT_TASKS_BY_PROJECT
 } from "../../../graphql/queries";
 import { ProjectsContext } from "../../../context/ProjectsContext";
+import ProjectsModal from "../ProjectsModal/ProjectsModal";
 import Task from "../Task/Task";
 
 import blackPlus from "../../../assets/img/blackPlusButton.svg";
@@ -15,33 +17,30 @@ export default () => {
   const { currentProject } = useContext(ProjectsContext);
   const { client } = useContext(ApolloContext);
 
-  const [state, setState] = useState({
-    tasks: [],
-    loading: true
-  });
+  const [tasks, setTasks] = useState([]);
+  const [chooseProject, setChooseProject] = useState(false);
 
   useEffect(() => {
-    setState({ loading: true, tasks: [] });
-
     client
       .query(resolveQueryInfoFromProject(currentProject))
-      .then(res => setState({ loading: false, tasks: res.data.rootTasks }));
+      .then(res => setTasks(res.data.rootTasks));
   }, [currentProject]);
 
-  function createNewTask() {
-    const tasks = [...state.tasks];
+  function createNewTask(project = currentProject) {
+    if (!project || !project.id) return setChooseProject(true);
 
-    if (!currentProject || !currentProject.id)
-      return alert("Please select a project");
+    const newTasks = [
+      {
+        id: uuid.v4(),
+        name: "",
+        projectId: project.id,
+        project,
+        edit: true
+      },
+      ...tasks
+    ];
 
-    tasks.push({
-      id: uuid.v4(),
-      name: "",
-      projectId: currentProject.id,
-      edit: true
-    });
-
-    setState(state => ({ ...state, tasks }));
+    setTasks(newTasks);
   }
 
   return (
@@ -69,10 +68,24 @@ export default () => {
             }}
           />
         </h1>
-        {state.tasks.map(task => (
-          <Task root {...task} />
-        ))}
+        <TransitionGroup className="tasks">
+          {tasks.map(task => (
+            <CSSTransition classNames="task" timeout={500} key={task.id}>
+              <Task
+                root
+                key={task.id}
+                {...task}
+                destroy={() => setTasks(tasks.filter(t => t.id !== task.id))}
+              />
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
       </div>
+      <ProjectsModal
+        showModal={chooseProject}
+        onRequestClose={() => setChooseProject(false)}
+        createNewTask={createNewTask}
+      />
     </div>
   );
 };

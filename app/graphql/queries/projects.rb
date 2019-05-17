@@ -5,7 +5,7 @@ module Queries
     include GraphqlHelper
     description "Returns all project resources for a user."
 
-    type [Types::ProjectType], null: false
+    type [Objects::ProjectType], null: false
 
     def resolve
       must_be_authenticated!

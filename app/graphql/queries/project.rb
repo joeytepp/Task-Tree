@@ -7,7 +7,7 @@ module Queries
     description "Returns all project resources for a user."
     argument :id, String, required: true, description: "The identifier of the project"
 
-    type Types::ProjectType, null: false
+    type Objects::ProjectType, null: false
 
     def resolve(id:)
       must_be_authenticated!

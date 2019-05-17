@@ -1,36 +1,11 @@
 import React from "react";
-import ReactModal from "react-modal";
 
 import { COLOR_MAP } from "../../../constants";
 import Circle from "./Circle";
+import Modal from "../../Modal/Modal";
 
 export default props => (
-  <ReactModal
-    isOpen={props.showModal}
-    css={{
-      position: "fixed",
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)"
-    }}
-    style={{
-      overlay: {
-        backgroundColor: "rgba(0,0,0, 0.5)"
-      },
-      content: {
-        outline: "none"
-      }
-    }}
-    ariaHideApp={false}
-    shouldCloseOnEsc
-    shouldCloseOnOverlayClick
-    onRequestClose={() =>
-      props.setState(state => ({ ...state, showModal: false }))
-    }
-  >
+  <Modal {...props}>
     <div
       css={{
         background: "white",
@@ -41,9 +16,9 @@ export default props => (
         borderRadius: "5px"
       }}
     >
-      {Object.keys(COLOR_MAP).map((colorKey, i) => (
+      {Object.keys(COLOR_MAP).map(colorKey => (
         <Circle
-          key={i}
+          key={colorKey}
           size="20px"
           css={{
             margin: "10px",
@@ -54,12 +29,9 @@ export default props => (
             }
           }}
           color={COLOR_MAP[colorKey]}
-          onClick={() => {
-            props.setState({ color: colorKey, showModal: false });
-            props.mutators[colorKey]();
-          }}
+          onClick={props.onColorChange(colorKey)}
         />
       ))}
     </div>
-  </ReactModal>
+  </Modal>
 );

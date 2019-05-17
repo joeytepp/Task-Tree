@@ -39,6 +39,7 @@
     "react-hot-loader": "^4.3.6",
     "react-modal": "^3.8.1",
     "react-on-rails": "11.2.2",
+    "react-transition-group": "^4.0.1",
     "sass-resources-loader": "1.2.1",
     "style-loader": "^0.18.2",
     "styled-components": "^4.2.0",

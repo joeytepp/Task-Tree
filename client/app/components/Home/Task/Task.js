@@ -1,19 +1,41 @@
 import React, { useContext, useState, useEffect } from "react";
-import styled, { css } from "styled-components";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import styled, { css, keyframes } from "styled-components";
+import { ApolloContext } from "react-apollo";
 import uuid from "uuid";
 
 import { COLOR_MAP } from "../../../constants";
 import { ProjectsContext } from "../../../context/ProjectsContext";
-import { ApolloContext } from "react-apollo";
 import { GET_TASK_WITH_CHILDREN } from "../../../graphql/queries";
-import { CREATE_TASK } from "../../../graphql/mutations";
+import {
+  COMPLETE_TASK,
+  CREATE_TASK,
+  UDPATE_TASK
+} from "../../../graphql/mutations";
+import EditButton from "./EditButton";
+
+import exitButton from "../../../assets/img/exitCross.svg";
+import pencil from "../../../assets/img/pencil.svg";
+
+const caretAnimation = keyframes`
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+`;
 
 const Caret = styled.div`
   border-radius: 5px;
   width: 10px;
   margin-right: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 100%;
   background: #6d6d6d;
   transition: background-color 0.3s;
+  animation: ${caretAnimation} 0.2s linear;
 `;
 
 const rootCss = props => css`
@@ -34,6 +56,11 @@ const rootCss = props => css`
   &:hover > ${Caret} {
     background: black;
   }
+
+  &:hover #edit-buttons {
+    opacity: 1;
+    transition: 0.2s;
+  }
 `;
 
 const Task = props => {
@@ -42,19 +69,34 @@ const Task = props => {
 
   const [state, setState] = useState({
     showChildren: false,
+    completed: false,
+    deleted: false,
     children: [],
     name: props.name,
     edit: props.edit
   });
 
   useEffect(() => {
-    setState({ edit: props.edit, name: props.name });
-  }, [props.edit, props.name]);
+    setState(state => ({
+      ...state,
+      edit: props.edit,
+      name: props.name
+    }));
+  }, [props.edit, props.name, props.completed]);
 
   const project = props.project || currentProject;
 
-  function createTaskInput(name) {
-    const input = { name };
+  function createMutationVariables(name, id, saved) {
+    // Updating a saved task
+    if (saved) {
+      return {
+        id,
+        input: { name }
+      };
+    }
+
+    // Creating a new task
+    const input = { name, id };
 
     if (!props.root) {
       input.parentId = props.parentId;
@@ -63,20 +105,34 @@ const Task = props => {
       input.projectId = project.id;
     }
 
-    return input;
+    return { input };
   }
 
   function childTasks() {
     if (!state.showChildren) return "";
 
-    return state.children.map(child => (
-      <Task
-        {...child}
-        project={project}
-        parentId={props.id}
-        rootId={props.rootId || props.id}
-      />
-    ));
+    return (
+      <TransitionGroup className="tasks">
+        {state.children.map(child => (
+          <CSSTransition classNames="task" timeout={500} key={child.id}>
+            <Task
+              destroy={() =>
+                setState(state => ({
+                  ...state,
+                  children: state.children.filter(c => c.id !== child.id)
+                }))
+              }
+              key={child.id}
+              {...child}
+              project={project}
+              parentId={props.id}
+              completed={state.completed || props.completed}
+              rootId={props.rootId || props.id}
+            />
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
+    );
   }
 
   return (
@@ -116,28 +172,88 @@ const Task = props => {
             borderRadius: "5px"
           }}
         >
-          <div>
-            <span
-              css={{
-                fontSize: "15px",
-                background: COLOR_MAP[project.color],
-                color: "white",
-                borderRadius: "5px",
-                padding: "2px 5px",
-                lineHeight: "20px"
-              }}
-            >
-              {project.name}
-            </span>
+          <div
+            css={{
+              display: "grid",
+              gridTemplateColumns: "1fr min-content",
+              whiteSpace: "nowrap"
+            }}
+          >
+            <div>
+              <span
+                css={{
+                  fontSize: "15px",
+                  background: COLOR_MAP[project.color],
+                  color: "white",
+                  borderRadius: "5px",
+                  padding: "2px 5px"
+                }}
+              >
+                {project.name}
+              </span>
+            </div>
             <div
+              id="edit-buttons"
               css={{
-                display: "grid",
-                gridTemplateColumns: "min-content 1fr",
-                paddingTop: "5px",
-                height: "40px"
+                marginRight: "5px",
+                display: `${
+                  state.edit || state.completed || state.deleted
+                    ? "none"
+                    : "grid"
+                }`,
+                opacity: "0",
+                transition: "0.2s",
+                gridTemplateColumns: "min-content min-content min-content",
+                gridColumnGap: "5px"
               }}
             >
+              <EditButton
+                backgroundImage={pencil}
+                onClick={e => {
+                  e.stopPropagation();
+                  setState(state => ({ ...state, edit: true, saved: true }));
+                }}
+              />
+              <EditButton
+                backgroundImage={exitButton}
+                onClick={e => {
+                  e.stopPropagation();
+                  setState(state => ({ ...state, deleted: true }));
+                  props.destroy();
+                  client.mutate({
+                    mutation: DELETE_TASK,
+                    variables: props.id
+                  });
+                }}
+              />
+            </div>
+          </div>
+          <div
+            css={{
+              display: "grid",
+              gridTemplateColumns: "min-content 1fr",
+              paddingTop: "5px"
+            }}
+          >
+            {!state.completed && !state.deleted && (
               <div
+                onClick={e => {
+                  e.stopPropagation();
+
+                  if (state.edit) return;
+
+                  setState(state => ({
+                    ...state,
+                    completed: true
+                  }));
+
+                  client.mutate({
+                    mutation: COMPLETE_TASK,
+                    variables: { id: props.id }
+                  });
+
+                  props.destroy();
+                }}
                 css={{
                   width: "14px",
                   height: "14px",
@@ -145,61 +261,72 @@ const Task = props => {
                   marginRight: "5px",
                   borderRadius: "50%",
                   border: "solid 1px #979797",
-                  opacity: state.edit ? "0" : "1"
+                  opacity: state.edit ? "0" : "1",
+                  "&:hover": {
+                    background: "#D6D6D6"
+                  }
                 }}
               />
-              {state.edit ? (
-                <form
-                  onSubmit={e => {
-                    e.preventDefault();
-                    const name = e.currentTarget[0].value;
+            )}
 
-                    client.mutate({
-                      variables: {
-                        input: createTaskInput(name)
-                      },
-                      mutation: CREATE_TASK
-                    });
+            {state.edit ? (
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  const name = e.currentTarget[0].value;
 
-                    return setState(state => ({ ...state, name, edit: false }));
+                  client.mutate({
+                    variables: createMutationVariables(
+                      name,
+                      props.id,
+                      state.saved
+                    ),
+                    mutation: state.saved ? UDPATE_TASK : CREATE_TASK
+                  });
+
+                  return setState(state => ({
+                    ...state,
+                    name,
+                    edit: false
+                  }));
+                }}
+              >
+                <input
+                  autoFocus={true}
+                  type="text"
+                  placeholder="New Task"
+                  css={{
+                    fontSize: "20px",
+                    borderRadius: "5px",
+                    padding: "0px 5px",
+                    width: "100%",
+                    border: "none"
                   }}
-                >
-                  <input
-                    autoFocus={true}
-                    type="text"
-                    placeholder="New Task"
-                    css={{
-                      fontSize: "20px",
-                      borderRadius: "5px",
-                      padding: "0px 5px",
-                      width: "100%",
-                      border: "none"
-                    }}
-                  />
-                </form>
-              ) : (
-                <span css={{ fontSize: "20px" }}>{state.name}</span>
-              )}
-            </div>
+                />
+              </form>
+            ) : (
+              <span css={{ fontSize: "20px" }}>{state.name}</span>
+            )}
           </div>
         </div>
         {state.showChildren && (
           <button
             css={{ background: "black", color: "white", borderRadius: "5px" }}
-            onClick={() =>
+            onClick={() => {
               setState(state => {
-                const children = [...state.children];
-
-                children.push({
-                  id: uuid.v4(),
-                  edit: true,
-                  name: "",
-                  projectId: project.id
-                });
+                const children = [
+                  {
+                    id: uuid.v4(),
+                    edit: true,
+                    name: "",
+                    projectId: project.id
+                  },
+                  ...state.children
+                ];
 
                 return { ...state, children };
-              })
-            }
+              });
+            }}
           >
             + New Task
           </button>

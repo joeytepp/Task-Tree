@@ -2,6 +2,6 @@
 
 module Payloads
   class TaskUpdatePayloadType < BasePayload
-    field :task, type: Types::TaskType, null: true, description: "The updated task."
+    field :task, type: Objects::TaskType, null: true, description: "The updated task."
   end
 end

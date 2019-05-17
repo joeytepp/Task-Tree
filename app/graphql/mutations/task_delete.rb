@@ -12,13 +12,12 @@ module Mutations
 
     def resolve(id:)
       must_be_authenticated!
+      root_task = ::Task.joins(project: :users).where(users: { id: context[:user_id] }).find_by!(id: id)
 
-      user = User.find_by(id: context[:user_id])
-      task = Task.find_by!(id: id, project: [user.projects])
+      task_ids_to_delete = get_task_ids_to_update(root_task)
+      deleted_tasks = Task.where(id: [task_ids_to_delete]).destroy_all
 
-      task.destroy!
-
-      { deleted_task_id: task.id }
+      { num_tasks_deleted: deleted_tasks.length, deleted_task_id: root_task.id }
     rescue ActiveRecord::RecordNotFound
       raise Errors::NotFoundError, "Could not find the task with identifier #{id}."
     end

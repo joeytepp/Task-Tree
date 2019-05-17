@@ -16,6 +16,7 @@ export default () => {
           gridTemplateColumns: "auto auto",
           width: "100vw",
           background: COLOR_MAP[color],
+          transition: "background 0.2s",
           height: "min-content",
           boxShadow: "0px 1px 1px black"
         }}

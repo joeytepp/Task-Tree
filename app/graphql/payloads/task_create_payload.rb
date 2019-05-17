@@ -2,6 +2,6 @@
 
 module Payloads
   class TaskCreatePayload < BasePayload
-    field :task, type: Types::TaskType, null: true, description: "The task that has been created"
+    field :task, type: Objects::TaskType, null: true, description: "The task that has been created"
   end
 end

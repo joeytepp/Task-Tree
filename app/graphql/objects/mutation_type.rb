@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Types
-  class MutationType < Types::BaseObject
+module Objects
+  class MutationType < BaseObject
     # Project mutations
     field :project_create, resolver: Mutations::ProjectCreate
     field :project_update, resolver: Mutations::ProjectUpdate
@@ -11,5 +11,6 @@ module Types
     field :task_create, resolver: Mutations::TaskCreate
     field :task_update, resolver: Mutations::TaskUpdate
     field :task_delete, resolver: Mutations::TaskDelete
+    field :task_complete, resolver: Mutations::TaskComplete
   end
 end
