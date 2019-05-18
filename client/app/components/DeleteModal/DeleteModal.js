@@ -48,7 +48,8 @@ export default props => (
               color="#b22222"
               hoverColor="#be4242"
               focusColor="#9b0c0c"
-              onClick={() => {
+              onClick={e => {
+                e.stopPropagation();
                 mutate({ variables: props.variables });
                 props.updateAfterDelete();
                 props.onRequestClose();
@@ -60,7 +61,10 @@ export default props => (
               color="#a4a3a3"
               hoverColor="#6d6d6d"
               focusColor="#000000"
-              onClick={props.onRequestClose}
+              onClick={e => {
+                e.stopPropagation();
+                props.onRequestClose();
+              }}
             >
               Cancel
             </Button>
