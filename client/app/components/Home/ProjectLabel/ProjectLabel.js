@@ -7,6 +7,8 @@ import { ProjectsContext } from "../../../context/ProjectsContext";
 import { ColorContext } from "../../../context/ColorContext";
 import { CREATE_NEW_PROJECT, UPDATE_PROJECT } from "../../../graphql/mutations";
 
+const RED = "RED";
+
 function createMutationVariables(props, input) {
   if (!props.saved) {
     return {
@@ -24,7 +26,9 @@ function createMutationVariables(props, input) {
 }
 
 export default props => {
-  const { setProjects, setCurrentProject } = useContext(ProjectsContext);
+  const { setProjects, currentProject, setCurrentProject } = useContext(
+    ProjectsContext
+  );
   const { setColor } = useContext(ColorContext);
 
   const onFormSubmitted = mutate => input => {
@@ -79,6 +83,13 @@ export default props => {
       {...props}
       edit={setEditable(true)}
       delete={removeProject}
+      resetProject={() => {
+        // TODO: Find a better way of representing the "ALL TASKS" projects
+        if (props.id === currentProject.id) {
+          setCurrentProject({ name: "All Tasks", color: RED });
+          setColor(RED);
+        }
+      }}
       setCurrentProject={() => {
         setCurrentProject(props);
         setColor(props.color);

@@ -92,7 +92,10 @@ export default props => {
         showModal={showModal}
         name={props.name}
         onRequestClose={() => setShowModal(false)}
-        updateAfterDelete={props.delete}
+        updateAfterDelete={() => {
+          props.resetProject();
+          props.delete();
+        }}
         mutation={DELETE_PROJECT}
         variables={{ id: props.id }}
       />
