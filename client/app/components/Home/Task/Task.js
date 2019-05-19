@@ -4,15 +4,17 @@ import styled, { css, keyframes } from "styled-components";
 import { ApolloContext } from "react-apollo";
 import uuid from "uuid";
 
-import { COLOR_MAP } from "../../../constants";
 import { ProjectsContext } from "../../../context/ProjectsContext";
+import EditButton from "./EditButton";
+
 import { GET_TASK_WITH_CHILDREN } from "../../../graphql/queries";
+import { COLOR_MAP } from "../../../constants";
 import {
   COMPLETE_TASK,
   CREATE_TASK,
-  UDPATE_TASK
+  UDPATE_TASK,
+  DELETE_TASK
 } from "../../../graphql/mutations";
-import EditButton from "./EditButton";
 
 import exitButton from "../../../assets/img/exitCross.svg";
 import pencil from "../../../assets/img/pencil.svg";
@@ -222,7 +224,7 @@ const Task = props => {
                   props.destroy();
                   client.mutate({
                     mutation: DELETE_TASK,
-                    variables: props.id
+                    variables: { id: props.id }
                   });
                 }}
               />
