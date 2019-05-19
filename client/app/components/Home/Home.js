@@ -7,20 +7,24 @@ import ProjectSideBar from "./ProjectSideBar/ProjectSideBar";
 import TaskContainer from "./TaskContainer/TaskContainer";
 import Backdrop from "./Backdrop/Backdrop";
 import Header from "./Header/Header";
-import client from "../../graphql/client";
+import createClient from "../../graphql/client";
 
-const Home = () => (
-  <ApolloProvider client={client}>
-    <ColorContextProvider>
-      <Backdrop>
-        <Header />
-        <ProjectsContextProvider>
-          <ProjectSideBar />
-          <TaskContainer />
-        </ProjectsContextProvider>
-      </Backdrop>
-    </ColorContextProvider>
-  </ApolloProvider>
-);
+const Home = (_, railsContext) => {
+  const client = createClient(railsContext);
+
+  return (
+    <ApolloProvider client={client}>
+      <ColorContextProvider>
+        <Backdrop>
+          <Header />
+          <ProjectsContextProvider>
+            <ProjectSideBar />
+            <TaskContainer />
+          </ProjectsContextProvider>
+        </Backdrop>
+      </ColorContextProvider>
+    </ApolloProvider>
+  );
+};
 
 export default Home;
