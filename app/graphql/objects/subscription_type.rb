@@ -2,11 +2,8 @@
 
 module Objects
   class SubscriptionType < BaseObject
-    field :task_created, TaskType, null: false, description: "A new task was created." do
-      argument :parent_id, String, required: true
-    end
-
-    def task_created(parent_id:)
+    field :task_updated, TaskType, null: false, description: "A task was updated." do
+      argument :id, String, required: true
     end
   end
 end

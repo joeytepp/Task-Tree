@@ -18,6 +18,8 @@ module Mutations
       task = Task.find_by(id: id, project: [user.projects])
       task.update(input.to_h)
 
+      ::TaskTreeSchema.subscriptions.trigger "taskUpdated", { id: task.id }, task, scope: context[:user_id]
+
       { task: task }
     end
   end
