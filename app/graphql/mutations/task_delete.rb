@@ -8,7 +8,7 @@ module Mutations
 
     type Payloads::TaskDeletePayload
 
-    argument :id, String, required: true, description: "The identifier of the project to delete."
+    argument :id, String, "The identifier of the project to delete.", required: true
 
     def resolve(id:)
       must_be_authenticated!

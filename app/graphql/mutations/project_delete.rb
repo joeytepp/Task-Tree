@@ -6,7 +6,7 @@ module Mutations
 
     description "Deletes a project by identifier."
     type Payloads::ProjectDeletePayloadType
-    argument :id, String, required: true, description: "The identifier of the project to be deleted."
+    argument :id, String, "The identifier of the project to be deleted.", required: true
 
     def resolve(id:)
       must_be_authenticated!

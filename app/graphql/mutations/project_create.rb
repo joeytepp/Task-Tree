@@ -6,7 +6,7 @@ module Mutations
 
     type Payloads::ProjectCreatePayloadType
     description "Creates a new project resource"
-    argument :input, Inputs::ProjectCreateInputType, required: true, description: "The project to be created."
+    argument :input, Inputs::ProjectCreateInputType, "The project to be created.", required: true
 
     def resolve(input:)
       must_be_authenticated!

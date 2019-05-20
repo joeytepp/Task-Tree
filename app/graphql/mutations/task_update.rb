@@ -6,8 +6,8 @@ module Mutations
 
     description "Updates a task by identifier."
 
-    argument :id, String, required: true, description: "The identifier of the project."
-    argument :input, Inputs::TaskUpdateInputType, required: true, description: "The task to be updated."
+    argument :id, String, "The identifier of the project.", required: true
+    argument :input, Inputs::TaskUpdateInputType, "The task to be updated.", required: true
 
     type Payloads::TaskUpdatePayloadType
 

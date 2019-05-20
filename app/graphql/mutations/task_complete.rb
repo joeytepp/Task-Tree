@@ -8,7 +8,7 @@ module Mutations
 
     type Payloads::TaskCompletePayloadType
 
-    argument :id, String, required: true, description: "The identifier of the task completed."
+    argument :id, String, "The identifier of the task completed.", required: true
 
     def resolve(id:)
       must_be_authenticated!
