@@ -14,11 +14,12 @@ module Mutations
     def resolve(id:, input:)
       must_be_authenticated!
 
-      user = User.find_by(id: context[:user_id])
-      task = Task.find_by(id: id, project: [user.projects])
+      task = Task.joins(project: :users).where(users: { id: context[:user_id] }).find_by(id: id)
       task.update(input.to_h)
 
-      ::TaskTreeSchema.subscriptions.trigger "taskUpdated", { id: task.id }, task, scope: context[:user_id]
+      task.project.users.each do |user|
+        TaskTreeSchema.subscriptions.trigger "taskUpdated", { id: task.id }, task, scope: user.id unless user.id === context[:user_id]
+      end
 
       { task: task }
     end

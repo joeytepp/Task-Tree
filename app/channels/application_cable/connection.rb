@@ -2,11 +2,10 @@
 
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    identified_by :current_user
+    identified_by :user_id
 
-    def current_user
-      byebug
-      User.where(email: "joey.tepperman@queensu.ca") || reject_unauthorized_connection
+    def user_id
+      request.session[:user_id]
     end
   end
 end

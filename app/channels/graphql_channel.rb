@@ -9,11 +9,9 @@ class GraphqlChannel < ApplicationCable::Channel
     query = data["query"]
     variables = data["variables"]
     operation_name = data["operationName"]
-    byebug
     context = {
-      current_user: current_user,
-      current_user_id: current_user.id,
-      channel: self
+      channel: self,
+      user_id: user_id
     }
 
     result = ::TaskTreeSchema.execute(
@@ -24,7 +22,7 @@ class GraphqlChannel < ApplicationCable::Channel
     )
 
     payload = {
-      result: result.subscription? ? nil : result.to_h,
+      result: result.subscription? ? { data: nil } : result.to_h,
       more: result.subscription?,
     }
 
@@ -37,7 +35,7 @@ class GraphqlChannel < ApplicationCable::Channel
 
   def unsubscribed
     @subscription_ids.each do |id|
-      RailsRelaySchema.subscriptions.delete_subscription id
+      TaskTreeSchema.subscriptions.delete_subscription id
     end
   end
 end
