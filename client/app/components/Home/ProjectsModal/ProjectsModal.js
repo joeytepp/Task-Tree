@@ -22,39 +22,41 @@ export default props => {
           >
             <h3>Choose a project...</h3>
           </div>
-          {projects.map(project => (
-            <div
-              key={project.id}
-              onClick={() => {
-                props.createNewTask(project);
-                props.onRequestClose();
-              }}
-              css={{
-                cursor: "default",
-                display: "grid",
-                padding: "5px 15px",
-                gridTemplateColumns: "min-content 1fr",
-                "&:hover": {
-                  background: "#EEEEEE"
-                },
-                "&:active": {
-                  background: "#D8D8D8"
-                }
-              }}
-            >
+          <div css={{ paddingBottom: "5px" }}>
+            {projects.map(project => (
               <div
-                css={{
-                  width: "14px",
-                  height: "14px",
-                  borderRadius: "50%",
-                  marginRight: "10px",
-                  verticalAlign: "center",
-                  background: COLOR_MAP[project.color]
+                key={project.id}
+                onClick={() => {
+                  props.createNewTask(project);
+                  props.onRequestClose();
                 }}
-              />
-              <div key={project.name}>{project.name}</div>
-            </div>
-          ))}
+                css={{
+                  cursor: "default",
+                  display: "grid",
+                  padding: "5px 15px",
+                  gridTemplateColumns: "min-content 1fr",
+                  "&:hover": {
+                    background: "#EEEEEE"
+                  },
+                  "&:active": {
+                    background: "#D8D8D8"
+                  }
+                }}
+              >
+                <div
+                  css={{
+                    width: "14px",
+                    height: "14px",
+                    borderRadius: "50%",
+                    marginRight: "10px",
+                    verticalAlign: "center",
+                    background: COLOR_MAP[project.color]
+                  }}
+                />
+                <div key={project.name}>{project.name}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Modal>

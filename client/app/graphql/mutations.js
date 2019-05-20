@@ -1,4 +1,4 @@
-const { gql } = require("apollo-boost");
+import gql from "graphql-tag";
 
 export const CREATE_NEW_PROJECT = gql`
   mutation CreateNewProject($input: ProjectCreateInput!) {

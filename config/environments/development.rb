@@ -56,6 +56,10 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  # Allow connecting to action_cable from outside the rails app
+  config.action_cable.allowed_request_origins = ["X.X.X.X"]
+  config.action_cable.disable_request_forgery_protection = true
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

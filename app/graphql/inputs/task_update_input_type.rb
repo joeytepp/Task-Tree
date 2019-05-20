@@ -2,6 +2,6 @@
 
 module Inputs
   class TaskUpdateInputType < BaseInputObject
-    argument :name, String, required: false, description: "The name of the project."
+    argument :name, String, "The name of the project.", required: false
   end
 end

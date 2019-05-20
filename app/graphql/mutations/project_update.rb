@@ -7,8 +7,8 @@ module Mutations
     description "Updates a project by identifier."
 
     type Payloads::ProjectUpdatePayloadType
-    argument :id, String, required: true, description: "The identifier of the project."
-    argument :input, Inputs::ProjectUpdateInputType, required: true, description: "The project to be updated."
+    argument :id, String, "The identifier of the project.", required: true
+    argument :input, Inputs::ProjectUpdateInputType, "The project to be updated.", required: true
 
     def resolve(id:, input:)
       must_be_authenticated!

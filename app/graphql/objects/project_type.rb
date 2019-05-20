@@ -11,6 +11,7 @@ module Objects
 
     field :tasks, [TaskType], null: false, description: "The tasks in the project."
 
+    # TODO: Make this a relay connection
     def tasks
       object.tasks
     end

@@ -16,4 +16,8 @@ class Task < ApplicationRecord
   def root?
     root_id.nil? && parent_id.nil?
   end
+
+  def owned_by?(user_id)
+    project.users.map { |u| u.id }.include? user_id
+  end
 end

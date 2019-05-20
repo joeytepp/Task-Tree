@@ -8,7 +8,7 @@ module Queries
 
     type [Objects::TaskType], null: false
 
-    argument :project_id, String, required: false, description: "The identifier of the project."
+    argument :project_id, String, "The identifier of the project.", required: false
 
     def resolve(args = {})
       must_be_authenticated!

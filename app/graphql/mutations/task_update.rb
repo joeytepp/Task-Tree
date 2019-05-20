@@ -6,17 +6,20 @@ module Mutations
 
     description "Updates a task by identifier."
 
-    argument :id, String, required: true, description: "The identifier of the project."
-    argument :input, Inputs::TaskUpdateInputType, required: true, description: "The task to be updated."
+    argument :id, String, "The identifier of the project.", required: true
+    argument :input, Inputs::TaskUpdateInputType, "The task to be updated.", required: true
 
     type Payloads::TaskUpdatePayloadType
 
     def resolve(id:, input:)
       must_be_authenticated!
 
-      user = User.find_by(id: context[:user_id])
-      task = Task.find_by(id: id, project: [user.projects])
+      task = Task.joins(project: :users).where(users: { id: context[:user_id] }).find_by(id: id)
       task.update(input.to_h)
+
+      task.project.users.each do |user|
+        TaskTreeSchema.subscriptions.trigger "taskUpdated", { id: task.id }, task, scope: user.id unless user.id === context[:user_id]
+      end
 
       { task: task }
     end

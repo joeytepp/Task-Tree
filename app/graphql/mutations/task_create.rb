@@ -8,7 +8,7 @@ module Mutations
 
     type Payloads::TaskCreatePayload
 
-    argument :input, Inputs::TaskCreateInputType, required: true, description: "The task to be created."
+    argument :input, Inputs::TaskCreateInputType, "The task to be created.", required: true
 
     def resolve(input:)
       must_be_authenticated!

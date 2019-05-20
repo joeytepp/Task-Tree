@@ -5,7 +5,7 @@ module Queries
     include GraphqlHelper
 
     description "Returns all project resources for a user."
-    argument :id, String, required: true, description: "The identifier of the project"
+    argument :id, String, "The identifier of the project", required: true
 
     type Objects::ProjectType, null: false
 

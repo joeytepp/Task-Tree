@@ -27,7 +27,7 @@ gem "foreman"
 gem "react_on_rails", "11.2.2"
 
 # GraphQL related gems
-gem "graphql"
+gem "graphql", "1.9.4"
 gem "graphql_playground-rails"
 
 # Use CoffeeScript for .coffee assets and views

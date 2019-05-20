@@ -56,7 +56,7 @@ export default () => {
           {(currentProject && currentProject.name) || "All Tasks"}{" "}
           <img
             src={blackPlus}
-            onClick={createNewTask}
+            onClick={() => createNewTask()}
             css={{
               transition: "transform 0.5s",
               height: "1em",
