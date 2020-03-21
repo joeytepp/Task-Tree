@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
+import { ColorContext } from "../../../context/ColorContext";
 import Circle from "./Circle";
 import ColorModal from "./ColorModal";
 import { COLOR_MAP } from "../../../constants";
@@ -9,6 +10,8 @@ export default props => {
     color: props.color,
     showModal: false
   });
+
+  const { setColor } = useContext(ColorContext);
 
   return (
     <>
@@ -37,6 +40,7 @@ export default props => {
         onColorChange={colorKey => () => {
           setState({ color: colorKey, showModal: false });
           props.mutators[colorKey]();
+          setColor(colorKey);
         }}
       />
     </>
