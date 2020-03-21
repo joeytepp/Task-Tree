@@ -40,7 +40,7 @@ projects = Project.create([{
 project_users = []
 
 users.each_with_index do |user, i|
-  project_users = project_users | [{user_id: user.id, project_id: projects[i].id}, {user_id: user.id, project_id: projects[-1].id}]
+  project_users = project_users | [{ user_id: user.id, project_id: projects[i].id }, { user_id: user.id, project_id: projects[-1].id }]
 end
 
 ProjectUser.create(project_users)
