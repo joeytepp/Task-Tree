@@ -31,6 +31,10 @@ export const GET_ROOT_TASKS_BY_PROJECT = gql`
       id
       name
       completed
+      project {
+        name
+        color
+      }
     }
   }
 `;

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 
 import { ColorContext } from "../../../context/ColorContext";
+import { ProjectsContext } from "../../../context/ProjectsContext";
 import Circle from "./Circle";
 import ColorModal from "./ColorModal";
 import { COLOR_MAP } from "../../../constants";
@@ -12,7 +13,7 @@ export default props => {
   });
 
   const { setColor } = useContext(ColorContext);
-
+  const { currentProject } = useContext(ProjectsContext);
   return (
     <>
       <input {...props.input} name="color" value={state.color} type="hidden" />
@@ -40,7 +41,8 @@ export default props => {
         onColorChange={colorKey => () => {
           setState({ color: colorKey, showModal: false });
           props.mutators[colorKey]();
-          setColor(colorKey);
+          if (currentProject && currentProject.name === props.name)
+            setColor(colorKey);
         }}
       />
     </>

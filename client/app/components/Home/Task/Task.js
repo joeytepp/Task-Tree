@@ -5,6 +5,7 @@ import { ApolloContext, Subscription } from "react-apollo";
 import uuid from "uuid";
 
 import { ProjectsContext } from "../../../context/ProjectsContext";
+import { ColorContext } from "../../../context/ColorContext";
 import EditButton from "./EditButton";
 
 import { GET_TASK_WITH_CHILDREN } from "../../../graphql/queries";
@@ -69,6 +70,7 @@ const rootCss = props => css`
 const Task = props => {
   const { currentProject } = useContext(ProjectsContext);
   const { client } = useContext(ApolloContext);
+  const { color } = useContext(ColorContext);
 
   const [state, setState] = useState({
     showChildren: false,
@@ -197,7 +199,10 @@ const Task = props => {
                   <span
                     css={{
                       fontSize: "15px",
-                      background: COLOR_MAP[project.color],
+                      background:
+                        COLOR_MAP[
+                          resolveColor(currentProject, props.project, color)
+                        ],
                       color: "white",
                       borderRadius: "5px",
                       padding: "2px 5px"
@@ -360,5 +365,13 @@ const Task = props => {
     </Subscription>
   );
 };
+
+function resolveColor(currentProject, project, currentColor) {
+  console.log(currentProject, project, currentColor);
+  if (currentProject && currentProject.name === project.name)
+    return currentColor;
+
+  return project.color;
+}
 
 export default Task;

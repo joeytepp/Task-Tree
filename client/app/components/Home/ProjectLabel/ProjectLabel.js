@@ -74,7 +74,14 @@ export default props => {
         <ProjectForm
           {...props}
           onSubmit={onFormSubmitted(mutate)}
-          cancel={props.saved ? setEditable(false) : removeProject}
+          cancel={e => {
+            if (props.saved) {
+              setEditable(false)(e);
+              setColor(props.color);
+            } else {
+              removeProject(e);
+            }
+          }}
         />
       )}
     </Mutation>

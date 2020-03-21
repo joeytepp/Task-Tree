@@ -12,6 +12,7 @@ export default props => (
       borderRadius: "50%",
       textAlign: "center",
       border: "solid 1px #979797",
+      backgroundColor: "white",
       backgroundImage: `url(${props.backgroundImage})`,
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
