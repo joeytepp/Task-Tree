@@ -141,228 +141,227 @@ const Task = props => {
   }
 
   return (
-    <Subscription
-      subscription={TASK_UPDATED}
-      variables={{ id: props.id }}
-      onSubscriptionData={({ subscriptionData }) => {
-        setState(state => ({
-          ...state,
-          name: subscriptionData.data.taskUpdated.name
-        }));
-      }}
-    >
-      {() => (
-        <div css={rootCss(props)}>
-          <Caret />
-          <div>
-            <div
-              onClick={() => {
-                if (state.edit) return;
+    <>
+      <Subscription
+        subscription={TASK_UPDATED}
+        variables={{ id: props.id }}
+        onSubscriptionData={({ subscriptionData }) => {
+          setState(state => ({
+            ...state,
+            name: subscriptionData.data.taskUpdated.name
+          }));
+        }}
+      />
+      <div css={rootCss(props)}>
+        <Caret />
+        <div>
+          <div
+            onClick={() => {
+              if (state.edit) return;
 
-                if (!state.showChildren) {
-                  client
-                    .query({
-                      query: GET_TASK_WITH_CHILDREN,
-                      variables: { id: props.id },
-                      fetchPolicy: "network-only"
-                    })
-                    .then(({ data }) =>
-                      setState(state => ({
-                        ...state,
-                        children: data.task.children,
-                        showChildren: true
-                      }))
-                    );
-                } else {
-                  setState(state => ({
-                    ...state,
-                    children: [],
-                    showChildren: false
-                  }));
-                }
-              }}
+              if (!state.showChildren) {
+                client
+                  .query({
+                    query: GET_TASK_WITH_CHILDREN,
+                    variables: { id: props.id },
+                    fetchPolicy: "network-only"
+                  })
+                  .then(({ data }) =>
+                    setState(state => ({
+                      ...state,
+                      children: data.task.children,
+                      showChildren: true
+                    }))
+                  );
+              } else {
+                setState(state => ({
+                  ...state,
+                  children: [],
+                  showChildren: false
+                }));
+              }
+            }}
+            css={{
+              padding: "5px",
+              background: "#eeeeee",
+              border: "solid 1px #979797",
+              borderRadius: "5px"
+            }}
+          >
+            <div
               css={{
-                padding: "5px",
-                background: "#eeeeee",
-                border: "solid 1px #979797",
-                borderRadius: "5px"
+                display: "grid",
+                gridTemplateColumns: "1fr min-content",
+                whiteSpace: "nowrap"
               }}
             >
-              <div
-                css={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr min-content",
-                  whiteSpace: "nowrap"
-                }}
-              >
-                <div>
-                  <span
-                    css={{
-                      fontSize: "15px",
-                      background:
-                        COLOR_MAP[
-                          resolveColor(currentProject, props.project, color)
-                        ],
-                      color: "white",
-                      borderRadius: "5px",
-                      padding: "2px 5px"
-                    }}
-                  >
-                    {project.name}
-                  </span>
-                </div>
-                <div
-                  id="edit-buttons"
+              <div>
+                <span
                   css={{
-                    marginRight: "5px",
-                    display: `${
-                      state.edit || state.completed || state.deleted
-                        ? "none"
-                        : "grid"
-                    }`,
-                    opacity: "0",
-                    transition: "0.2s",
-                    gridTemplateColumns: "min-content min-content min-content",
-                    gridColumnGap: "5px"
+                    fontSize: "15px",
+                    background:
+                      COLOR_MAP[
+                        resolveColor(currentProject, props.project, color)
+                      ],
+                    color: "white",
+                    borderRadius: "5px",
+                    padding: "2px 5px"
                   }}
                 >
-                  <EditButton
-                    backgroundImage={pencil}
-                    onClick={e => {
-                      e.stopPropagation();
-                      setState(state => ({
-                        ...state,
-                        edit: true,
-                        saved: true
-                      }));
-                    }}
-                  />
-                  <EditButton
-                    backgroundImage={exitButton}
-                    onClick={e => {
-                      e.stopPropagation();
-                      setState(state => ({ ...state, deleted: true }));
-                      props.destroy();
-                      client.mutate({
-                        mutation: DELETE_TASK,
-                        variables: { id: props.id }
-                      });
-                    }}
-                  />
-                </div>
+                  {project.name}
+                </span>
               </div>
               <div
+                id="edit-buttons"
                 css={{
-                  display: "grid",
-                  gridTemplateColumns: "min-content 1fr",
-                  paddingTop: "5px"
+                  marginRight: "5px",
+                  display: `${
+                    state.edit || state.completed || state.deleted
+                      ? "none"
+                      : "grid"
+                  }`,
+                  opacity: "0",
+                  transition: "0.2s",
+                  gridTemplateColumns: "min-content min-content min-content",
+                  gridColumnGap: "5px"
                 }}
               >
-                {!state.completed && !state.deleted && (
-                  <div
-                    onClick={e => {
-                      e.stopPropagation();
-
-                      if (state.edit) return;
-
-                      setState(state => ({
-                        ...state,
-                        completed: true
-                      }));
-
-                      client.mutate({
-                        mutation: COMPLETE_TASK,
-                        variables: { id: props.id }
-                      });
-
-                      props.destroy();
-                    }}
-                    css={{
-                      width: "14px",
-                      height: "14px",
-                      margin: "3px",
-                      marginRight: "5px",
-                      borderRadius: "50%",
-                      border: "solid 1px #979797",
-                      opacity: state.edit ? "0" : "1",
-                      "&:hover": {
-                        background: "#D6D6D6"
-                      }
-                    }}
-                  />
-                )}
-
-                {state.edit ? (
-                  <form
-                    onSubmit={e => {
-                      e.preventDefault();
-                      const name = e.currentTarget[0].value;
-
-                      client.mutate({
-                        variables: createMutationVariables(
-                          name,
-                          props.id,
-                          state.saved
-                        ),
-                        mutation: state.saved ? UDPATE_TASK : CREATE_TASK
-                      });
-
-                      return setState(state => ({
-                        ...state,
-                        name,
-                        edit: false
-                      }));
-                    }}
-                  >
-                    <input
-                      autoFocus={true}
-                      type="text"
-                      placeholder="New Task"
-                      css={{
-                        fontSize: "20px",
-                        borderRadius: "5px",
-                        padding: "0px 5px",
-                        width: "100%",
-                        border: "none"
-                      }}
-                    />
-                  </form>
-                ) : (
-                  <span css={{ fontSize: "20px" }}>{state.name}</span>
-                )}
+                <EditButton
+                  backgroundImage={pencil}
+                  onClick={e => {
+                    e.stopPropagation();
+                    setState(state => ({
+                      ...state,
+                      edit: true,
+                      saved: true
+                    }));
+                  }}
+                />
+                <EditButton
+                  backgroundImage={exitButton}
+                  onClick={e => {
+                    e.stopPropagation();
+                    setState(state => ({ ...state, deleted: true }));
+                    props.destroy();
+                    client.mutate({
+                      mutation: DELETE_TASK,
+                      variables: { id: props.id }
+                    });
+                  }}
+                />
               </div>
             </div>
-            {state.showChildren && (
-              <button
-                css={{
-                  background: "black",
-                  color: "white",
-                  borderRadius: "5px"
-                }}
-                onClick={() => {
-                  setState(state => {
-                    const children = [
-                      {
-                        id: uuid.v4(),
-                        edit: true,
-                        name: "",
-                        projectId: project.id
-                      },
-                      ...state.children
-                    ];
+            <div
+              css={{
+                display: "grid",
+                gridTemplateColumns: "min-content 1fr",
+                paddingTop: "5px"
+              }}
+            >
+              {!state.completed && !state.deleted && (
+                <div
+                  onClick={e => {
+                    e.stopPropagation();
 
-                    return { ...state, children };
-                  });
-                }}
-              >
-                + New Task
-              </button>
-            )}
-            {state.showChildren && childTasks(state, project)}
+                    if (state.edit) return;
+
+                    setState(state => ({
+                      ...state,
+                      completed: true
+                    }));
+
+                    client.mutate({
+                      mutation: COMPLETE_TASK,
+                      variables: { id: props.id }
+                    });
+
+                    props.destroy();
+                  }}
+                  css={{
+                    width: "14px",
+                    height: "14px",
+                    margin: "3px",
+                    marginRight: "5px",
+                    borderRadius: "50%",
+                    border: "solid 1px #979797",
+                    opacity: state.edit ? "0" : "1",
+                    "&:hover": {
+                      background: "#D6D6D6"
+                    }
+                  }}
+                />
+              )}
+
+              {state.edit ? (
+                <form
+                  onSubmit={e => {
+                    e.preventDefault();
+                    const name = e.currentTarget[0].value;
+
+                    client.mutate({
+                      variables: createMutationVariables(
+                        name,
+                        props.id,
+                        state.saved
+                      ),
+                      mutation: state.saved ? UDPATE_TASK : CREATE_TASK
+                    });
+
+                    return setState(state => ({
+                      ...state,
+                      name,
+                      edit: false
+                    }));
+                  }}
+                >
+                  <input
+                    autoFocus={true}
+                    type="text"
+                    placeholder="New Task"
+                    css={{
+                      fontSize: "20px",
+                      borderRadius: "5px",
+                      padding: "0px 5px",
+                      width: "100%",
+                      border: "none"
+                    }}
+                  />
+                </form>
+              ) : (
+                <span css={{ fontSize: "20px" }}>{state.name}</span>
+              )}
+            </div>
           </div>
+          {state.showChildren && (
+            <button
+              css={{
+                background: "black",
+                color: "white",
+                borderRadius: "5px"
+              }}
+              onClick={() => {
+                setState(state => {
+                  const children = [
+                    {
+                      id: uuid.v4(),
+                      edit: true,
+                      name: "",
+                      projectId: project.id
+                    },
+                    ...state.children
+                  ];
+
+                  return { ...state, children };
+                });
+              }}
+            >
+              + New Task
+            </button>
+          )}
+          {state.showChildren && childTasks(state, project)}
         </div>
-      )}
-    </Subscription>
+      </div>
+    </>
   );
 };
 

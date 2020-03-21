@@ -19,6 +19,10 @@ module Mutations
       task = user.projects.find_by!(id: input[:project_id]).tasks.new(input)
       task.save!
 
+      task.project.users.each do |user|
+        TaskTreeSchema.subscriptions.trigger "rootTaskCreated", { project_id: input[:project_id] }, task, scope: user.id unless user.id === context[:user_id]
+      end
+
       { task: task }
     rescue ActiveRecord::RecordNotFound
       raise Errors::NotFoundError, "Could not find the project with identifier #{input[:project_id]}"

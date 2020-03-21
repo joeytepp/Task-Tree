@@ -8,3 +8,16 @@ export const TASK_UPDATED = gql`
     }
   }
 `;
+
+export const ROOT_TASK_CREATED = gql`
+  subscription RootTaskCreated($projectId: String!) {
+    rootTaskCreated(projectId: $projectId) {
+      name
+      id
+      project {
+        id
+        name
+      }
+    }
+  }
+`;

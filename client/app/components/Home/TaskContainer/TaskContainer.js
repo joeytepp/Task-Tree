@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { ApolloContext } from "react-apollo";
+import { ApolloContext, Subscription } from "react-apollo";
 import uuid from "uuid";
 
 import {
@@ -12,6 +12,7 @@ import ProjectsModal from "../ProjectsModal/ProjectsModal";
 import Task from "../Task/Task";
 
 import blackPlus from "../../../assets/img/blackPlusButton.svg";
+import { ROOT_TASK_CREATED } from "../../../graphql/subscriptions";
 
 export default () => {
   const { currentProject } = useContext(ProjectsContext);
@@ -44,49 +45,71 @@ export default () => {
   }
 
   return (
-    <div>
-      <div
-        css={{
-          marginLeft: "350px",
-          marginTop: "70px",
-          paddingBottom: "20px"
-        }}
-      >
-        <h1 css={{ verticalAlign: "middle" }}>
-          {(currentProject && currentProject.name) || "All Tasks"}{" "}
-          <img
-            src={blackPlus}
-            onClick={() => createNewTask()}
+    <Subscription
+      subscription={ROOT_TASK_CREATED}
+      variables={{
+        projectId: (currentProject && currentProject.id) || ""
+      }}
+      onSubscriptionData={({ subscriptionData }) => {
+        const newTasks = [
+          {
+            ...subscriptionData.data.taskCreated,
+            projectId: subscriptionData.data.taskCreated.project.id
+          },
+          ...tasks
+        ];
+
+        setTasks(newTasks);
+      }}
+    >
+      {() => (
+        <div>
+          <div
             css={{
-              transition: "transform 0.5s",
-              height: "1em",
-              marginLeft: "10px",
-              verticalAlign: "middle",
-              "&:hover": {
-                transform: "rotate(90deg)"
-              }
+              marginLeft: "350px",
+              marginTop: "70px",
+              paddingBottom: "20px"
             }}
-          />
-        </h1>
-        <TransitionGroup className="tasks">
-          {tasks.map(task => (
-            <CSSTransition classNames="task" timeout={500} key={task.id}>
-              <Task
-                root
-                key={task.id}
-                {...task}
-                destroy={() => setTasks(tasks.filter(t => t.id !== task.id))}
+          >
+            <h1 css={{ verticalAlign: "middle" }}>
+              {(currentProject && currentProject.name) || "All Tasks"}{" "}
+              <img
+                src={blackPlus}
+                onClick={() => createNewTask()}
+                css={{
+                  transition: "transform 0.5s",
+                  height: "1em",
+                  marginLeft: "10px",
+                  verticalAlign: "middle",
+                  "&:hover": {
+                    transform: "rotate(90deg)"
+                  }
+                }}
               />
-            </CSSTransition>
-          ))}
-        </TransitionGroup>
-      </div>
-      <ProjectsModal
-        showModal={chooseProject}
-        onRequestClose={() => setChooseProject(false)}
-        createNewTask={createNewTask}
-      />
-    </div>
+            </h1>
+            <TransitionGroup className="tasks">
+              {tasks.map(task => (
+                <CSSTransition classNames="task" timeout={500} key={task.id}>
+                  <Task
+                    root
+                    key={task.id}
+                    {...task}
+                    destroy={() =>
+                      setTasks(tasks.filter(t => t.id !== task.id))
+                    }
+                  />
+                </CSSTransition>
+              ))}
+            </TransitionGroup>
+          </div>
+          <ProjectsModal
+            showModal={chooseProject}
+            onRequestClose={() => setChooseProject(false)}
+            createNewTask={createNewTask}
+          />
+        </div>
+      )}
+    </Subscription>
   );
 };
 

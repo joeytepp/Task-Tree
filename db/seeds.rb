@@ -26,17 +26,13 @@ users = User.create([
   }
 ])
 
-projects = Project.create([{
-    name: "Joe's Project",
-  },
-  {
-    name: "Bob's Project"
-  },
+projects = Project.create([{ name: "Joe's Project" }, { name: "Bob's Project" },
   {
     name: "Joe and Bob's Project",
     color: 2
 }])
 
+projects.each  { |project| project.tasks.create(name: "Test Task") }
 project_users = []
 
 users.each_with_index do |user, i|
