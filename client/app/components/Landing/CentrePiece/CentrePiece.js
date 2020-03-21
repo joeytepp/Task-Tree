@@ -28,7 +28,7 @@ export default () => (
     >
       <h1
         css={{
-          fontFamily: "Cabin-SemiBold",
+          fontFamily: "Cabin",
           fontSize: "70px",
           lineHeight: "70px",
           color: "white",
@@ -42,7 +42,7 @@ export default () => (
       </h1>
       <h1
         css={{
-          fontFamily: "Cabin-SemiBold",
+          fontFamily: "Cabin",
           fontSize: "70px",
           lineHeight: "70px",
           color: "#d8d8d8",

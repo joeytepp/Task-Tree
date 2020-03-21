@@ -367,7 +367,6 @@ const Task = props => {
 };
 
 function resolveColor(currentProject, project, currentColor) {
-  console.log(currentProject, project, currentColor);
   if (currentProject && currentProject.name === project.name)
     return currentColor;
 

@@ -6,7 +6,7 @@ import Error from "../Error/Error";
 import { css } from "styled-components";
 
 const formLabelStyle = css({
-  fontFamily: "Cabin-Bold",
+  fontFamily: "Cabin",
   fontSize: "15px",
   color: "#424242",
   letterSpacing: 0,

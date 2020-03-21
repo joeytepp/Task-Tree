@@ -48,7 +48,7 @@ export default () => {
             />
             <h1
               css={{
-                fontFamily: "Cabin-SemiBold",
+                fontFamily: "Cabin",
                 fontSize: "32px",
                 color: "white",
                 textAlign: "left",

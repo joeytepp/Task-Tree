@@ -20,7 +20,7 @@ export default props => (
       <h1
         css={{
           color: "white",
-          fontFamily: "Cabin-Bold",
+          fontFamily: "Cabin",
           fontSize: "50px",
           letterSpacing: "0px"
         }}

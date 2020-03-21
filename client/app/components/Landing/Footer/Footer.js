@@ -30,7 +30,7 @@ export default () => (
         css={{
           margin: "0px",
           padding: "0px",
-          fontFamily: "Cabin-Bold",
+          fontFamily: "Cabin",
           fontSize: "30px",
           color: "white",
           marginBottom: "20px",
@@ -48,7 +48,7 @@ export default () => (
           textDecoration: "none",
           borderRadius: "5px",
           fontSize: "20px",
-          fontFamily: "Cabin-Bold",
+          fontFamily: "Cabin",
           "&:hover": {
             boxShadow: "0px 0px 5px white"
           },
@@ -82,7 +82,7 @@ export default () => (
           <h1
             css={{
               paddingLeft: "2px",
-              fontFamily: "Cabin-SemiBold",
+              fontFamily: "Cabin",
               fontSize: "32px",
               color: "#ffffff",
               textAlign: "left",

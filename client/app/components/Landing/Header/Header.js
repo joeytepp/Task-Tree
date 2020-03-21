@@ -64,7 +64,7 @@ export default () => (
         />
         <p
           css={{
-            fontFamily: "Cabin-SemiBold",
+            fontFamily: "Cabin",
             fontSize: "32px",
             color: "#ffffff",
             textAlign: "left",

@@ -1,6 +1,10 @@
-<svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="Page-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#000000" transform="translate(167.410949, 132.410949) rotate(135.000000) translate(-167.410949, -132.410949) " x="2.9109486" y="105.410949" width="329" height="54" rx="8"></rect>
-        <path d="M24.6801679,256.423323 L47.0151597,314.328857 L-6.98484035,314.328857 L15.3501514,256.423323 C16.3439106,253.84691 19.2381071,252.563916 21.81452,253.557675 C23.1313864,254.065609 24.1722337,255.106457 24.6801679,256.423323 Z" id="Triangle" fill="#000000" transform="translate(20.015160, 279.328857) rotate(225.000000) translate(-20.015160, -279.328857) "></path>
+<svg width="304px" height="304px" viewBox="0 0 304 304" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-208.000000, -125.000000)" fill="#000000" stroke="#FFFFFF" stroke-width="5">
+            <g id="pencil-2" transform="translate(186.340620, 121.264502)">
+                <rect id="Rectangle" transform="translate(192.603407, 136.500000) rotate(-45.000000) translate(-192.603407, -136.500000) " x="30.6034075" y="111.5" width="324" height="50" rx="8"></rect>
+                <path d="M49.1843517,261.444488 L71,319.893961 L18,319.893961 L39.8156483,261.444488 C40.7812546,258.857392 43.6612888,257.542915 46.2483848,258.508521 C47.6063331,259.015361 48.6775118,260.08654 49.1843517,261.444488 Z" id="Triangle" transform="translate(44.500000, 284.393961) rotate(-135.000000) translate(-44.500000, -284.393961) "></path>
+            </g>
+        </g>
     </g>
 </svg>

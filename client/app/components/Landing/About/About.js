@@ -10,7 +10,7 @@ const sellingPointCss = css({
 });
 
 const titleCss = css({
-  fontFamily: "Cabin-SemiBold",
+  fontFamily: "Cabin",
   fontSize: "15px",
   color: "black",
   letterSpacing: 0,
@@ -19,7 +19,7 @@ const titleCss = css({
 });
 
 const subtitleCss = css({
-  fontFamily: "Cabin-Regular",
+  fontFamily: "Cabin",
   fontSize: "15px",
   color: "424242",
   letterSpacing: 0,
@@ -39,7 +39,7 @@ export default () => (
     <div>
       <h1
         css={{
-          fontFamily: "Cabin-SemiBold",
+          fontFamily: "Cabin",
           fontSize: "30px",
           color: "black",
           letterSpacing: "1px",
@@ -51,7 +51,7 @@ export default () => (
       </h1>
       <p
         css={{
-          fontFamily: "Cabin-Regular",
+          fontFamily: "Cabin",
           fontSize: "18px",
           color: "#000000",
           letterSpacing: 0,

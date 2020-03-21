@@ -25,7 +25,7 @@ export default props => (
       />
       <h1
         css={{
-          fontFamily: "Cabin-Bold",
+          fontFamily: "Cabin",
           fontSize: "50px",
           color: "white",
           letterSpacing: 0
@@ -35,7 +35,7 @@ export default props => (
       </h1>
       <h3
         css={{
-          fontFamily: "Cabin-Bold",
+          fontFamily: "Cabin",
           fontSize: "25px",
           color: "#ffffff",
           letterSpacing: 0
