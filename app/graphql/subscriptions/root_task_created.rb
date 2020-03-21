@@ -4,7 +4,7 @@ module Subscriptions
   class RootTaskCreated < BaseSubscription
     include GraphqlHelper
 
-    description "Subscribes to any newly created task resources"
+    description "Subscribes to any newly created root task resources"
 
     argument :project_id, String, "The identifier of the project.", required: true
 

@@ -21,3 +21,16 @@ export const ROOT_TASK_CREATED = gql`
     }
   }
 `;
+
+export const TASK_CREATED = gql`
+  subscription TaskCreated($parentId: String!) {
+    taskCreated(parentId: $parentId) {
+      name
+      id
+      project {
+        id
+        name
+      }
+    }
+  }
+`;

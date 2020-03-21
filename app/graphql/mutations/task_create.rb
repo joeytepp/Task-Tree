@@ -20,7 +20,11 @@ module Mutations
       task.save!
 
       task.project.users.each do |user|
-        TaskTreeSchema.subscriptions.trigger "rootTaskCreated", { project_id: input[:project_id] }, task, scope: user.id unless user.id === context[:user_id]
+        if input[:parent_id].nil?
+          TaskTreeSchema.subscriptions.trigger "rootTaskCreated", { project_id: input[:project_id] }, task, scope: user.id unless user.id === context[:user_id]
+        else
+          TaskTreeSchema.subscriptions.trigger "taskCreated", { parent_id: input[:parent_id] }, task, scope: user.id unless user.id === context[:user_id]
+        end
       end
 
       { task: task }

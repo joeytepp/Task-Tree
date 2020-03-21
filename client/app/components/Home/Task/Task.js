@@ -19,7 +19,7 @@ import {
 
 import exitButton from "../../../assets/img/exitCross.svg";
 import pencil from "../../../assets/img/pencil.svg";
-import { TASK_UPDATED } from "../../../graphql/subscriptions";
+import { TASK_UPDATED, TASK_CREATED } from "../../../graphql/subscriptions";
 
 const caretAnimation = keyframes`
   0% {
@@ -149,6 +149,20 @@ const Task = props => {
           setState(state => ({
             ...state,
             name: subscriptionData.data.taskUpdated.name
+          }));
+        }}
+      />
+      <Subscription
+        subscription={TASK_CREATED}
+        variables={{ parentId: props.id }}
+        onSubscriptionData={({ subscriptionData }) => {
+          const children = [
+            subscriptionData.data.taskCreated,
+            ...state.children
+          ];
+          setState(state => ({
+            ...state,
+            children
           }));
         }}
       />
