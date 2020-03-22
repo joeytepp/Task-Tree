@@ -348,7 +348,10 @@ const Task = props => {
                   <input
                     autoFocus={true}
                     type="text"
-                    placeholder={props.name || "New Task"}
+                    value={state.name}
+                    onChange={({ value: name }) =>
+                      setState(state => ({ ...state, name }))
+                    }
                     css={{
                       fontSize: "20px",
                       borderRadius: "5px",
@@ -358,8 +361,12 @@ const Task = props => {
                     }}
                     onKeyDown={({ key }) => {
                       if (key === "Escape") {
-                        if (props.saved) {
-                          setState(state => ({ ...state, edit: false }));
+                        if (state.saved) {
+                          setState(state => ({
+                            ...state,
+                            name: props.name,
+                            edit: false
+                          }));
                         } else {
                           props.destroy();
                         }
