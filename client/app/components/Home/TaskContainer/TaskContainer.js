@@ -51,31 +51,33 @@ export default () => {
     if (currentProject && currentProject.id) {
       return (
         <Subscription
+          key={currentProject.id}
           subscription={ROOT_TASK_CREATED}
           variables={{
             projectId: currentProject.id
           }}
-          onSubscriptionData={({ subscriptionData }) => {
+          onSubscriptionData={({ subscriptionData }) =>
             addNewTask({
               ...subscriptionData.data.rootTaskCreated,
               projectId: subscriptionData.data.rootTaskCreated.project.id
-            });
-          }}
+            })
+          }
         />
       );
     } else {
       return projects.map(project => (
         <Subscription
+          key={project.id}
           subscription={ROOT_TASK_CREATED}
           variables={{
             projectId: project.id
           }}
-          onSubscriptionData={({ subscriptionData }) => {
+          onSubscriptionData={({ subscriptionData }) =>
             addNewTask({
               ...subscriptionData.data.rootTaskCreated,
               projectId: subscriptionData.data.rootTaskCreated.project.id
-            });
-          }}
+            })
+          }
         />
       ));
     }

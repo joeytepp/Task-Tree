@@ -3,8 +3,9 @@ import gql from "graphql-tag";
 export const TASK_UPDATED = gql`
   subscription TaskUpdated($id: String!) {
     taskUpdated(id: $id) {
-      name
       id
+      name
+      completed
     }
   }
 `;
@@ -32,6 +33,14 @@ export const TASK_CREATED = gql`
         id
         name
       }
+    }
+  }
+`;
+
+export const TASK_DELETED = gql`
+  subscription TaskDeleted($id: String!) {
+    taskDeleted(id: $id) {
+      id
     }
   }
 `;

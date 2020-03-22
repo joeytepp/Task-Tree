@@ -19,7 +19,11 @@ import {
 
 import exitButton from "../../../assets/img/exitCross.svg";
 import pencil from "../../../assets/img/pencil.svg";
-import { TASK_UPDATED, TASK_CREATED } from "../../../graphql/subscriptions";
+import {
+  TASK_UPDATED,
+  TASK_CREATED,
+  TASK_DELETED
+} from "../../../graphql/subscriptions";
 
 const caretAnimation = keyframes`
   0% {
@@ -113,6 +117,7 @@ const Task = props => {
     return { input };
   }
 
+  // Display child tasks
   function childTasks() {
     if (!state.showChildren) return "";
 
@@ -140,31 +145,41 @@ const Task = props => {
     );
   }
 
+  // Add a new child task
+  function addChild(child) {
+    return setState(state => {
+      const children = [child, ...state.children];
+      return { ...state, children };
+    });
+  }
+
   return (
     <>
       <Subscription
         subscription={TASK_UPDATED}
         variables={{ id: props.id }}
         onSubscriptionData={({ subscriptionData }) => {
-          setState(state => ({
-            ...state,
-            name: subscriptionData.data.taskUpdated.name
-          }));
+          if (subscriptionData.data.taskUpdated.completed) {
+            props.destroy();
+          } else {
+            setState(state => ({
+              ...state,
+              name: subscriptionData.data.taskUpdated.name
+            }));
+          }
         }}
+      />
+      <Subscription
+        subscription={TASK_DELETED}
+        variables={{ id: props.id }}
+        onSubscriptionData={() => props.destroy()}
       />
       {state.showChildren && (
         <Subscription
           subscription={TASK_CREATED}
           variables={{ parentId: props.id }}
           onSubscriptionData={({ subscriptionData }) => {
-            const children = [
-              subscriptionData.data.taskCreated,
-              ...state.children
-            ];
-            setState(state => ({
-              ...state,
-              children
-            }));
+            addChild(subscriptionData.data.taskCreated);
           }}
         />
       )}
@@ -364,21 +379,14 @@ const Task = props => {
                 color: "white",
                 borderRadius: "5px"
               }}
-              onClick={() => {
-                setState(state => {
-                  const children = [
-                    {
-                      id: uuid.v4(),
-                      edit: true,
-                      name: "",
-                      projectId: project.id
-                    },
-                    ...state.children
-                  ];
-
-                  return { ...state, children };
-                });
-              }}
+              onClick={() =>
+                addChild({
+                  id: uuid.v4(),
+                  edit: true,
+                  name: "",
+                  projectId: project.id
+                })
+              }
             >
               + New Task
             </button>

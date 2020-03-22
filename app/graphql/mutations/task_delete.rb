@@ -17,6 +17,10 @@ module Mutations
       task_ids_to_delete = get_task_ids_to_update(root_task)
       deleted_tasks = Task.where(id: [task_ids_to_delete]).destroy_all
 
+      root_task.project.users.each do |user|
+        TaskTreeSchema.subscriptions.trigger "taskDeleted", { id: root_task.id }, root_task, scope: user.id unless user.id === context[:user_id]
+      end
+
       { num_tasks_deleted: deleted_tasks.length, deleted_task_id: root_task.id }
     rescue ActiveRecord::RecordNotFound
       raise Errors::NotFoundError, "Could not find the task with identifier #{id}."

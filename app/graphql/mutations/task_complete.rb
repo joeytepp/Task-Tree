@@ -23,6 +23,10 @@ module Mutations
 
       root_task.completed = true
 
+      root_task.project.users.each do |user|
+        TaskTreeSchema.subscriptions.trigger "taskUpdated", { id: root_task.id }, root_task, scope: user.id unless user.id === context[:user_id]
+      end
+
       { task: root_task, num_tasks_completed: num_tasks_completed }
     rescue ActiveRecord::RecordNotFound
       throw Errors::NotFoundError, "Could not find the Task with identifier #{id}"
