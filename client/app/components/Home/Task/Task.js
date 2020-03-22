@@ -152,20 +152,22 @@ const Task = props => {
           }));
         }}
       />
-      <Subscription
-        subscription={TASK_CREATED}
-        variables={{ parentId: props.id }}
-        onSubscriptionData={({ subscriptionData }) => {
-          const children = [
-            subscriptionData.data.taskCreated,
-            ...state.children
-          ];
-          setState(state => ({
-            ...state,
-            children
-          }));
-        }}
-      />
+      {state.showChildren && (
+        <Subscription
+          subscription={TASK_CREATED}
+          variables={{ parentId: props.id }}
+          onSubscriptionData={({ subscriptionData }) => {
+            const children = [
+              subscriptionData.data.taskCreated,
+              ...state.children
+            ];
+            setState(state => ({
+              ...state,
+              children
+            }));
+          }}
+        />
+      )}
       <div css={rootCss(props)}>
         <Caret />
         <div>
@@ -331,13 +333,22 @@ const Task = props => {
                   <input
                     autoFocus={true}
                     type="text"
-                    placeholder="New Task"
+                    placeholder={props.name || "New Task"}
                     css={{
                       fontSize: "20px",
                       borderRadius: "5px",
                       padding: "0px 5px",
                       width: "100%",
                       border: "none"
+                    }}
+                    onKeyDown={({ key }) => {
+                      if (key === "Escape") {
+                        if (props.saved) {
+                          setState(state => ({ ...state, edit: false }));
+                        } else {
+                          props.destroy();
+                        }
+                      }
                     }}
                   />
                 </form>

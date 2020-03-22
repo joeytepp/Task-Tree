@@ -15,7 +15,7 @@ import blackPlus from "../../../assets/img/blackPlusButton.svg";
 import { ROOT_TASK_CREATED } from "../../../graphql/subscriptions";
 
 export default () => {
-  const { currentProject } = useContext(ProjectsContext);
+  const { currentProject, projects } = useContext(ProjectsContext);
   const { client } = useContext(ApolloContext);
 
   const [tasks, setTasks] = useState([]);
@@ -27,89 +27,107 @@ export default () => {
       .then(res => setTasks(res.data.rootTasks));
   }, [currentProject]);
 
-  function createNewTask(project = currentProject) {
-    if (!project || !project.id) return setChooseProject(true);
-
-    const newTasks = [
-      {
-        id: uuid.v4(),
-        name: "",
-        projectId: project.id,
-        project,
-        edit: true
-      },
-      ...tasks
-    ];
+  // Updates state with new task
+  function addNewTask(newTask) {
+    const newTasks = [newTask, ...tasks];
 
     setTasks(newTasks);
   }
 
-  return (
-    <Subscription
-      subscription={ROOT_TASK_CREATED}
-      variables={{
-        projectId: (currentProject && currentProject.id) || ""
-      }}
-      onSubscriptionData={({ subscriptionData }) => {
-        const newTasks = [
-          {
-            ...subscriptionData.data.taskCreated,
-            projectId: subscriptionData.data.taskCreated.project.id
-          },
-          ...tasks
-        ];
+  // For creating a new task in the UI
+  function createNewTask(project = currentProject) {
+    if (!project || !project.id) return setChooseProject(true);
 
-        setTasks(newTasks);
-      }}
-    >
-      {() => (
-        <div>
-          <div
-            css={{
-              marginLeft: "350px",
-              marginTop: "70px",
-              paddingBottom: "20px"
-            }}
-          >
-            <h1 css={{ verticalAlign: "middle" }}>
-              {(currentProject && currentProject.name) || "All Tasks"}{" "}
-              <img
-                src={blackPlus}
-                onClick={() => createNewTask()}
-                css={{
-                  transition: "transform 0.5s",
-                  height: "1em",
-                  marginLeft: "10px",
-                  verticalAlign: "middle",
-                  "&:hover": {
-                    transform: "rotate(90deg)"
-                  }
-                }}
-              />
-            </h1>
-            <TransitionGroup className="tasks">
-              {tasks.map(task => (
-                <CSSTransition classNames="task" timeout={500} key={task.id}>
-                  <Task
-                    root
-                    key={task.id}
-                    {...task}
-                    destroy={() =>
-                      setTasks(tasks.filter(t => t.id !== task.id))
-                    }
-                  />
-                </CSSTransition>
-              ))}
-            </TransitionGroup>
-          </div>
-          <ProjectsModal
-            showModal={chooseProject}
-            onRequestClose={() => setChooseProject(false)}
-            createNewTask={createNewTask}
-          />
+    addNewTask({
+      id: uuid.v4(),
+      name: "",
+      projectId: project.id,
+      project,
+      edit: true
+    });
+  }
+
+  function rootTaskSubscriptions() {
+    if (currentProject && currentProject.id) {
+      return (
+        <Subscription
+          subscription={ROOT_TASK_CREATED}
+          variables={{
+            projectId: currentProject.id
+          }}
+          onSubscriptionData={({ subscriptionData }) => {
+            addNewTask({
+              ...subscriptionData.data.rootTaskCreated,
+              projectId: subscriptionData.data.rootTaskCreated.project.id
+            });
+          }}
+        />
+      );
+    } else {
+      return projects.map(project => (
+        <Subscription
+          subscription={ROOT_TASK_CREATED}
+          variables={{
+            projectId: project.id
+          }}
+          onSubscriptionData={({ subscriptionData }) => {
+            addNewTask({
+              ...subscriptionData.data.rootTaskCreated,
+              projectId: subscriptionData.data.rootTaskCreated.project.id
+            });
+          }}
+        />
+      ));
+    }
+  }
+
+  return (
+    <>
+      {rootTaskSubscriptions()}
+      <div>
+        <div
+          css={{
+            marginLeft: "350px",
+            marginTop: "70px",
+            paddingBottom: "20px"
+          }}
+        >
+          <h1 css={{ verticalAlign: "middle" }}>
+            {(currentProject && currentProject.name) || "All Tasks"}{" "}
+            <img
+              src={blackPlus}
+              onClick={() => createNewTask()}
+              css={{
+                transition: "transform 0.5s",
+                height: "1em",
+                marginLeft: "10px",
+                verticalAlign: "middle",
+                "&:hover": {
+                  transform: "rotate(90deg)"
+                }
+              }}
+            />
+          </h1>
+          <TransitionGroup className="tasks">
+            {tasks.map(task => (
+              <CSSTransition classNames="task" timeout={500} key={task.id}>
+                <Task
+                  root
+                  key={task.id}
+                  {...task}
+                  destroy={() => setTasks(tasks.filter(t => t.id !== task.id))}
+                />
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
         </div>
-      )}
-    </Subscription>
+        <ProjectsModal
+          showModal={chooseProject}
+          onRequestClose={() => setChooseProject(false)}
+          createNewTask={createNewTask}
+        />
+      </div>
+    </>
   );
 };
 

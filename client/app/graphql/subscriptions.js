@@ -17,6 +17,7 @@ export const ROOT_TASK_CREATED = gql`
       project {
         id
         name
+        color
       }
     }
   }
