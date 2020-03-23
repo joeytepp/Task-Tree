@@ -18,7 +18,7 @@ module Mutations
         return { num_tasks_completed: 0 }
       end
 
-      task_ids_to_update = get_task_ids_to_update(root_task, completed: false)
+      task_ids_to_update = accum_task_ids(root_task, completed: false)
       num_tasks_completed = Task.where(id: [task_ids_to_update]).update_all(completed: true)
 
       root_task.completed = true

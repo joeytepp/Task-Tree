@@ -10,8 +10,8 @@ module GraphqlHelper
   end
 
 
-  # Returns an array of ids of tasks to update given the root task
-  def get_task_ids_to_update(root_task, find_opts = {})
+  # Returns an array of ids of tasks to update or delete given the root task
+  def accum_task_ids(root_task, find_opts = {})
     task_list = []
 
     # Find the root task if the task is not root, otherwise get all the task's children

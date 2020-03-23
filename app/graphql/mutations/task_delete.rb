@@ -14,7 +14,7 @@ module Mutations
       must_be_authenticated!
       root_task = ::Task.joins(project: :users).where(users: { id: context[:user_id] }).find_by!(id: id)
 
-      task_ids_to_delete = get_task_ids_to_update(root_task)
+      task_ids_to_delete = accum_task_ids(root_task)
       deleted_tasks = Task.where(id: [task_ids_to_delete]).destroy_all
 
       root_task.project.users.each do |user|
