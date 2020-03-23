@@ -64,7 +64,7 @@ class AuthController < ApplicationController
       begin
         new_user.save!
         session[:user_id] = new_user.id
-        return redirect_to "/"
+        redirect_to "/"
       rescue ActiveRecord::RecordNotUnique
         handle_email_not_unique
       else
