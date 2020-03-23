@@ -4,8 +4,12 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+project_one:
+  name: Project one
+  color: 1
 # column: value
 #
-two: {}
+project_two:
+  name: Project two
+  color: 2
 # column: value

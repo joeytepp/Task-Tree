@@ -1,13 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyText
+task_one:
+  name: Task one
   completed: false
-  parent_id: 
-  root_id: 
+  parent_id: null
+  root_id: null
+  project: project_one
 
-two:
-  name: MyText
+task_two:
+  name: Task two
   completed: false
-  parent_id: 
-  root_id: 
+  parent_id: <%= Task.find_by_name("Task one").id %>
+  root_id: <%= Task.find_by_name("Task one").id %>
+  project: project_one
+
+task_three:
+  name: Task three
+  completed: false
+  parent_id: <%= Task.find_by_name("Task two").id %>
+  root_id: <%= Task.find_by_name("Task one").id %>
+  project: project_one
+
+task_four:
+  name: Task four
+  parent_id: null
+  root_id: null
+  project: project_two
+  completed: true

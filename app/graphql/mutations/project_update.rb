@@ -17,7 +17,7 @@ module Mutations
       project.update(input.to_h)
       { project: project }
     rescue ActiveRecord::RecordNotFound
-      raise Errors::NotFoundError, "Could not find the project with identifier #{id}"
+      raise Errors::NotFoundError, "Could not find the project with identifier #{id}."
     end
   end
 end

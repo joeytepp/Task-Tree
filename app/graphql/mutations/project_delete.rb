@@ -15,7 +15,7 @@ module Mutations
       project.destroy!
       { deleted_project_id: project.id }
     rescue ActiveRecord::RecordNotFound
-      raise Errors::NotFoundError, "Could not find the project with identifier #{id}"
+      raise Errors::NotFoundError, "Could not find the project with identifier #{id}."
     end
   end
 end

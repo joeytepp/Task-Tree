@@ -20,7 +20,6 @@ module Mutations
 
       task_ids_to_update = accum_task_ids(root_task, completed: false)
       num_tasks_completed = Task.where(id: [task_ids_to_update]).update_all(completed: true)
-
       root_task.completed = true
 
       root_task.project.users.each do |user|
@@ -29,7 +28,7 @@ module Mutations
 
       { task: root_task, num_tasks_completed: num_tasks_completed }
     rescue ActiveRecord::RecordNotFound
-      throw Errors::NotFoundError, "Could not find the Task with identifier #{id}"
+      raise Errors::NotFoundError, "Could not find the task with identifier #{id}."
     end
   end
 end

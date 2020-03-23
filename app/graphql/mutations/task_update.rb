@@ -14,7 +14,7 @@ module Mutations
     def resolve(id:, input:)
       must_be_authenticated!
 
-      task = Task.joins(project: :users).where(users: { id: context[:user_id] }).find_by(id: id)
+      task = Task.joins(project: :users).where(users: { id: context[:user_id] }).find_by!(id: id)
       task.update(input.to_h)
 
       task.project.users.each do |user|
@@ -22,6 +22,8 @@ module Mutations
       end
 
       { task: task }
+    rescue ActiveRecord::RecordNotFound
+      raise Errors::NotFoundError, "Could not find the task with identifier #{id}."
     end
   end
 end

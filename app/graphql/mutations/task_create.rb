@@ -29,7 +29,7 @@ module Mutations
 
       { task: task }
     rescue ActiveRecord::RecordNotFound
-      raise Errors::NotFoundError, "Could not find the project with identifier #{input[:project_id]}"
+      raise Errors::NotFoundError, "Could not find the project with identifier #{input[:project_id]}."
     end
 
     private
@@ -53,7 +53,7 @@ module Mutations
         input_hash[:project_id] ||= ::Task.find_by!(id: input_hash[:parent_id]).project_id
         input_hash
       rescue ActiveRecord::RecordNotFound
-        raise Errors::NotFoundError, "Could not find the Task with identifier #{input_hash[:parent_id]}"
+        raise Errors::NotFoundError, "Could not find the task with identifier #{input_hash[:parent_id]}"
       end
   end
 end

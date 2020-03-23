@@ -14,7 +14,7 @@ module Queries
       must_be_authenticated!
       ::Task.joins(project: :users).where(users: { id: context[:user_id] }).find_by!(id: id)
     rescue ActiveRecord::RecordNotFound
-      raise Errors::NotFoundError, "Could not find the task with identifier #{id}"
+      raise Errors::NotFoundError, "Could not find the task with identifier #{id}."
     end
   end
 end
