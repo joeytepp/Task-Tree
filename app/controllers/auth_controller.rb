@@ -67,7 +67,7 @@ class AuthController < ApplicationController
         redirect_to "/"
       rescue ActiveRecord::RecordNotUnique
         handle_email_not_unique
-      else
+      rescue StandardError
         handle_sign_up_exception
       end
     else

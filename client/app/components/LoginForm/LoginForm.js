@@ -47,9 +47,10 @@ export default props => (
   <Form
     onSubmit={noop}
     validate={validateForm}
-    render={({ submitting }) => {
+    render={({ submitting, pristine }) => {
       const initialErrors = initialRender && getInitialErrors(props);
 
+      console.log(initialErrors);
       return (
         <form
           css={{
@@ -65,7 +66,7 @@ export default props => (
           action="/session"
           method="post"
         >
-          {initialErrors.top && <Error error={initialErrors.top} />}
+          <Error error={initialErrors.top} />
           <FormField
             name="email"
             type="email"
@@ -80,7 +81,7 @@ export default props => (
           />
           <button
             type="submit"
-            disabled={submitting}
+            disabled={submitting || pristine}
             css={{
               width: "100%",
               fontSize: "15px",
