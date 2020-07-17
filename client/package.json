@@ -31,7 +31,7 @@
     "history": "^4.6.3",
     "imports-loader": "^0.7.1",
     "loader-utils": "^1.1.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "node-libs-browser": "^2.0.0",
     "node-sass": "^4.9.3",
     "postcss-cssnext": "^3.1.0",
